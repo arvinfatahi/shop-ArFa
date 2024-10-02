@@ -1,0 +1,171 @@
+{% extends "registration/admin/base.html" %}
+
+{% block title %}
+    پنل ادمین | صفحه اصلی
+{% endblock title %}
+
+{% block navbar %}
+    {% include "registration/admin/navbar.html"%}
+{% endblock navbar %}
+
+{% block slidebar %}
+    {% include "registration/admin/sidebar.html" with ticket_admin=ticket_admin %}
+{% endblock slidebar %}
+
+{% block header %}
+
+    <div class="title-mainPage text-center">
+        <span class="mainPage">
+            <i class="fa-solid fa-house"></i>
+            صفحه اصلی
+        </span>
+        <div class="line-admin"></div>
+        <div class="breadcrumb-menu">
+            <span> به پنل ادمین خوش آمدید </span>
+        </div>
+    </div>
+    
+{% endblock header %}
+  
+{% block content %}
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="container-fluid mb-4">
+            <div class="row gx-4 gy-3">
+
+                <div class="col-lg-3 col-6">
+                    <div class="products-box">
+                        <i class="icon fa-solid fa-basket-shopping"></i>
+                        <div class="title">محصولات</div>
+                        <div class="products-login">
+                            <a href="{% url 'aProducts' %}">
+                                <span>ورود</span>
+                                <i class="fas fa-arrow-circle-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-6">
+                    <div class="employees-box">
+                        <i class="icon fa-solid fa-user-tie"></i>
+                        <div class="title">کارمندان</div>
+                        <div class="employees-login">
+                            <a href="{% url 'aEmployee' %}">
+                                <span>ورود</span>
+                                <i class="fas fa-arrow-circle-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-6">
+                    <div class="users-box">
+                        <i class="icon fa-solid fa-user"></i>
+                        <div class="title">کاربران</div>
+                        <div class="users-login">
+                            <a href="{% url 'aUsers' %}">
+                                <span>ورود</span>
+                                <i class="fas fa-arrow-circle-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-6">
+                    <div class="categorys-box">
+                        <i class="icon fa-solid fa-layer-group"></i>
+                        <div class="title">دسته‌ها</div>
+                        <div class="categorys-login">
+                            <a href="{% url 'aCategory' %}">
+                                <span>ورود</span>
+                                <i class="fas fa-arrow-circle-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-6">
+                    <div class="brands-box">
+                        <i class="icon fa-solid fa-tags"></i>
+                        <div class="title">برندها</div>
+                        <div class="brands-login">
+                            <a href="{% url 'aBrand' %}">
+                                <span>ورود</span>
+                                <i class="fas fa-arrow-circle-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-6">
+                    <div class="avertising-box">
+                        <i class="icon fa-solid fa-rectangle-ad"></i>
+                        <div class="title">تبلیغات</div>
+                        <div class="avertising-login">
+                            <a href="{% url 'aMainAvertising' %}">
+                                <span>ورود</span>
+                                <i class="fas fa-arrow-circle-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-6">
+                    <div class="discount-code-box">
+                        <i class="icon fa-solid fa-percent"></i>
+                        <div class="title">کد تخفیف</div>
+                        <div class="discount-code-login">
+                            <a href="{% url 'aDiscountCode' %}">
+                                <span>ورود</span>
+                                <i class="fas fa-arrow-circle-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-6">
+                    <div class="bank-transactions-box">
+                        <i class="icon fa-solid fa-money-check-dollar"></i>
+                        <div class="title">تراکنش‌های بانکی</div>
+                        <div class="bank-transactions-login">
+                            <a href="{% url 'aBankTransactions' %}">
+                                <span>ورود</span>
+                                <i class="fas fa-arrow-circle-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-6">
+                    <div class="buy-factors-box">
+                        <i class="icon fa-solid fa-file"></i>
+                        <div class="title">فاکتورهای خرید</div>
+                        <div class="buy-factors-login">
+                            <a href="{% url 'aBuyFactors' %}">
+                                <span>ورود</span>
+                                <i class="fas fa-arrow-circle-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-6">
+                    <div class="about-box">
+                        <i class="icon fa-solid fa-address-card"></i>
+                        <div class="title">درباره ما</div>
+                        <div class="about-login">
+                            <a href="{% url 'aAbout' %}">
+                                <span>ورود</span>
+                                <i class="fas fa-arrow-circle-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+{% endblock content %}

@@ -1,0 +1,116 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %}دسته {{ category_name.name }}{% endblock title %}
+
+{% block body %}
+
+    {% include "discount_code.html" with discount_code_model_show=discount_code_model_show %}
+    
+    {% include "navbar.html" with all_categorys=all_categorys search_form=search_form %}
+
+    <!-- Section product-->
+    <section>
+        <div class="line-all-products-category"></div>
+        <nav aria-label="breadcrumb" class="breadcrumb-all-products-category">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{% url 'index' %}" style="color: #aaa;">خانه</a></li>
+                <i class="fa-solid fa-chevron-left"></i>
+                <li class="breadcrumb-item fw-lighter active" style="color: #aaa;" aria-current="page">&nbsp; دسته {{ category_name.name }}</li>
+            </ol>
+        </nav>
+        <header class="header-all-products-category py-1">
+            <div class="container px-4 px-lg-5 my-5">
+                <div class="title-all-products-category text-center">
+                    <h1 class="display-4 fw-bolder">
+                        <span><i class="fa-solid fa-layer-group"></i> محصولات دسته {{ category_name.name }}</span>
+                    </h1>
+                    <div class="line"></div>
+                    <p>تمام محصولات دسته {{ category_name.name }} خود را در فروشگاه آرفا خریداری کنید.</p>
+                </div>
+            </div>
+        </header>
+
+        <div class="container px-4 px-lg-5 mt-5">
+             <!-- products -->
+             <div class="all-products-category-box row p-1">
+                <div class="col-12">
+                    <div class="row gx-2 gy-1 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+                        {% for products_category in products_category %}
+                            <div class="col-3">
+                                <div class="products-category">
+                                    {% if products_category.is_sale == True %}
+                                        <div class="position-relative" style="top: 15px; right: 30px;">
+                                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                                                تخفیف
+                                            </span>
+                                        </div>
+                                    {% endif %}
+                                    <img src="{{ products_category.image.url }}" alt="..." /><hr>
+                                    <div class="discription p-1">
+                                        <div class="text-center" style="font-family: 'bnazanin';">
+                                            <h5 class="fw-bolder">{{ products_category.name }}</h5>
+                                            {% if products_category.is_sale == True %}
+                                                <span class="text-decoration-line-through"> {{ products_category.price }} </span> |
+                                                <span>{{ products_category.sale_price }}</span>
+                                            {% else %}
+                                                <span>{{ products_category.price }}</span>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                    <div class="p-4 pt-0 border-top-0 mt-1 text-center">
+                                        <a class="btn-add-cart" href="{% url 'productDetails' products_category.id %}">
+                                            <i class="fa-solid fa-cart-shopping"> خرید محصول </i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- pagination -->
+        {% if products_category.has_other_pages %}
+            <div class="d-flex justify-content-center mt-5 mb-5">
+                <ul class="pagination">
+                    {% if products_category.has_previous %}
+                        <li class="page-item">
+                            <a class="page-link" href="/allProductsCategory?page={{ products_category.previous_page_number }}" tabindex="-1" aria-disabled="true">قبلی</a>
+                        </li>
+                    {% else %}
+                        <li class="page-item disabled">
+                            <a class="page-link" href="#" tabindex="-1" aria-disabled="true">قبلی</a>
+                        </li>
+                    {% endif %}
+                    
+                    {% for i in paginator.page_range %}
+                        {% if products_category.number == i %}
+                            <li class="page-item disabled">
+                                <a class="page-link" href="#">{{ i }}</a>
+                            </li>
+                        {% else %}
+                            <li class="page-item">
+                                <a class="page-link" href="/allProductsCategory?page={{ i }}">{{ i }}</a>
+                            </li>
+                        {% endif %}
+                    {% endfor %}
+                    
+                    {% if products_category.has_next %}
+                        <li class="page-item">
+                            <a class="page-link" href="/allProductsCategory?page={{ products_category.next_page_number }}">بعدی</a>
+                        </li>
+                    {% else %}
+                        <li class="page-item disabled">
+                            <a class="page-link" href="#">بعدی</a>
+                        </li>
+                    {% endif %}
+                    
+                </ul>
+            </div>
+        {% endif %}
+    </section>
+
+{% endblock body %}

@@ -1,0 +1,293 @@
+/* ------------------------------ title categorys */
+.title-categorys{
+    background-color: #343a40;
+    padding: 18px;
+    font-family: 'bnazanin';
+    color: #ddd;
+    box-shadow: 0px 0px 5px #343a40;
+    height: 130px;
+}
+
+.title-categorys .categorys{
+    font-size: 32px;
+    font-weight: bold;
+}
+
+.title-categorys .line-categorys{
+    background-color: #a5a5a5;
+    height: 4px;
+    width: 20%;
+    margin: 5px auto;
+    border-radius: 6px;
+}
+
+.title-categorys .breadcrumb-menu a{
+    text-decoration: none;
+    color: #ddd;
+    transition: all 0.5s;
+}
+
+.title-categorys .breadcrumb-menu a:hover{
+    color: #fff;
+}
+
+/* ------------------------------ search add categorys */
+.search-add-categorys{
+    background-color: #fff;
+    box-shadow: 0px 0px 5px #ddd;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+.search-add-category .frm-search-category{
+    float: right;
+}
+
+.search-add-categorys .frm-search-category button{
+    color: #ddd;
+    background-color: #343a40;
+    padding: 5px;
+    border-top-right-radius: 50px;
+    border-bottom-right-radius: 50px;
+    border: none;
+    font-size: 14px;
+    font-family: 'bnazanin';
+    transition: all 0.5s;
+}
+
+.search-add-categorys .frm-search-category button:hover{
+    background-color: rgba(52, 58, 64, 0.8);
+}
+
+.search-add-categorys .frm-search-category input{
+    border: 1px solid #343a40;
+    border-bottom-left-radius: 50px;
+    border-top-left-radius: 50px;
+    padding: 4px;
+    font-size: 14px;
+    font-family: 'bnazanin';
+    width: 150px;
+    transition: all 0.5s;
+}
+.search-add-categorys .frm-search-category input:focus{
+    width: 200px;
+}
+
+/* =========================== start add category box */
+.add-category-box{
+    border: 2px dashed #aaa;
+    color: #aaa;
+    border-radius: 30px;
+    height: 280px;
+    text-align: center;
+    transition: all 0.5s;
+}
+.add-category-box:hover{
+    border: 2px dashed #323232;
+}
+.add-category-box:hover i{
+    color: #323232;
+}
+
+.add-category-box i{
+    margin-top: 125px;
+    font-size: 50px;
+    transition: all 0.5s;
+}
+
+/* =========================== end add category box */
+/* =========================== start categorys */
+.show-categorys{
+    background: #fff;
+    box-shadow: 0px 0px 10px #aaa;
+    border-radius: 30px;
+    text-align: center;
+    height: 280px;
+    overflow: auto;
+    padding: 15px;
+}
+
+.show-categorys img{
+    width: 150px;
+    height: 150px;
+}
+
+.show-categorys .txt-category{
+    color: #323232;
+    font-family: 'bnazanin';
+    padding: 20px;
+    font-weight: bold;
+}
+
+.show-categorys .edit-category,
+.show-categorys .delete-category{
+    width: 100%;
+    text-align: center;
+    font-family: 'bnazanin';
+}
+
+.show-categorys .edit-category .btn-edit-category{
+    color: #28a745;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 14px;
+    border: none;
+    background: transparent;
+    width: 80px;
+}
+
+.show-categorys .delete-category .btn-delete-category{
+    color: #dc3545;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 14px;
+    border: none;
+    background: transparent;
+    width: 60px;
+}
+
+/* =========================== end categorys */
+/* ------------------------------ modal delete category */
+.modal-delete-category .modal-footer .btn-delete-category-modal{
+    color: #fff;
+    background-color: #DC3545;
+    border: 1px solid #DC3545;
+    border-radius: 4px;
+    text-decoration: none;
+    font-family: 'bnazanin';
+    padding: 4px;
+    width: 50px;
+    text-align: center;
+    transition: all 0.5s;
+}
+.modal-delete-category .modal-footer .btn-delete-category-modal:hover{
+    color: #DC3545;
+    background-color: #fff;
+}
+
+.modal-delete-category .modal-footer .btn-noDelete-category-modal{
+    color: #fff;
+    background-color: #28a745;
+    border: 1px solid #28a745;
+    border-radius: 4px;
+    text-decoration: none;
+    font-family: 'bnazanin';
+    padding: 4px;
+    width: 50px;
+    text-align: center;
+    transition: all 0.5s;
+}
+.modal-delete-category .modal-footer .btn-noDelete-category-modal:hover{
+    color: #28a745;
+    background-color: #fff;
+}
+
+/* ------------------------------ modal add category */
+.modal-add-category .frm-add-category .category-name .lbl-category-name{
+    background-color: #343a40;
+    color: #fff;
+    float: right;
+    font-family: 'bnazanin';
+    font-size: 18px;
+    font-weight: bold;
+    margin-left: 5px;
+    padding: 5px;
+    border-radius: 4px;
+    width: 125px;
+    text-align: center;
+}
+
+.modal-add-category .frm-add-category .category-name .lbl-arrow{
+    background-color: #343a40;
+    color: #fff;
+    float: right;
+    font-family: 'bnazanin';
+    font-size: 18px;
+    font-weight: bold;
+    margin-left: 5px;
+    padding: 5px;
+    border-radius: 4px;
+    width: 30px;
+    text-align: center;
+}
+
+.modal-add-category .frm-add-category .category-name .txt-category-name{
+    background-color: #eee;
+    border: 1px solid #343a40;
+    float: right;
+    width: 300px;
+    height: 37px;
+    padding: 5px;
+    margin-bottom: 5px;
+    border-radius: 4px;
+    font-family: 'bnazanin';
+}
+
+.modal-add-category .frm-add-category .btn-add-category-modal{
+    color: #fff;
+    background-color: #28a745;
+    border: 1px solid #28a745;
+    border-radius: 4px;
+    padding: 4px;
+    width: 150px;
+    transition: all 0.5s;
+}
+.modal-add-category .frm-add-category .btn-add-category-modal:hover{
+    color: #28a745;
+    background-color: #fff;
+}
+
+/* ------------------------------ modal edit category */
+.modal-edit-category .frm-edit-category .category-name .lbl-category-name{
+    background-color: #343a40;
+    color: #fff;
+    float: right;
+    font-family: 'bnazanin';
+    font-size: 18px;
+    font-weight: bold;
+    margin-left: 5px;
+    padding: 5px;
+    border-radius: 4px;
+    width: 125px;
+    text-align: center;
+}
+
+.modal-edit-category .frm-edit-category .category-name .lbl-arrow{
+    background-color: #343a40;
+    color: #fff;
+    float: right;
+    font-family: 'bnazanin';
+    font-size: 18px;
+    font-weight: bold;
+    margin-left: 5px;
+    padding: 5px;
+    border-radius: 4px;
+    width: 30px;
+    text-align: center;
+}
+
+.modal-edit-category .frm-edit-category .category-name .txt-category-name{
+    background-color: #eee;
+    border: 1px solid #343a40;
+    float: right;
+    width: 300px;
+    height: 37px;
+    padding: 5px;
+    margin-bottom: 5px;
+    border-radius: 4px;
+    font-family: 'bnazanin';
+}
+
+.modal-edit-category .frm-edit-category .btn-edit-category-modal{
+    color: #fff;
+    background-color: #28a745;
+    border: 1px solid #28a745;
+    border-radius: 4px;
+    padding: 4px;
+    width: 150px;
+    transition: all 0.5s;
+}
+.modal-edit-category .frm-edit-category .btn-edit-category-modal:hover{
+    color: #28a745;
+    background-color: #fff;
+}

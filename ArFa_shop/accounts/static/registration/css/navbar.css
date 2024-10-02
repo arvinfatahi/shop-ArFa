@@ -1,0 +1,52 @@
+/* ----------------------------- btn exit admin */
+.btn-main-home-admin a span{
+    color: #343a40;
+    font-family: 'bnazanin';
+    font-weight: bold;
+}
+
+.btn-main-home-admin a .line1{
+    width: 0.1px;
+    height: 2px;
+    background-color: #343a40;
+    transition: all 0.5s;
+}
+.btn-main-home-admin a span:hover + .line1{
+    width: 85px;
+}
+
+.btn-site-display a span{
+    color: #343a40;
+    font-family: 'bnazanin';
+    font-weight: bold;
+}
+
+.btn-site-display a .line2{
+    width: 0.1px;
+    height: 2px;
+    background-color: #343a40;
+    transition: all 0.5s;
+}
+
+.btn-site-display a span:hover + .line2{
+    width: 85px;
+}
+
+.btn-exit-admin a span{
+    color: #dc3545;
+    font-family: 'bnazanin';
+    font-weight: bold;
+    border-bottom: 0px solid #dc3545;
+    transition: all 0.5s;
+}
+
+.btn-exit-admin a .line3{
+    width: 0.1px;
+    height: 2px;
+    background-color: #dc3545;
+    transition: all 0.5s;
+}
+
+.btn-exit-admin a span:hover + .line3{
+    width: 54px;
+}

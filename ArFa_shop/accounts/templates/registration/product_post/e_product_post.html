@@ -1,0 +1,53 @@
+{% extends "registration/product_post/base.html" %}
+
+{% block title %}
+    پنل کارمندان | صفحه اصلی
+{% endblock title %}
+
+{% block navbar %}
+    {% include "registration/product_post/navbar.html" %}
+{% endblock navbar %}
+
+{% block slidebar %}
+    {% include "registration/product_post/sidebar.html" with ticket_PP=ticket_PP %}
+{% endblock slidebar %}
+
+{% block header %}
+    <div class="title-mainPage text-center">
+        <span class="mainPage">
+            <i class="fa-solid fa-house"></i>
+            صفحه اصلی
+        </span>
+        <div class="line-admin"></div>
+        <div class="breadcrumb-menu">
+            <span style="color: #a5a5a5;"> به پنل کارمند پست کالا خوش آمدید  </span>
+        </div>
+    </div>
+{% endblock header %}
+
+{% block content %}
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+
+                <div class="col-lg-3 col-6">
+                    <div class="products-box">
+                        <i class="icon fa-solid fa-file"></i>
+                        <div class="title">فاکتورهای خرید</div>
+                        <div class="products-login">
+                            <a href="{% url 'ppBuyFactors' %}">
+                                <span>ورود</span>
+                                <i class="fas fa-arrow-circle-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+
+        </div>
+    </section>
+
+{% endblock content %}

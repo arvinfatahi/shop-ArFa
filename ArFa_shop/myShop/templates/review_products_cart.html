@@ -1,0 +1,161 @@
+{% extends "base.html" %}
+
+{% block title %}سد خرید نهایی{% endblock title %}
+
+{% block body %}
+
+    {% include "discount_code.html" with discount_code_model_show=discount_code_model_show %}
+
+    {% include "navbar.html" with all_categorys=all_categorys search_form=search_form %}
+
+    <section>
+        <div class="line-review-products-cart"></div>
+        <nav aria-label="breadcrumb" class="breadcrumb-review-products-cart">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{% url 'index' %}" style="color: #aaa;">خانه</a></li>
+                <i class="fa-solid fa-chevron-left"></i>
+                <li class="breadcrumb-item fw-lighter active" style="color: #aaa; margin-top: -3px;" aria-current="page">&nbsp; تاییدیه نهایی</li>
+            </ol>
+        </nav>
+        <header class="header-review-products-cart py-1">
+            <div class="container px-4 px-lg-5 my-5">
+                <div class="title-review-products-cart text-center">
+                    <h1 class="display-4 fw-bolder">
+                        <span><i class="fa-solid fa-clipboard-check"></i> تاییدیه نهایی </span>
+                    </h1>
+                    <div class="line"></div>
+                    <p>چک کردن محصولات و آدرس. پرداخت نهایی.</p>
+                </div>
+            </div>
+        </header>
+        
+        <div class="container px-4 px-lg-5 mt-5 mb-5">
+            <div class="row mt-3">
+                <div class="col-12">
+                    <div class="row text-center">
+                        <div class="col-5">
+                            <div class="product-final-cart">
+                                <table class="tbl-product">
+                                    <thead>
+                                        <tr>
+                                            <th>شناسه</th>
+                                            <th>تصویر</th>
+                                            <th style="width: 100%;">نام</th>
+                                            <th>تعداد</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% if request.session.my_cart %}
+                                            {% for cart in request.session.my_cart %}
+                                                <tr>
+                                                    <td>{{ cart.id }}</td>
+                                                    <td>
+                                                        <img src="{{ cart.image }}" alt="">
+                                                    </td>
+                                                    <td>{{ cart.name }}</td>
+                                                    <td>{{ cart.qty }}</td>
+                                                </tr>
+                                            {% endfor %}
+                                        {% endif %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="col-5">
+                            <div class="edit-address-post">
+                                <form action="{% url 'editProfileUserCart' request.user.id %}" method="post">
+                                    {% csrf_token %}
+
+                                    <div class="edit-first-name">
+                                        <span class="lbl-first-name"><span style="color: #dc3545;">*</span> نام</span>
+                                        <div>{{ edit_profile_user_form.first_name }}</div>
+                                    </div>
+                                    <div class="edit-last-name">
+                                        <span class="lbl-last-name"><span style="color: #dc3545;">*</span> نام خانوادگی</span>
+                                        <div>{{ edit_profile_user_form.last_name }}</div>
+                                    </div>
+                                    <div class="edit-phone">
+                                        <span class="lbl-phone"><span style="color: #dc3545;">*</span> تلفن</span>
+                                        <div>{{ edit_profile_user_form.phone }}</div>
+                                    </div>
+                                    <div class="edit-email">
+                                        <span class="lbl-email">ایمیل</span>
+                                        <div>{{ edit_profile_user_form.email }}</div>
+                                    </div>
+                                    <div class="edit-province">
+                                        <span class="lbl-province"><span style="color: #dc3545;">*</span> استان</span>
+                                        <div>{{ edit_profile_user_form.province }}</div>
+                                    </div>
+                                    <div class="edit-city">
+                                        <span class="lbl-city"><span style="color: #dc3545;">*</span> شهر</span>
+                                        <div>{{ edit_profile_user_form.city }}</div>
+                                    </div>
+                                    <div class="edit-address">
+                                        <span class="lbl-address"><span style="color: #dc3545;">*</span> آدرس</span>
+                                        <div>{{ edit_profile_user_form.address }}</div>
+                                    </div>
+                                    <div class="text-center">
+                                        <button type="submit" class="btn-edit-profile">
+                                            <i class="fa-solid fa-pen-to-square"> ویرایش </i>
+                                        </button>
+                                    </div>
+
+                                    <div class="alert alert-info" style="margin-right: 15px; width: 94%; text-align: right;">
+                                        <ul style="margin: 0px;">
+                                            <li style="font-family: 'bnazanin';">استان - شهر و آدرس برای ارسال محصولات است.</li>
+                                            <li style="font-family: 'bnazanin';">فیلد آدرس شامل: خیابان - کوچه - پلاک و غییره است.</li>
+                                            <li style="font-family: 'bnazanin';">فیلدهایی که علامت * دارند اجباری هستند.</li>
+                                        </ul>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="col-2">
+                            <div class="final-payment">
+                                <div class="number-all-product">
+                                    <span>تعداد کل: </span>
+                                    <span>{{ request.session.total_qty_session }}</span>
+                                </div>
+                                {% if request.session.final_price_session %}
+                                    <div class="price-all-product" style="margin-top: 10px;">
+                                        <span>قیمت اصلی: </span>
+                                        <span style="text-decoration: line-through;">{{ request.session.total_price_session }}</span>
+                                        <div style="border-top: 1px solid #aaa;">تــــــــــــومان</div>
+                                    </div>
+                                    <div class="price-all-product" style="margin-top: 10px;">
+                                        <span>قیمت تخفیفی: </span>
+                                        <span>{{ request.session.final_price_session }}</span>
+                                        <div style="border-top: 1px solid #aaa;">تــــــــــــومان</div>
+                                    </div>
+                                {% else %}
+                                    <div class="price-all-product" style="margin-top: 10px;">
+                                        <span>قیمت اصلی: </span>
+                                        <span>{{ request.session.total_price_session }}</span>
+                                        <div style="border-top: 1px solid #aaa;">تــــــــــــومان</div>
+                                    </div>
+                                {% endif %}
+                                <div class="send-factor" style="margin-top: 10px;">
+                                    <div style="border-bottom: 1px solid #aaa; padding: 5px;">فاکتور صادر شود؟</div>
+                                    {{ factor_form.is_factor }}
+                                </div>
+                                {% if edit_profile_user_form.first_name.value == '' or edit_profile_user_form.last_name.value == '' or edit_profile_user_form.phone.value == '' or edit_profile_user_form.province.value == '' or edit_profile_user_form.city.value == '' or edit_profile_user_form.addres.value == '' %}
+                                    <div class="alert alert-danger mt-2" style="font-family: 'bnazanin';">
+                                        برای پرداخت لطفا فیلدهای * را پر کنید.
+                                    </div>
+                                {% else %}
+                                    <div class="btn-payment" style="margin-top: 10px;">
+                                        <a href="{% url 'goToGateway' %}">
+                                            <i class="fa-regular fa-credit-card"> پرداخت </i>
+                                        </a>
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock body %}
+

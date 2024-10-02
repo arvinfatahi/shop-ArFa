@@ -1,0 +1,183 @@
+/* ------------------------------ title main page */
+.title-mainPage{
+    background-color: #343a40;
+    padding: 18px;
+    margin-bottom: 15px;
+    font-family: 'bnazanin';
+    color: #ddd;
+    box-shadow: 0px 0px 5px #343a40;
+    height: 130px;
+}
+
+.title-mainPage .mainPage{
+    font-size: 32px;
+    font-weight: bold;
+}
+
+.title-mainPage .line-admin{
+    background-color: #a5a5a5;
+    height: 4px;
+    width: 20%;
+    margin: 5px auto;
+    border-radius: 6px;
+}
+
+.title-mainPage .breadcrumb-menu span{
+    color: #a5a5a5;
+    display: block;
+    margin-top: 10px;
+}
+
+/* ======================================== end title main page */
+/* ======================================== start main page */
+.products-box,
+.employees-box,
+.users-box,
+.categorys-box,
+.brands-box,
+.slider-box,
+.avertising-box,
+.discount-code-box,
+.bank-transactions-box,
+.buy-factors-box,
+.about-box{
+    background: linear-gradient(0deg, #fdfbfb, #ebedee);
+    border: 1px solid #ccc;
+    margin-top: 10px;
+    border-radius: 10px;
+    overflow: hidden;
+    text-align: center;
+    height: 200px;
+    transition: all 1s;
+}
+
+.products-box .icon,
+.employees-box .icon,
+.users-box .icon,
+.categorys-box .icon,
+.brands-box .icon,
+.slider-box .icon,
+.avertising-box .icon,
+.discount-code-box .icon,
+.bank-transactions-box .icon,
+.buy-factors-box .icon,
+.about-box .icon{
+    font-size: 60px;
+    margin-top: 20px;
+    color: #888;
+    transition: all 1s;
+}
+
+.products-box:hover .icon,
+.employees-box:hover .icon,
+.users-box:hover .icon,
+.categorys-box:hover .icon,
+.brands-box:hover .icon,
+.slider-box:hover .icon,
+.avertising-box:hover .icon,
+.discount-code-box:hover .icon,
+.bank-transactions-box:hover .icon,
+.buy-factors-box:hover .icon,
+.about-box:hover .icon{
+    transform: scale(1.2);
+    color: #323232;
+}
+
+.products-box .title,
+.employees-box .title,
+.users-box .title,
+.categorys-box .title,
+.brands-box .title,
+.slider-box .title,
+.avertising-box .title,
+.discount-code-box .title,
+.bank-transactions-box .title,
+.buy-factors-box .title,
+.about-box .title{
+    color: #888;
+    margin-top: 10px;
+    font-size: 30px;
+    font-family: 'bnazanin';
+    font-weight: bold;
+    transition: all 1s;
+}
+.products-box:hover .title,
+.employees-box:hover .title,
+.users-box:hover .title,
+.categorys-box:hover .title,
+.brands-box:hover .title,
+.slider-box:hover .title,
+.avertising-box:hover .title,
+.discount-code-box:hover .title,
+.bank-transactions-box:hover .title,
+.buy-factors-box:hover .title,
+.about-box:hover .title{
+    color: #323232;
+}
+
+.products-box .products-login,
+.employees-box .employees-login,
+.users-box .users-login,
+.categorys-box .categorys-login,
+.brands-box .brands-login,
+.slider-box .slider-login,
+.avertising-box .avertising-login,
+.discount-code-box .discount-code-login,
+.bank-transactions-box .bank-transactions-login,
+.buy-factors-box .buy-factors-login,
+.about-box .about-login{
+    margin: 0 auto;
+    width: 50%;
+}
+
+.products-box .products-login a,
+.employees-box .employees-login a,
+.users-box .users-login a,
+.categorys-box .categorys-login a,
+.brands-box .brands-login a,
+.slider-box .slider-login a,
+.avertising-box .avertising-login a,
+.discount-code-box .discount-code-login a,
+.bank-transactions-box .bank-transactions-login a,
+.buy-factors-box .buy-factors-login a,
+.about-box .about-login a{
+    color: #323232;
+    background-color: #eee;
+    border: 1px solid #ccc;
+    text-decoration: none;
+    padding: 5px;
+    margin: 5px;
+    border-radius: 4px;
+    display: block;
+    font-size: 18px;
+    font-family: 'bnazanin';
+    font-weight: bold;
+    transition: all 1s;
+}
+
+.products-box .products-login a i,
+.employees-box .employees-login a i,
+.users-box .users-login a i,
+.categorys-box .categorys-login a i,
+.brands-box .brands-login a i,
+.slider-box .slider-login a i,
+.avertising-box .avertising-login a i,
+.discount-code-box .discount-code-login a i,
+.bank-transactions-box .bank-transactions-login a i,
+.buy-factors-box .buy-factors-login a i,
+.about-box .about-login a i{
+    transition: all 1s;
+}
+.products-box .products-login a:hover i,
+.employees-box .employees-login a:hover i,
+.users-box .users-login a:hover i,
+.categorys-box .categorys-login a:hover i,
+.brands-box .brands-login a:hover i,
+.slider-box .slider-login a:hover i,
+.avertising-box .avertising-login a:hover i,
+.discount-code-box .discount-code-login a:hover i,
+.bank-transactions-box .bank-transactions-login a:hover i,
+.buy-factors-box .buy-factors-login a:hover i,
+.about-box .about-login a:hover i{
+    margin-right: 20px;
+}

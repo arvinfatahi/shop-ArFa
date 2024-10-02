@@ -1,0 +1,609 @@
+.line-profile{
+    background: radial-gradient(circle at 10% 20%, rgb(0, 0, 0) 0%, rgb(64, 64, 64) 90.2%);
+    height: 4px;
+}
+
+/* ============================== start breadcrumb */
+.breadcrumb-profile{
+    margin-bottom: 4px;
+    margin-top: 4px;
+    background: radial-gradient(circle at 10% 20%, rgb(0, 0, 0) 0%, rgb(64, 64, 64) 90.2%);
+}
+
+.breadcrumb-profile ol{
+    margin: 10px;
+}
+
+.breadcrumb-profile i{
+    color: #aaa;
+    margin-top: 5px;
+    margin-right: 5px;
+}
+
+/* ============================== end breadcrumb */
+/* ============================== start header */
+.header-profile{
+    height: 180px;
+    background: radial-gradient(circle at 10% 20%, rgb(0, 0, 0) 0%, rgb(64, 64, 64) 90.2%);
+}
+
+.header-profile .title-profile {
+    font-family:'bnazanin';
+    font-size: 40px;
+    font-weight: bold;
+    margin: 0 auto;
+    transition: all 0.5s;
+}
+
+.header-profile .title-profile span {
+    color: #aaa;
+    transition: all 0.5s;
+}
+
+.header-profile .title-profile .line {
+    height: 2px;
+    width: 200px;
+    margin: 5px auto;
+    background-color: #aaa;
+    transition: all 0.5s;
+}
+
+.header-profile .title-profile p{
+    font-size: 16px;
+    font-family: 'bnazanin';
+    color: #aaa;
+    margin-top: 20px;
+}
+
+/* ============================== end header */
+/* ============================== start left profile */
+.left-profile{
+    border: 1px solid #aaa;
+    border-radius: 4px;
+    padding: 10px;
+    font-family: 'bnazanin';
+}
+
+.left-profile .username .icon{
+    margin: 0 auto;
+    text-align: center;
+    background-color: #eee;
+    padding: 10px;
+    font-size: 40px;
+    width: 100px;
+    height: 100px;
+    border-radius: 60px;
+}
+
+.left-profile .username .icon i{
+    color: #323232;
+    margin-top: 15px;
+}
+
+.left-profile .username .text{
+    color: #323232;
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+    border-bottom: 1px solid #aaa;
+    margin: 10px 0px;
+}
+
+.left-profile .profile,
+.left-profile .ticket,
+.left-profile .statistics,
+.left-profile .setting{
+    background-color: #f5f5f5;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    color: #323232;
+    display: block;
+    text-decoration: none;
+    font-weight: bold;
+    transition: all 0.5s;
+}
+.left-profile .profile:hover,
+.left-profile .ticket:hover,
+.left-profile .statistics:hover,
+.left-profile .setting:hover{
+    background-color: #eee;
+}
+
+.left-profile .profile span,
+.left-profile .ticket span,
+.left-profile .statistics span,
+.left-profile .setting span{
+    text-align: center;
+    display: block;
+    width: 80%;
+    float: left;
+}
+
+/* ============================== end left profile */
+/* ============================== start right profile */
+.right-profile{
+    border: 1px solid #aaa;
+    height: 379px;
+    border-radius: 4px;
+    padding: 15px;
+}
+
+/* ============================== end right profile */
+/* ============================== start show edit profile */
+.right-profile .show-edit-profile .benner-profile{
+    background-color: #f5f5f5;
+    font-family: 'bnazanin';
+    padding: 10px;
+    border-radius: 4px;
+    color: #323232;
+    height: 54px;
+    text-align: center;
+}
+
+.right-profile .show-edit-profile .benner-profile .btn-show-profile,
+.right-profile .show-edit-profile .benner-profile .btn-edit-profile{
+    border: 1px solid #ccc;
+    padding: 10px;
+    vertical-align: -moz-middle-with-baseline;
+    border-radius: 4px;
+    text-decoration: none;
+    color: #323232;
+    transition: all 0.5s;
+}
+.right-profile .show-edit-profile .benner-profile .btn-show-profile:hover,
+.right-profile .show-edit-profile .benner-profile .btn-edit-profile:hover{
+    background-color: #ddd;
+    cursor: pointer;
+}
+
+/* ============================== end show edit profile */
+/* ============================== start show profile */
+.right-profile .show-edit-profile .show-profile{
+    margin-top: 10px;
+}
+
+.right-profile .show-edit-profile .show-profile .show-username,
+.right-profile .show-edit-profile .show-profile .show-full-name,
+.right-profile .show-edit-profile .show-profile .show-number-phone,
+.right-profile .show-edit-profile .show-profile .show-email,
+.right-profile .show-edit-profile .show-profile .show-address{
+    margin-bottom: 5px;
+    display: flow-root;
+}
+
+.right-profile .show-edit-profile .show-profile .show-username .lbl-username,
+.right-profile .show-edit-profile .show-profile .show-full-name .lbl-full-name,
+.right-profile .show-edit-profile .show-profile .show-number-phone .lbl-number-phone,
+.right-profile .show-edit-profile .show-profile .show-email .lbl-email,
+.right-profile .show-edit-profile .show-profile .show-address .lbl-address{
+    color: #323232;
+    background-color: #eee;
+    padding: 4px;
+    width: 100px;
+    text-align: center;
+    margin-bottom: 1px;
+    margin-left: 5px;
+    font-family: 'bnazanin';
+    font-weight: bold;
+    height: 36px;
+    float: right;
+    border: 1px solid #ddd;
+}
+
+.right-profile .show-edit-profile .show-profile .show-username .lbl-icon,
+.right-profile .show-edit-profile .show-profile .show-full-name .lbl-icon,
+.right-profile .show-edit-profile .show-profile .show-number-phone .lbl-icon,
+.right-profile .show-edit-profile .show-profile .show-email .lbl-icon,
+.right-profile .show-edit-profile .show-profile .show-address .lbl-icon{
+    color: #323232;
+    background-color: #eee;
+    padding: 4px;
+    width: 36px;
+    text-align: center;
+    margin-bottom: 1px;
+    margin-left: 5px;
+    font-family: 'bnazanin';
+    font-weight: bold;
+    height: 36px;
+    float: right;
+    border: 1px solid #ddd;
+}
+.right-profile .show-edit-profile .show-profile .show-username i,
+.right-profile .show-edit-profile .show-profile .show-full-name i,
+.right-profile .show-edit-profile .show-profile .show-number-phone i,
+.right-profile .show-edit-profile .show-profile .show-email i,
+.right-profile .show-edit-profile .show-profile .show-address i{
+    vertical-align: middle;
+}
+
+.right-profile .show-edit-profile .show-profile .show-username div,
+.right-profile .show-edit-profile .show-profile .show-full-name div,
+.right-profile .show-edit-profile .show-profile .show-number-phone div,
+.right-profile .show-edit-profile .show-profile .show-email div,
+.right-profile .show-edit-profile .show-profile .show-address div{
+    color: #323232;
+    background-color: #eee;
+    border: 1px solid #ddd;
+    padding: 5px;
+    text-align: center;
+    width: 68%;
+    height: 36px;
+    margin-left: 4px;
+    float: right;
+    font-family: 'bnazanin';
+}
+
+/* ============================== end show profile */
+/* ============================== start edit profile */
+.right-profile .show-edit-profile .edit-profile{
+    margin-top: 10px;
+}
+
+.right-profile .show-edit-profile .edit-profile .edit-first-name,
+.right-profile .show-edit-profile .edit-profile .edit-last-name,
+.right-profile .show-edit-profile .edit-profile .edit-phone,
+.right-profile .show-edit-profile .edit-profile .edit-email,
+.right-profile .show-edit-profile .edit-profile .edit-province,
+.right-profile .show-edit-profile .edit-profile .edit-city,
+.right-profile .show-edit-profile .edit-profile .edit-address{
+    margin-bottom: 5px;
+    display: flow-root;
+}
+
+.right-profile .show-edit-profile .edit-profile .edit-first-name .lbl-first-name,
+.right-profile .show-edit-profile .edit-profile .edit-last-name .lbl-last-name,
+.right-profile .show-edit-profile .edit-profile .edit-phone .lbl-phone,
+.right-profile .show-edit-profile .edit-profile .edit-email .lbl-email,
+.right-profile .show-edit-profile .edit-profile .edit-province .lbl-province,
+.right-profile .show-edit-profile .edit-profile .edit-city .lbl-city,
+.right-profile .show-edit-profile .edit-profile .edit-address .lbl-address{
+    color: #fff;
+    background-color: #323232;
+    float: right;
+    padding: 7px;
+    margin-left: 5px;
+    height: 36px;
+    width: 100px;
+    font-family: 'bnazanin';
+    font-weight: bold;
+    text-align: center;
+}
+
+.right-profile .show-edit-profile .edit-profile .edit-first-name .lbl-arrow,
+.right-profile .show-edit-profile .edit-profile .edit-last-name .lbl-arrow,
+.right-profile .show-edit-profile .edit-profile .edit-phone .lbl-arrow,
+.right-profile .show-edit-profile .edit-profile .edit-email .lbl-arrow,
+.right-profile .show-edit-profile .edit-profile .edit-province .lbl-arrow,
+.right-profile .show-edit-profile .edit-profile .edit-city .lbl-arrow,
+.right-profile .show-edit-profile .edit-profile .edit-address .lbl-arrow{
+    color: #fff;
+    background-color: #323232;
+    float: right;
+    padding: 7px;
+    margin-left: 5px;
+    height: 36px;
+    width: 36px;
+    font-family: 'bnazanin';
+    font-weight: bold;
+    text-align: center;
+}
+
+.right-profile .show-edit-profile .edit-profile .edit-first-name .txt-first-name,
+.right-profile .show-edit-profile .edit-profile .edit-last-name .txt-last-name,
+.right-profile .show-edit-profile .edit-profile .edit-phone .txt-phone,
+.right-profile .show-edit-profile .edit-profile .edit-email .txt-email,
+.right-profile .show-edit-profile .edit-profile .edit-province .txt-province,
+.right-profile .show-edit-profile .edit-profile .edit-city .txt-city,
+.right-profile .show-edit-profile .edit-profile .edit-address .txt-address{
+    background-color: #f1f1f1;
+    border: none;
+    border-bottom:4px solid #323232;
+    width:70%;
+    height: 36px;
+    float:right;
+    font-size:18px;
+    font-family:'bnazanin';
+    padding:4px;
+}
+
+.right-profile .show-edit-profile .edit-profile .btn-edit-profile{
+    color: #fff;
+    background-color: #198754;
+    border: 1px solid #198754;
+    border-radius: 4px;
+    padding: 4px;
+    margin-bottom: 10px;
+    margin-top: 3px;
+    width: 25%;
+    height: 40px;
+    transition: all 0.5s;
+}
+.right-profile .show-edit-profile .edit-profile .btn-edit-profile:hover{
+    color: #198754;
+    background-color: #fff;
+}
+
+/* ============================== end edit profile */
+/* ============================== start show send ticket */
+.right-profile .show-send-ticket .benner-ticket{
+    background-color: #f5f5f5;
+    font-family: 'bnazanin';
+    padding: 10px;
+    border-radius: 4px;
+    color: #323232;
+    height: 54px;
+    text-align: center;
+}
+
+.right-profile .show-send-ticket .benner-ticket .btn-show-ticket,
+.right-profile .show-send-ticket .benner-ticket .btn-send-ticket{
+    border: 1px solid #ccc;
+    padding: 10px;
+    vertical-align: -moz-middle-with-baseline;
+    border-radius: 4px;
+    text-decoration: none;
+    color: #323232;
+    transition: all 0.5s;
+}
+.right-profile .show-send-ticket .benner-ticket .btn-show-ticket:hover,
+.right-profile .show-send-ticket .benner-ticket .btn-send-ticket:hover{
+    background-color: #ddd;
+    cursor: pointer;
+}
+
+/* ============================== end show send ticket */
+/* ============================== start send ticket */
+.right-profile .show-send-ticket .send-ticket .frm-send-ticket{
+    width: 78%;
+    height: 100%;
+    margin: 15px auto;
+}
+
+.right-profile .show-send-ticket .send-ticket .section .lbl-ticket-send,
+.right-profile .show-send-ticket .send-ticket .subject .lbl-ticket-send,
+.right-profile .show-send-ticket .send-ticket .txt-ticket .lbl-ticket-send{
+    background-color: #323232;
+    color: #fff;
+    float: right;
+    font-family: 'bnazanin';
+    font-size: 18px;
+    font-weight: bold;
+    margin-left: 5px;
+    padding: 5px;
+    border: 1px solid #323232;
+    width: 115px;
+    text-align: center;
+}
+
+.right-profile .show-send-ticket .send-ticket .section .lbl-arrow,
+.right-profile .show-send-ticket .send-ticket .subject .lbl-arrow,
+.right-profile .show-send-ticket .send-ticket .txt-ticket .lbl-arrow{
+    background-color: #323232;
+    color: #fff;
+    float: right;
+    font-family: 'bnazanin';
+    font-size: 18px;
+    font-weight: bold;
+    margin-left: 5px;
+    padding: 5px;
+    border: 1px solid #323232;
+    width: 30px;
+    text-align: center;
+}
+
+.right-profile .show-send-ticket .send-ticket .section .ticket-section{
+    color: #323232;
+    background-color: #f1f1f1;
+    border: none;
+    border-bottom: 4px solid #323232;
+    padding: 8px;
+    width: 130px;
+    font-family: 'bnazanin';
+}
+
+.right-profile .show-send-ticket .send-ticket .subject .ticket-subject{
+    color: #323232;
+    background-color: #f1f1f1;
+    border: none;
+    border-bottom: 4px solid #323232;
+    width: 650px;
+    font-family: 'bnazanin';
+    padding: 5px;
+}
+
+.right-profile .show-send-ticket .send-ticket .txt-ticket .ticket-text{
+    color: #323232;
+    background-color: #f1f1f1;
+    border: none;
+    border-bottom: 4px solid #323232;
+    resize: none;
+    width: 650px;
+    height: 150px;
+    font-family: 'bnazanin';
+    padding: 5px;
+}
+
+.right-profile .show-send-ticket .send-ticket .btn-ticket-send{
+    color: #fff;
+    background-color: #198754;
+    border: 1px solid #198754;
+    border-radius: 4px;
+    padding: 4px;
+    width: 100px;
+    transition: all 0.5s;
+}
+.right-profile .show-send-ticket .send-ticket .btn-ticket-send:hover{
+    background-color: #fff;
+    color: #198754;
+}
+
+/* ============================== end send ticket */
+/* ============================== start show ticket */
+.right-profile .show-send-ticket .show-ticket{
+    height: 280px;
+    overflow: auto;
+    margin-top: 15px;
+}
+
+.right-profile .show-send-ticket .show-ticket .tbl-show-ticket{
+    font-family: 'bnazanin';
+    vertical-align: middle;
+}
+
+.right-profile .show-send-ticket .show-ticket .tbl-show-ticket .btn-delete-ticket{
+    color: #fff;
+    background-color: #dc3545;
+    border: 1px solid #dc3545;
+    border-radius: 4px;
+    height: 33px;
+    width: 33px;
+    text-decoration: none;
+    padding: 4px;
+    margin-left: 4px;
+    transition: all 0.5s;
+}
+.right-profile .show-send-ticket .show-ticket .tbl-show-ticket .btn-delete-ticket:hover{
+    color: #dc3545;
+    background-color: #fff;
+}
+
+.right-profile .show-send-ticket .show-ticket .tbl-show-ticket .btn-say-ticket{
+    color: #fff;
+    background-color: #0d6efd;
+    border: 1px solid #0d6efd;
+    border-radius: 4px;
+    height: 33px;
+    width: 33px;
+    padding: 7px;
+    text-decoration: none;
+    transition: all 0.5s;
+}
+.right-profile .show-send-ticket .show-ticket .tbl-show-ticket .btn-say-ticket:hover{
+    color: #0d6efd;
+    background-color: #fff;
+}
+
+/* ============================== end show ticket */
+/* ============================== start setting */
+.right-profile .show-setting{
+    margin: 0 auto;
+    width: 90%;
+}
+
+.right-profile .show-setting .frm-edit-username .username .lbl-username,
+.right-profile .show-setting .frm-edit-password .password1 .lbl-password1,
+.right-profile .show-setting .frm-edit-password .password2 .lbl-password2{
+    color: #fff;
+    background-color: #323232;
+    float: right;
+    padding: 7px;
+    margin-top: 10px;
+    margin-left: 4px;
+    height: 39px;
+    width: 100px;
+    font-family: 'bnazanin';
+    font-weight: bold;
+    text-align: center;
+}
+
+.right-profile .show-setting .frm-edit-username .username .lbl-arrow,
+.right-profile .show-setting .frm-edit-password .password1 .lbl-arrow,
+.right-profile .show-setting .frm-edit-password .password2 .lbl-arrow{
+    color: #fff;
+    background-color: #323232;
+    float: right;
+    padding: 7px;
+    margin-top: 10px;
+    margin-left: 4px;
+    height: 39px;
+    width: 30px;
+    font-family: 'bnazanin';
+    font-weight: bold;
+    text-align: center;
+}
+
+.right-profile .show-setting .frm-edit-username .username .txt-customer-username,
+.right-profile .show-setting .frm-edit-password .password1 .txt-customer-password,
+.right-profile .show-setting .frm-edit-password .password2 .txt-customer-re-password{
+    background-color: #f1f1f1;
+    border: none;
+    border-bottom:4px solid #323232;
+    width:75%;
+    float:right;
+    font-size:18px;
+    font-family:'bnazanin';
+    padding:4px;
+    margin-top: 10px;
+}
+
+.right-profile .show-setting .frm-edit-username .btn-edit-usernsme,
+.right-profile .show-setting .frm-edit-password .btn-edit-password{
+    color: #fff;
+    background-color: #198754;
+    border: 1px solid #198754;
+    border-radius: 4px;
+    padding: 4px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 25%;
+    transition: all 0.5s;
+}
+.right-profile .show-setting .frm-edit-username .btn-edit-usernsme:hover,
+.right-profile .show-setting .frm-edit-password .btn-edit-password:hover{
+    color: #198754;
+    background-color: #fff;
+}
+
+.right-profile .show-setting .delete-account .btn-delete-account{
+    color: #fff;
+    background-color: #dc3545;
+    border: 1px solid #dc3545;
+    border-radius: 4px;
+    padding: 8px;
+    margin-bottom: 8px;
+    text-decoration: none;
+    font-family: 'bnazanin';
+    font-weight: bold;
+    width: 25%;
+    transition: all 0.5s;
+}
+.right-profile .show-setting .delete-account .btn-delete-account:hover{
+    color: #dc3545;
+    background-color: #fff;
+}
+
+/* -------------------------- modal delete ticket */
+.modal-delete-ticket .modal-footer .btn-noDelete-ticket-modal{
+    color: #fff;
+    background-color: #198754;
+    border: 1px solid #198754;
+    border-radius: 4px;
+    text-decoration: none;
+    font-family: 'bnazanin';
+    padding: 4px;
+    width: 50px;
+    text-align: center;
+    transition: all 0.5s;
+}
+.modal-delete-ticket .modal-footer .btn-noDelete-ticket-modal:hover{
+    color: #198754;
+    background-color: #fff;
+}
+
+.modal-delete-ticket .modal-footer .btn-delete-ticket-modal{
+    color: #fff;
+    background-color: #dc3545;
+    border: 1px solid #dc3545;
+    border-radius: 4px;
+    text-decoration: none;
+    font-family: 'bnazanin';
+    padding: 4px;
+    width: 50px;
+    text-align: center;
+    transition: all 0.5s;
+}
+.modal-delete-ticket .modal-footer .btn-delete-ticket-modal:hover{
+    color: #dc3545;
+    background-color: #fff;
+}

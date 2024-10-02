@@ -1,0 +1,539 @@
+/* ------------------------------ title products */
+.title-employees{
+    background-color: #343a40;
+    padding: 18px;
+    font-family: 'bnazanin';
+    color: #ddd;
+    box-shadow: 0px 0px 5px #343a40;
+    height: 130px;
+}
+
+.title-employees .employee{
+    font-size: 32px;
+    font-weight: bold;
+}
+
+.title-employees .line-employees{
+    background-color: #a5a5a5;
+    height: 4px;
+    width: 20%;
+    margin: 5px auto;
+    border-radius: 6px;
+}
+
+.title-employees .breadcrumb-menu a{
+    text-decoration: none;
+    color: #ddd;
+    transition: all 0.5s;
+}
+
+.title-employees .breadcrumb-menu a:hover{
+    color: #fff;
+}
+
+/* ------------------------------ search add employees */
+.search-add-employees{
+    background-color: #fff;
+    box-shadow: 0px 0px 5px #ddd;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+.search-add-employees .btn-add-employee{
+    float: right;
+    margin-left: 20px;
+    margin-top: 4px;
+}
+
+.search-add-employees .btn-add-employee a{
+    color: #343a40;
+    padding: 4px;
+    border-radius: 4px;
+    font-size: 14px;
+    font-family: 'bnazanin';
+    transition: all 0.5s;
+}
+.search-add-employees .btn-add-employee .line{
+    width: 1px;
+    height: 2px;
+    background-color: #343a40;
+    border-radius: 4px;
+    transition: all 0.5s;
+}
+.search-add-employees .btn-add-employee a:hover + .line{
+    width: 100%;
+}
+
+.search-add-employees .frm-search-employee{
+    float: right;
+}
+
+.search-add-employees .frm-search-employee button{
+    color: #ddd;
+    background-color: #343a40;
+    padding: 5px;
+    border-top-right-radius: 50px;
+    border-bottom-right-radius: 50px;
+    border: none;
+    font-size: 14px;
+    font-family: 'bnazanin';
+    transition: all 0.5s;
+}
+
+.search-add-employees .frm-search-employee button:hover{
+    background-color: rgba(52, 58, 64, 0.8);
+}
+
+.search-add-employees .frm-search-employee input{
+    border: 1px solid #343a40;
+    border-bottom-left-radius: 50px;
+    border-top-left-radius: 50px;
+    padding: 4px;
+    font-size: 14px;
+    font-family: 'bnazanin';
+    width: 150px;
+    transition: all 0.5s;
+}
+.search-add-employees .frm-search-employee input:focus{
+    width: 200px;
+}
+
+/* ------------------------------ table employees */
+.tbl-employees{
+    font-family: 'bnazanin';
+    text-align: center;
+    border: 1px solid #343a40;
+    width: 100%;
+}
+
+.tbl-employees thead tr th{
+    background-color: #343a40;
+    color: #ddd;
+    border: 1px solid #343a40;
+    font-size: 16px;
+    padding: 4px;
+}
+
+.tbl-employees tbody tr td{
+    border: 1px solid #343a40;
+    vertical-align: middle;
+    padding: 4px;
+}
+
+/* ------------------------------ btn */
+.btn-edit-employee{
+    color: #fff;
+    background-color: #218838;
+    border: 1px solid #218838;
+    padding: 4px;
+    text-decoration: none;
+    font-size: 18px;
+    width: 33px;
+    height: 33px;
+    display: inline-block;
+    margin-left: 4px;
+    border-radius: 4px;
+    transition: all 0.5s;
+}
+.btn-edit-employee:hover{
+    color: #218838;
+    background-color: #fff;
+}
+
+.btn-delete-employee{
+    color: #fff;
+    background-color: #DC3545;
+    border: 1px solid #DC3545 !important;
+    padding: 4px;
+    border: none;
+    width: 33px;
+    height: 33px;
+    margin-left: 4px;
+    vertical-align: top;
+    border-radius: 4px;
+    transition: all 0.5s;
+}
+
+.btn-delete-employee i{
+    font-size: 18px;
+}
+
+.btn-delete-employee:hover{
+    color: #DC3545;
+    background-color: #fff;
+}
+
+.btn-setting-employee{
+    color: #fff;
+    background-color: #323232;
+    border: 1px solid #323232;
+    padding: 4px;
+    text-decoration: none;
+    font-size: 18px;
+    width: 33px;
+    height: 33px;
+    display: inline-block;
+    margin-left: 4px;
+    border-radius: 4px;
+    transition: all 0.5s;
+}
+.btn-setting-employee:hover{
+    color: #323232;
+    background-color: #fff;
+}
+
+.btn-send-message-employee{
+    color: #fff;
+    background-color: #007BFF;
+    border: 1px solid #007BFF;
+    padding: 4px;
+    text-decoration: none;
+    font-size: 18px;
+    width: 33px;
+    height: 33px;
+    display: inline-block;
+    margin-left: 4px;
+    border-radius: 4px;
+    transition: all 0.5s;
+}
+.btn-send-message-employee:hover{
+    color: #007BFF;
+    background-color: #fff;
+}
+
+.btn-employee-right{
+    border: none;
+    background: transparent;
+    color: #007bff;
+}
+.btn-employee-right:hover{
+    text-decoration: underline;
+    color: #323232;
+}
+
+/* ================================ start modal delete employee */
+.modal-delete-employee .modal-footer .btn-delete-employee-modal{
+    color: #fff;
+    background-color: #DC3545;
+    border: 1px solid #DC3545;
+    border-radius: 4px;
+    text-decoration: none;
+    font-family: 'bnazanin';
+    padding: 4px;
+    width: 50px;
+    text-align: center;
+    transition: all 0.5s;
+}
+.modal-delete-employee .modal-footer .btn-delete-employee-modal:hover{
+    color: #DC3545;
+    background-color: #fff;
+}
+
+.modal-delete-employee .modal-footer .btn-noDelete-employee-modal{
+    color: #fff;
+    background-color: #28a745;
+    border: 1px solid #28a745;
+    border-radius: 4px;
+    text-decoration: none;
+    font-family: 'bnazanin';
+    padding: 4px;
+    width: 50px;
+    text-align: center;
+    transition: all 0.5s;
+}
+.modal-delete-employee .modal-footer .btn-noDelete-employee-modal:hover{
+    color: #28a745;
+    background-color: #fff;
+}
+
+/* ================================ end modal delete employee */
+/* ================================ start modal add employee */
+.modal-add-employee .frm-add-employee .employee-username .lbl-employee-username,
+.modal-add-employee .frm-add-employee .employee-password .lbl-employee-password,
+.modal-add-employee .frm-add-employee .employee-re-password .lbl-employee-re-password,
+.modal-add-employee .frm-add-employee .employee-first-name .lbl-employee-first-name,
+.modal-add-employee .frm-add-employee .employee-last-name .lbl-employee-last-name,
+.modal-add-employee .frm-add-employee .employee-position .lbl-employee-position,
+.modal-add-employee .frm-add-employee .employee-email .lbl-employee-email,
+.modal-add-employee .frm-add-employee .employee-phone .lbl-employee-phone,
+.modal-add-employee .frm-add-employee .employee-address .lbl-employee-address,
+.modal-add-employee .frm-add-employee .employee-right .lbl-employee-right,
+.modal-add-employee .frm-add-employee .employee-image-profile .lbl-employee-image-profile{
+    background-color: #343a40;
+    color: #fff;
+    float: right;
+    font-family: 'bnazanin';
+    font-size: 18px;
+    font-weight: bold;
+    margin-left: 5px;
+    padding: 5px;
+    border-radius: 4px;
+    width: 125px;
+    text-align: center;
+}
+
+.modal-add-employee .frm-add-employee .employee-username .lbl-arrow,
+.modal-add-employee .frm-add-employee .employee-password .lbl-arrow,
+.modal-add-employee .frm-add-employee .employee-re-password .lbl-arrow,
+.modal-add-employee .frm-add-employee .employee-first-name .lbl-arrow,
+.modal-add-employee .frm-add-employee .employee-last-name .lbl-arrow,
+.modal-add-employee .frm-add-employee .employee-position .lbl-arrow,
+.modal-add-employee .frm-add-employee .employee-email .lbl-arrow,
+.modal-add-employee .frm-add-employee .employee-phone .lbl-arrow,
+.modal-add-employee .frm-add-employee .employee-address .lbl-arrow,
+.modal-add-employee .frm-add-employee .employee-right .lbl-arrow,
+.modal-add-employee .frm-add-employee .employee-image-profile .lbl-arrow{
+    background-color: #343a40;
+    color: #fff;
+    float: right;
+    font-family: 'bnazanin';
+    font-size: 18px;
+    font-weight: bold;
+    margin-left: 5px;
+    padding: 5px;
+    border-radius: 4px;
+    width: 30px;
+    text-align: center;
+}
+
+.modal-add-employee .frm-add-employee .employee-username .txt-employee-username,
+.modal-add-employee .frm-add-employee .employee-password .txt-employee-password,
+.modal-add-employee .frm-add-employee .employee-re-password .txt-employee-re-password,
+.modal-add-employee .frm-add-employee .employee-first-name .txt-employee-first-name,
+.modal-add-employee .frm-add-employee .employee-last-name .txt-employee-last-name,
+.modal-add-employee .frm-add-employee .employee-position .cmb-employee-position,
+.modal-add-employee .frm-add-employee .employee-email .txt-employee-email,
+.modal-add-employee .frm-add-employee .employee-phone .txt-employee-phone,
+.modal-add-employee .frm-add-employee .employee-address .txt-employee-address,
+.modal-add-employee .frm-add-employee .employee-right .txt-employee-right,
+.modal-add-employee .frm-add-employee .employee-image-profile .img-employee-profile{
+    background-color: #eee;
+    border: 1px solid #343a40;
+    float: right;
+    width: 300px;
+    height: 37px;
+    padding: 5px;
+    margin-bottom: 5px;
+    border-radius: 4px;
+    font-family: 'bnazanin';
+}
+
+.modal-add-employee .frm-add-employee .btn-add-employee-modal{
+    color: #fff;
+    background-color: #28a745;
+    border: 1px solid #28a745;
+    border-radius: 4px;
+    padding: 4px;
+    width: 150px;
+    transition: all 0.5s;
+}
+.modal-add-employee .frm-add-employee .btn-add-employee-modal:hover{
+    color: #28a745;
+    background-color: #fff;
+}
+
+/* ================================ end modal add employee */
+/* ================================ start modal edit employee */
+.modal-edit-employee .frm-edit-employee .employee-first-name .lbl-employee-first-name,
+.modal-edit-employee .frm-edit-employee .employee-last-name .lbl-employee-last-name,
+.modal-edit-employee .frm-edit-employee .employee-position .lbl-employee-position,
+.modal-edit-employee .frm-edit-employee .employee-email .lbl-employee-email,
+.modal-edit-employee .frm-edit-employee .employee-phone .lbl-employee-phone,
+.modal-edit-employee .frm-edit-employee .employee-address .lbl-employee-address,
+.modal-edit-employee .frm-edit-employee .employee-right .lbl-employee-right,
+.modal-edit-employee .frm-edit-employee .employee-select-image .lbl-employee-select-image,
+.modal-edit-employee .frm-edit-employee .employee-show-image .lbl-employee-show-image{
+    background-color: #343a40;
+    color: #fff;
+    float: right;
+    font-family: 'bnazanin';
+    font-size: 18px;
+    font-weight: bold;
+    margin-left: 5px;
+    padding: 5px;
+    border-radius: 4px;
+    width: 125px;
+    text-align: center;
+}
+
+.modal-edit-employee .frm-edit-employee .employee-first-name .lbl-arrow,
+.modal-edit-employee .frm-edit-employee .employee-last-name .lbl-arrow,
+.modal-edit-employee .frm-edit-employee .employee-position .lbl-arrow,
+.modal-edit-employee .frm-edit-employee .employee-email .lbl-arrow,
+.modal-edit-employee .frm-edit-employee .employee-phone .lbl-arrow,
+.modal-edit-employee .frm-edit-employee .employee-address .lbl-arrow,
+.modal-edit-employee .frm-edit-employee .employee-right .lbl-arrow,
+.modal-edit-employee .frm-edit-employee .employee-select-image .lbl-arrow,
+.modal-edit-employee .frm-edit-employee .employee-show-image .lbl-arrow{
+    background-color: #343a40;
+    color: #fff;
+    float: right;
+    font-family: 'bnazanin';
+    font-size: 18px;
+    font-weight: bold;
+    margin-left: 5px;
+    padding: 5px;
+    border-radius: 4px;
+    width: 30px;
+    text-align: center;
+}
+
+.modal-edit-employee .frm-edit-employee .employee-first-name .txt-employee-first-name,
+.modal-edit-employee .frm-edit-employee .employee-last-name .txt-employee-last-name,
+.modal-edit-employee .frm-edit-employee .employee-position .cmb-employee-position,
+.modal-edit-employee .frm-edit-employee .employee-email .txt-employee-email,
+.modal-edit-employee .frm-edit-employee .employee-phone .txt-employee-phone,
+.modal-edit-employee .frm-edit-employee .employee-address .txt-employee-address,
+.modal-edit-employee .frm-edit-employee .employee-right .txt-employee-right,
+.modal-edit-employee .frm-edit-employee .employee-select-image .img-employee-select-image{
+    background-color: #eee;
+    border: 1px solid #343a40;
+    float: right;
+    width: 300px;
+    height: 37px;
+    padding: 5px;
+    margin-bottom: 5px;
+    border-radius: 4px;
+    font-family: 'bnazanin';
+}
+
+.modal-edit-employee .frm-edit-employee .employee-show-image .show-image{
+    width: 75px;
+    height: 75px;
+    border: 1px solid #323232;
+    border-radius: 4px;
+}
+
+.modal-edit-employee .frm-edit-employee .btn-edit-employee-modal{
+    color: #fff;
+    background-color: #28a745;
+    border: 1px solid #28a745;
+    border-radius: 4px;
+    padding: 4px;
+    width: 150px;
+    transition: all 0.5s;
+}
+.modal-edit-employee .frm-edit-employee .btn-edit-employee-modal:hover{
+    color: #28a745;
+    background-color: #fff;
+}
+
+/* ================================ end modal edit employee */
+/* ================================ start modal setting employee */
+.modal-setting-employee .frm-edit-employee-username .employee-username .lbl-employee-username,
+.modal-setting-employee .frm-edit-employee-password .employee-password .lbl-employee-password,
+.modal-setting-employee .frm-edit-employee-password .employee-rePassword .lbl-employee-rePassword{
+    background-color: #343a40;
+    color: #fff;
+    float: right;
+    font-family: 'bnazanin';
+    font-size: 18px;
+    font-weight: bold;
+    margin-left: 5px;
+    padding: 5px;
+    border-radius: 4px;
+    width: 125px;
+    text-align: center;
+}
+
+.modal-setting-employee .frm-edit-employee-username .employee-username .lbl-arrow,
+.modal-setting-employee .frm-edit-employee-password .employee-password .lbl-arrow,
+.modal-setting-employee .frm-edit-employee-password .employee-rePassword .lbl-arrow{
+    background-color: #343a40;
+    color: #fff;
+    float: right;
+    font-family: 'bnazanin';
+    font-size: 18px;
+    font-weight: bold;
+    margin-left: 5px;
+    padding: 5px;
+    border-radius: 4px;
+    width: 30px;
+    text-align: center;
+}
+
+.modal-setting-employee .frm-edit-employee-username .employee-username .txt-users-username,
+.modal-setting-employee .frm-edit-employee-password .employee-password .txt-users-password,
+.modal-setting-employee .frm-edit-employee-password .employee-rePassword .txt-users-rePassword{
+    background-color: #eee;
+    border: 1px solid #343a40;
+    float: right;
+    width: 300px;
+    height: 37px;
+    padding: 5px;
+    margin-bottom: 5px;
+    border-radius: 4px;
+    font-family: 'bnazanin';
+}
+
+.modal-setting-employee .frm-edit-employee-username .btn-edit-employee-username-modal,
+.modal-setting-employee .frm-edit-employee-password .btn-edit-employee-password-modal{
+    color: #fff;
+    background-color: #28a745;
+    border: 1px solid #28a745;
+    border-radius: 4px;
+    padding: 4px;
+    width: 150px;
+    transition: all 0.5s;
+}
+.modal-setting-employee .frm-edit-employee-username .btn-edit-employee-username-modal:hover,
+.modal-setting-employee .frm-edit-employee-password .btn-edit-employee-password-modal:hover{
+    color: #28a745;
+    background-color: #fff;
+}
+
+/* ================================ end modal setting employee */
+/* ================================ start modal employee right */
+.modal-employee-right .frm-employee-right .employee-right .lbl-employee-right{
+    background-color: #343a40;
+    color: #fff;
+    float: right;
+    font-family: 'bnazanin';
+    font-size: 18px;
+    font-weight: bold;
+    margin-left: 5px;
+    padding: 5px;
+    border-radius: 4px;
+    width: 125px;
+    text-align: center;
+}
+
+.modal-employee-right .frm-employee-right .employee-right .lbl-arrow{
+    background-color: #343a40;
+    color: #fff;
+    float: right;
+    font-family: 'bnazanin';
+    font-size: 18px;
+    font-weight: bold;
+    margin-left: 5px;
+    padding: 5px;
+    border-radius: 4px;
+    width: 30px;
+    text-align: center;
+}
+
+.modal-employee-right .frm-employee-right .employee-right .txt-employee-right{
+    background-color: #eee;
+    border: 1px solid #343a40;
+    float: right;
+    width: 300px;
+    height: 37px;
+    padding: 5px;
+    margin-bottom: 5px;
+    border-radius: 4px;
+    font-family: 'bnazanin';
+}
+
+.modal-employee-right .frm-employee-right .btn-add-employee-modal{
+    color: #fff;
+    background-color: #28a745;
+    border: 1px solid #28a745;
+    border-radius: 4px;
+    padding: 4px;
+    width: 150px;
+    transition: all 0.5s;
+}
+.modal-employee-right .frm-employee-right .btn-add-employee-modal:hover{
+    color: #28a745;
+    background-color: #fff;
+}

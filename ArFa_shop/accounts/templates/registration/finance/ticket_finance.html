@@ -1,0 +1,178 @@
+{% extends "registration/finance/base.html" %}
+
+{% block title %}
+    پنل کارمندان | تیکت‌ها
+{% endblock title %}
+
+{% block navbar %}
+    {% include "registration/finance/navbar.html" %}
+{% endblock navbar %}
+
+{% block slidebar %}
+    {% include "registration/finance/sidebar.html" with ticket_finance=ticket_finance %}
+{% endblock slidebar %}
+
+{% block header %}
+    <div class="title-ticket-admin text-center">
+        <span class="ticket-admin">
+            <i class="fa-solid fa-message"></i>
+            تیکت کارمند
+        </span>
+        <div class="line-ticket-admin"></div>
+        <div class="breadcrumb-menu" style="margin-top: 10px;">
+            <span>
+                <a href="{% url 'eFinance' %}">صفحه اصلی</a>
+            </span>
+            <i class="fa-solid fa-chevron-left"></i>
+            <span style="color: #a5a5a5;"> تیکت </span>
+        </div>
+    </div>
+{% endblock header %}
+  
+{% block content %}
+    
+    <div class="container mt-2">
+        <div class="row">
+            <div class="col-1"></div>
+            <div class="col-10">
+                
+                <div class="show-tickets-admin">
+                    <ul class="menu-box text-center" id="pills-tab" role="tablist">
+                        <li role="presentation">
+                            <a class="nav-link active" id="pills-receiver-tickt-tab" data-bs-toggle="pill" data-bs-target="#pills-receiver-tickt" type="button" role="tab" aria-controls="pills-receiver-tickt" aria-selected="true">تیکت‌های دریافتی <i class="fa-solid fa-chevron-down"></i></a>  
+                        </li>
+                        <li style="width: 87%; background-color: #343a40; height: 33px;"></li>
+                    </ul>
+
+                    <div class="body-tickets-admin tab-content" id="pills-tabContent">
+
+                        <!-- receiver tickets -->
+                        <div class="receiver-tickets tab-pane fade show active" id="pills-receiver-tickt" role="tabpanel" aria-labelledby="pills-receiver-tickt-tab">
+                            <div class="container-fluid">
+                                <div class="row">
+                                    {% for message in messages %}
+                                        <li class="bg-info">{{ message }}</li>
+                                    {% endfor %}
+                                    <div class="col-12">
+                                        <table class="tbl-receiver">
+                                            <thead>
+                                              <tr>
+                                                <th>شناسه</th>
+                                                <th>فرستنده</th>
+                                                <th>موضوع</th>
+                                                <th>متن تیکت</th>
+                                                <th>وضعیت</th>
+                                                <th>فعالیت‌ها</th>
+                                              </tr>
+                                            </thead>
+                                            <tbody>
+                                                {% if ticket_receive_admin %}
+                                                    {% for ticket_receive_admin in ticket_receive_admin %}
+                                                        <tr>
+                                                            <td>{{ ticket_receive_admin.id }}</td>
+                                                            <td>{{ ticket_receive_admin.send.username }}</td>
+                                                            <td>{{ ticket_receive_admin.subject }}</td>
+                                                            {% if ticket_receive_admin|length >= 50 %}
+                                                                <td>{{ ticket_receive_admin.text|slice:"50" }}...</td>
+                                                            {% else %}
+                                                                <td>{{ ticket_receive_admin.text }}</td>
+                                                            {% endif %}
+                                                            <td>
+                                                                {% if ticket_receive_admin.state == 1 %}
+                                                                    <span class="badge badge-danger rounded-pill d-inline">منتظر پاسخ</span>
+                                                                {% else %}
+                                                                    <span class="badge badge-success rounded-pill d-inline">پاسخ داده شده</span>
+                                                                {% endif %}
+                                                            </td>
+                                                            <td>
+                                                                <a class="btn-show-ticket" href="{% url 'showTicketAdmin' ticket_receive_admin.id %}">
+                                                                    <i class="fa-solid fa-eye"></i>
+                                                                </a>
+                                                                <a href="" class="btn-delete-ticket">
+                                                                    <i class="fa-solid fa-trash"></i>
+                                                                </a>
+                                                            </td>
+                                                        </tr>        
+                                                    {% endfor %}
+                                                {% else %}
+                                                    <tr >
+                                                        <td colspan="6" style="padding:4px;">
+                                                            <span style="font-family: 'bnazanin';"> تیکتی برای نمایش وجود ندارد. </span>
+                                                        </td>
+                                                    </tr>
+                                                {% endif %}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="pills-sender-ticket" role="tabpanel" aria-labelledby="pills-sender-ticket-tab">
+                            <section class="content">
+                                <div class="container-fluid">
+                                    <div class="row">
+                                        {% for message in messages %}
+                                            <li class="bg-info">{{ message }}</li>
+                                        {% endfor %}
+                                        <div class="col-12">
+                                            <table class="table align-middle mb-0 bg-white">
+                                                <thead class="bg-light">
+                                                  <tr>
+                                                    <th>شناسه</th>
+                                                    <th>گیرنده</th>
+                                                    <th>موضوع</th>
+                                                    <th>وضعیت</th>
+                                                    <th>فعالیت‌ها</th>
+                                                  </tr>
+                                                </thead>
+                                                <tbody>
+                                                    {% for ticket_send_admin in ticket_send_admin %}
+                                                        <tr>
+                                                            <td>
+                                                                {{ ticket_send_admin.id }}
+                                                            </td>
+                                                            {% for users in users %}
+                                                                {% if users.id == ticket_send_admin.receive %}
+                                                                    <td>
+                                                                        {{ users.username }}
+                                                                    </td>
+                                                                {% endif %}
+                                                            {% endfor %} 
+                                                            <td>
+                                                                {{ ticket_send_admin.subject }}
+                                                            </td>
+                                                            <td>
+                                                                {% if ticket_send_admin.state == 1 %}
+                                                                    <span class="badge badge-danger rounded-pill d-inline">منتظر پاسخ</span>
+                                                                {% else %}
+                                                                    <span class="badge badge-success rounded-pill d-inline">پاسخ داده شده</span>
+                                                                {% endif %}
+                                                            </td>
+                                                            <td>
+                                                                <a href="{% url 'showTicketAdmin' ticket_send_admin.id %}" class="btn btn-warning" style="font-size: 12px;">
+                                                                    <i class="fa-solid fa-eye"></i>
+                                                                </a>
+                                                                <a href="" class="btn btn-danger" style="font-size: 12px;">
+                                                                    <i class="fa-solid fa-trash"></i>
+                                                                </a>
+                                                            </td>
+                                                        </tr>  
+                                                    {% endfor %}
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+
+                    </div>
+                    
+                </div>
+                
+            </div>
+            <div class="col-1"></div>
+        </div>
+    </div>
+    
+{% endblock content %}

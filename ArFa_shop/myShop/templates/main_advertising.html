@@ -1,0 +1,39 @@
+{% load static %}
+<section>
+    <div class="container px-4 px-lg-5 mt-5">
+        <div class="main-advertising-box row p-1">
+            <div class="col-12">
+                <div class="row gx-2 gy-2 row-cols-1 row-cols-md-2 row-cols-xl-2 justify-content-center">
+                    {% if advertising_show %}
+                        {% for advertising in advertising_show %}
+                            <div class="col">
+                                <div class="
+                                    {% if forloop.counter == 1 %} advertising-green 
+                                    {% elif forloop.counter == 2 %} advertising-red 
+                                    {% elif forloop.counter == 3 %} advertising-purple 
+                                    {% elif forloop.counter == 4 %} advertising-blue 
+                                    {% endif %}
+                                ">
+                                    <img src="{% static 'image/DC.png' %}" alt="">
+                                    <div class="advertising-txt">
+                                        <span class="sale-label">{{ advertising.text }}</span>
+                                        <h3 class="sale-title">{{ advertising.title }}</h3>
+                                        <span class="sale-text">{{ advertising.description }}</span>
+                                    </div>
+                                </div>
+                            </div>
+                    {% endfor %} 
+                    {% else %}
+                        <div class="col-12">
+                            <div class="not-advertising">
+                                <i class="fa-solid fa-circle-info"></i>
+                                تبلیغاتی برای نمایش وجود ندارد. لطفا بعدا سر بزنید.
+                            </div>
+                        </div>
+                    {% endif %}
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

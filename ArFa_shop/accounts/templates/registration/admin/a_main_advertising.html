@@ -1,0 +1,264 @@
+{% extends "registration/admin/base.html" %}
+
+{% block title %}
+    پنل ادمین | تبلیغات
+{% endblock title %}
+
+{% block navbar %}
+    {% include "registration/admin/navbar.html" %}
+{% endblock navbar %}
+
+{% block slidebar %}
+    {% include "registration/admin/sidebar.html" %}
+{% endblock slidebar %}
+
+{% block header %}
+    <div class="title-advertising text-center">
+        <span class="advertising">
+            <i class="fa-solid fa-rectangle-ad"></i>
+            تبلیغات
+        </span>
+        <div class="line-advertising"></div>
+        <div class="breadcrumb-menu" style="margin-top: 10px;">
+            <span>
+                <a href="{% url 'adminPanel' %}">صفحه اصلی</a>
+            </span>
+            <i class="fa-solid fa-chevron-left"></i>
+            <span style="color: #a5a5a5;"> تبلیغات </span>
+        </div>
+    </div>
+{% endblock header %}
+
+{% block content %}
+
+    <div class="add-advertising container text-center">
+        <div class="row">
+            <div class="col-3"></div>
+            <div class="col-6 d-flex justify-content-center">
+                
+            </div>
+            <div class="col-3"></div>
+        </div>
+    </div>
+
+    <!-- message info -->
+    {% for message in messages %}
+        <div class="info-alert">
+            <button type="button" class="float-end btn-close-alert" id="btn-close-alert">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <li><i class="fa-solid fa-circle-info"></i> {{ message }} </li>
+        </div>
+    {% endfor %}
+
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row gx-4 gy-4 pb-4" style="height: 450px; overflow: auto;">
+
+                <div class="col-3">
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#addAdvertisingModal">
+                        <div class="add-advertising-box">
+                            <i class="fa-solid fa-circle-plus"></i>
+                        </div>
+                    </a>
+                </div>
+
+                {% if advertisings_show %}
+                    {% for advertisings_show in advertisings_show %}
+                        <div class="col">
+                            <div class="show-advertising">
+                                <img src="{{ advertisings_show.image.url }}" alt="">
+                                <div class="txt-text" style="font-weight: bold;"> {{ advertisings_show.text }} </div>
+                                <div class="txt-title" style="font-weight: bold;"> {{ advertisings_show.title }} </div>
+                                <div class="txt-description" style="font-size: 14px;"> {{ advertisings_show.description }} </div>
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div class="edit-advertising">
+                                            <button type="button" class="btn-edit-advertising"
+                                                onclick="setValEditAdvertising('{{ advertisings_show.id }}','{{ advertisings_show.text }}','{{ advertisings_show.image }}','{{ advertisings_show.title }}','{{ advertisings_show.description }}')"
+                                                data-bs-toggle="modal" data-bs-target="#editAdvertisingModal">
+                                                <i class="fa-solid fa-pen-to-square"></i>
+                                                <span> ویرایش </span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="delete-advertising">
+                                            <button class="btn-delete-advertising"
+                                                onclick="urlDeleteAdvertising('/accounts/aDeleteAdvertising/{{ advertisings_show.id }}')" 
+                                                data-bs-toggle="modal" data-bs-target="#deletAdvertisingModal">
+                                                <i class="fa-solid fa-trash"></i>
+                                                <span> حذف </span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    <div class="col-12">
+                        <div class="alert info-alert" style="font-size: 30px;">
+                            <i class="fa-solid fa-circle-info"></i>
+                            تبلیغی وجود ندارد. لطف با زدن + دسته‌ای اضافه کنید.
+                        </div>
+                    </div>
+                {% endif %}
+
+            </div>
+        </div>
+    </section>
+
+    <!-- The Delete Modal -->
+    <div class="modal fade modal-delete-advertising" id="deletAdvertisingModal" style="margin-top: 200px;">
+        <div class="modal-dialog">
+            <div class="modal-content">
+        
+                <div class="modal-header bg-dark">
+                    <button type="button" class="btn-close bg-white" aria-label="Close" data-bs-dismiss="modal"></button>
+                </div>
+        
+                <div class="modal-body">
+                    <span style="font-family: 'bnazanin';">آیا می خواهید این تبلیغ را حذف کنید؟</span>
+                </div>
+        
+                <div class="modal-footer">
+                    <button type="button" class="btn-noDelete-advertising-modal" data-bs-dismiss="modal">
+                        <i class="fa-solid fa-xmark"></i>
+                        خیر
+                    </button>
+                    <a href="" class="btn-delete-advertising-modal" id="delete-advertising">
+                        <i class="fa-solid fa-check"></i>
+                        بله
+                    </a>
+                </div>
+        
+            </div>
+        </div>
+    </div>
+
+    <!-- The add advertising Modal -->
+    <div class="modal fade modal-add-advertising" id="addAdvertisingModal" style="margin-top: 150px;">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+            <div class="modal-header bg-dark">
+                <button type="button" class="btn-close bg-white" aria-label="Close" data-bs-dismiss="modal"></button>
+            </div>
+
+            <div class="modal-body">
+                <form action="{% url 'aAddMainAdvertising' %}" method="post" class="frm-add-advertising" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    
+                    <div class="frm-text-advertising">
+                        <span class="lbl-advertising-text"> متن تبلیغات </span>
+                        <span class="lbl-arrow"><i class="fa-solid fa-chevron-left"></i></span>
+                        {{ advertising_form.text }}
+                    </div>
+
+                    <div class="frm-image-advertising">
+                        <span class="lbl-advertising-image" style="height: 36px;"> تصویر تبلیغات </span>
+                        <span class="lbl-arrow" style="height: 36px;"><i class="fa-solid fa-chevron-left"></i></span>
+                        {{ advertising_form.image }}
+                    </div>
+
+                    <div class="frm-title-advertising">
+                        <span class="lbl-advertising-title"> عنوان تبلیغات </span>
+                        <span class="lbl-arrow"><i class="fa-solid fa-chevron-left"></i></span>
+                        {{ advertising_form.title }}
+                    </div>
+
+                    <div class="frm-description-advertising">
+                        <span class="lbl-advertising-description"> توضیحات </span>
+                        <span class="lbl-arrow"><i class="fa-solid fa-chevron-left"></i></span>
+                        {{ advertising_form.description }}
+                    </div>
+                    <hr style="border: 1px solid #919191 !important; display: flex;">
+                    <div class="text-center">
+                        <button type="submit" class="btn-add-Advertising-modal">
+                            <i class="fa-solid fa-plus"> افزدون برند </i>
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- The edit Advertising Modal -->
+    <div class="modal fade modal-edit-advertising" id="editAdvertisingModal" style="margin-top: 150px;">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+            <div class="modal-header bg-dark">
+                <button type="button" class="btn-close bg-white" aria-label="Close" data-bs-dismiss="modal"></button>
+            </div>
+
+            <div class="modal-body">
+                <form action="" method="post" class="frm-edit-advertising" id="frm-edit-advertising" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    
+                    <div class="advertising-title">
+                        <span class="lbl-advertising-title"> عنوان </span>
+                        <span class="lbl-arrow"><i class="fa-solid fa-chevron-left"></i></span>
+                        {{ edit_advertising_form.title }}
+                    </div>
+
+                    <div class="advertising-text">
+                        <span class="lbl-advertising-text" style="height: 36px;"> زیر عنوان </span>
+                        <span class="lbl-arrow" style="height: 36px;"><i class="fa-solid fa-chevron-left"></i></span>
+                        {{ edit_advertising_form.text }}
+                    </div>
+
+                    <div class="advertising-description">
+                        <span class="lbl-advertising-description" style="height: 36px;"> توضیحات </span>
+                        <span class="lbl-arrow" style="height: 36px;"><i class="fa-solid fa-chevron-left"></i></span>
+                        {{ edit_advertising_form.description }}
+                    </div>
+
+                    <div class="advertising-select-image">
+                        <span class="lbl-advertising-select-image" style="height: 36px;"> انتخاب تصویر </span>
+                        <span class="lbl-arrow" style="height: 36px;"><i class="fa-solid fa-chevron-left"></i></span>
+                        {{ edit_advertising_form.image }}
+                    </div>
+
+                    <div class="advertising-show-image">
+                        <span class="lbl-advertising-show-image" style="height: 36px;"> نمایش تصویر </span>
+                        <span class="lbl-arrow" style="height: 36px;"><i class="fa-solid fa-chevron-left"></i></span>
+                        <img src="" class="img-show-image-advertising" id="img-show-image-advertising" alt="">
+                    </div>
+
+                    <hr style="border: 1px solid #919191 !important; display: flex;">
+
+                    <div class="text-center">
+                        <button type="submit" class="btn-edit-advertising-modal">
+                            <i class="fa-solid fa-pen-to-square"> ویرایش تبلیغ </i>
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function urlDeleteAdvertising(url){
+            document.getElementById('delete-advertising').href = url
+        }
+        function setValEditAdvertising(id, text, image, title, description){
+            document.getElementById('frm-edit-advertising').action = '/accounts/aEditMainAdvertising/' + id + '/';
+            document.getElementById('txt-text-advertising').value = text;
+            document.getElementById('img-show-image-advertising').src = '/media/' + image;
+            document.getElementById('txt-title-advertising').value = title;
+            document.getElementById('txt-description-advertising').value = description;
+        }
+        $(document).ready(function(){
+            $('#btn-close-alert').click(function(){
+                $('.info-alert').fadeOut();
+            });
+        });
+      </script>
+{% endblock content %}

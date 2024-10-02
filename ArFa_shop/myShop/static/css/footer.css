@@ -1,0 +1,131 @@
+/* ---------------------- footer */
+.footer {
+    height: 550px;
+    border-top: 5px solid #000;
+    color: #fff;
+}
+
+.footer .body {
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    opacity: 0.7;
+}
+
+.footer .body .service ul li {
+    list-style: decimal;
+    line-height: 30px;
+    font-weight: lighter;
+}
+
+/* --------------------------- address */
+.footer .body .address{
+    font-family: 'bnazanin';
+    font-size: 18px;
+}
+
+.footer .body .address .title{
+    color: #ccc;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.footer .body .address .txt-location{
+    color: #ccc;
+    border-radius: 100px;
+    padding: 10px;
+}
+
+.footer .body .address .map{
+    height: 300px;
+    width: 100%;
+    border-radius: 5px;
+}
+/* --------------------------- service */
+.footer .body .service{
+    font-family: 'bnazanin';
+    font-size: 18px;
+}
+
+.footer .body .service .title{
+    color: #ccc;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.footer .body .service .txt-service{
+    color: #ccc;
+    border-radius: 50px;
+    padding: 10px;
+    line-height: 50px;
+}
+/* --------------------------- social-networks */
+.footer .body .social-networks{
+    font-family: 'bnazanin';
+    font-size: 18px;
+}
+
+.footer .body .social-networks .title{
+    color: #ccc;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.footer .body .social-networks .logo .instagram{
+    background: linear-gradient(90deg, #3e5adf, #554ed4, #7f38ae, #bb3380, #da2e69, #f51c1c, #ed5d3e, #ef7335, #f4aa43, #f7d57c);
+    border-radius: 10px;
+}
+
+.footer .body .social-networks .logo .telegram{
+    background-color: #0084c6;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
+.footer .body .social-networks .logo .whatsapp{
+    background-color: #24cc63;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
+.footer .body .social-networks .logo .pinterest{
+    background-color: #df0022;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
+.footer .body .social-networks .logo .linkedin{
+    background-color: #0073af;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
+.footer .body .social-networks .logo .instagram a,
+.footer .body .social-networks .logo .telegram a,
+.footer .body .social-networks .logo .whatsapp a,
+.footer .body .social-networks .logo .pinterest a,
+.footer .body .social-networks .logo .linkedin a{
+    text-decoration: none;
+    color: #fff;
+    padding: 10px;
+    display: block;
+    border: 5px solid #000;
+    width: 50%;
+    font-weight: bold;
+    transition: all 0.5s;
+}
+.footer .body .social-networks .logo .instagram a:hover,
+.footer .body .social-networks .logo .telegram a:hover,
+.footer .body .social-networks .logo .whatsapp a:hover,
+.footer .body .social-networks .logo .pinterest a:hover,
+.footer .body .social-networks .logo .linkedin a:hover{
+    border: 0px solid #000;
+    width: 100%;
+}
+/* ============================================ copyright */
+.footer .body .copyright{
+    background-color: #323232;
+    padding: 10px;
+    border-radius: 40px;
+    border: 1px solid #888;
+}

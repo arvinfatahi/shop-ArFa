@@ -1,0 +1,183 @@
+{% extends "registration/finance/base.html" %}
+
+{% block title %}
+    پنل کارمندان | حقوق کارمندان
+{% endblock title %}
+
+{% block navbar %}
+    {% include "registration/finance/navbar.html" %}
+{% endblock navbar %}
+
+{% block slidebar %}
+    {% include "registration/finance/sidebar.html" with ticket_finance=ticket_finance %}
+{% endblock slidebar %}
+
+{% block header %}
+    <div class="title-employees text-center">
+        <span class="employee">
+            <i class="fa-solid fa-user-tie"></i>
+            حقوق کارمندان
+        </span>
+        <div class="line-employees"></div>
+        <div class="breadcrumb-menu" style="margin-top: 10px;">
+            <span>
+                <a href="{% url 'eFinance' %}">صفحه اصلی</a>
+            </span>
+            <i class="fa-solid fa-chevron-left"></i>
+            <span style="color: #a5a5a5;"> حقوق کارمندان </span>
+        </div>
+    </div>
+{% endblock header %}
+
+{% block content %}
+    
+    <div class="search-add-employees container text-center">
+        <div class="row">
+            <div class="col-3"></div>
+            <div class="col-6 d-flex justify-content-center">
+                <!-- <form action="" method="post" class="frm-search-employee">
+                    {% csrf_token %}
+                    <button type="submit">
+                        <i class="fa-solid fa-magnifying-glass"></i> <span>جستجو</span>
+                    </button>
+                    <input type="text" name="txt-search" placeholder="جستجوی کارمند">
+                </form> -->
+            </div>
+            <div class="col-3"></div>
+        </div>
+    </div>
+    
+    <!-- message info -->
+    {% for message in messages %}
+        <div class="info-alert">
+            <button type="button" class="float-end btn-close-alert" id="btn-close-alert">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <li><i class="fa-solid fa-circle-info"></i> {{ message }} </li>
+        </div>
+    {% endfor %}
+
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12" style="height: 450px; overflow: auto;">
+                    <table class="tbl-employees">
+                        <thead>
+                          <tr>
+                            <th>شناسه</th>
+                            <th>نام کاربری</th>
+                            <th>نام کامل</th>
+                            <th>ایمیل</th>
+                            <th>شماره تلفن</th>
+                            <th>آدرس</th>
+                            <th>سمت</th>
+                            <th>حقوق</th>
+                            <th>عکس</th>
+                            <th>تاریخ استخدام</th>
+                            <th>تعیین حقوق</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                            {% if employees %}
+                                {% for employees in employees %}
+                                    <tr>
+                                        <td>{{ employees.id }}</td>
+                                        <td>{{ employees.username }}</td>
+                                        <td>{{ employees.get_full_name }}</td>
+                                        <td>{{ employees.email }}</td>
+                                        <td>{{ employees.phone }}</td>
+                                        <td style="width: 230px;">{{ employees.address }}</td>
+                                        {% if employees.position == 1 %}
+                                            <td>مدیر</td>
+                                        {% elif employees.position == 2 %}
+                                            <td>پشتیبان</td>
+                                        {% elif employees.position == 3 %}
+                                            <td>ثبت کالا</td>
+                                        {% elif employees.position == 4 %}
+                                            <td>حسابدار</td>
+                                        {% elif employees.position == 5 %}
+                                            <td>پست کالا</td>
+                                        {% endif %}
+                                        <td>
+                                            {% if employees.right == null %}
+                                                <span class="text-danger">0</span>
+                                            {% else %}
+                                                <span>{{ employees.right }}</span>
+                                            {% endif %}
+                                        </td>
+                                        {% if employees.image.url is not None %}
+                                            <td><img src="{{ employees.image.url }}" style="width: 75px; height: 75px;" alt=""></td>
+                                        {% endif %}
+                                        
+                                        <td style="width: 130px;">
+                                            <div>{{ employees.shamsi_date_joined }}</div>
+                                            <div>{{ employees.date_joined|time }}</div>
+                                        </td>
+                                        <td style="width: 100px;">
+                                            <button class="btn-employee-right"
+                                                onclick="setValEmployeeRight('{{ employees.id }}','{{ employees.right }}')"
+                                                data-bs-toggle="modal" data-bs-target="#employeeRightModal">
+                                                تعیین حقوق
+                                            </button>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            {% else %}
+                                <tr >
+                                  <td colspan="11" style="padding:4px;">
+                                      <span style="font-family: 'bnazanin';"> کارمندی برای نمایش وجود ندارد. </span>
+                                  </td>
+                                </tr>
+                            {% endif %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- The employee right Modal -->
+    <div class="modal fade modal-employee-right" id="employeeRightModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <div class="modal-header bg-dark">
+                    <button type="button" class="btn-close bg-white" aria-label="Close" data-bs-dismiss="modal"></button>
+                </div>
+
+                <div class="modal-body">
+                    <form action="" method="post" class="frm-employee-right" id="frm-employee-right" enctype="multipart/form-data">
+                        {% csrf_token %}
+
+                        <div class="employee-right">
+                            <span class="lbl-employee-right">تعیین حقوق</span>
+                            <span class="lbl-arrow"><i class="fa-solid fa-chevron-left"></i></span>
+                            {{ set_employee_right_form.right }}
+                        </div>
+
+                        <hr style="border: 1px solid #919191 !important; display: flex;">
+                          
+                          <div class="d-flex justify-content-center">
+                              <button type="submit" class="btn-add-employee-modal">
+                                  <i class="fa-solid fa-plus"> تعیین حقوق </i>
+                              </button>
+                          </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function setValEmployeeRight(id, right){
+            document.getElementById('frm-employee-right').action = '/accounts/fEditEmployee/' + id + '/';
+            document.getElementById('edit-employee-right').value = right;
+        }
+        $(document).ready(function(){
+            $('#btn-close-alert').click(function(){
+                $('.info-alert').fadeOut();
+            });
+        });
+    </script>
+{% endblock content %}

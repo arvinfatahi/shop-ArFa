@@ -1,0 +1,357 @@
+/* =================================== start title advertising */
+.title-advertising{
+    background-color: #343a40;
+    padding: 18px;
+    font-family: 'bnazanin';
+    color: #ddd;
+    box-shadow: 0px 0px 5px #343a40;
+    height: 130px;
+}
+
+.title-advertising .advertising{
+    font-size: 32px;
+    font-weight: bold;
+}
+
+.title-advertising .line-advertising{
+    background-color: #a5a5a5;
+    height: 4px;
+    width: 20%;
+    margin: 5px auto;
+    border-radius: 6px;
+}
+
+.title-advertising .breadcrumb-menu a{
+    text-decoration: none;
+    color: #ddd;
+    transition: all 0.5s;
+}
+
+.title-advertising .breadcrumb-menu a:hover{
+    color: #fff;
+}
+
+/* =================================== end title advertising */
+/* =================================== start add advertising */
+.add-advertising{
+    background-color: #fff;
+    box-shadow: 0px 0px 5px #ddd;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+/* =========================== start add advertising box */
+.add-advertising-box{
+    border: 2px dashed #aaa;
+    color: #aaa;
+    border-radius: 30px;
+    height: 390px;
+    text-align: center;
+    transition: all 0.5s;
+}
+.add-advertising-box:hover{
+    border: 2px dashed #323232;
+}
+.add-advertising-box:hover i{
+    color: #323232;
+}
+
+.add-advertising-box i{
+    margin-top: 170px;
+    font-size: 50px;
+    transition: all 0.5s;
+}
+
+/* =========================== end add advertising box */
+/* =========================== start advertising */
+.show-advertising{
+    background: #fff;
+    box-shadow: 0px 0px 10px #aaa;
+    border-radius: 30px;
+    text-align: center;
+    height: 390px;
+    overflow: auto;
+    padding: 15px;
+}
+
+.show-advertising img{
+    width: 150px;
+    height: 150px;
+}
+
+.show-advertising .txt-text,
+.show-advertising .txt-title,
+.show-advertising .txt-description{
+    color: #323232;
+    font-family: 'bnazanin';
+    padding: 10px;
+}
+
+.show-advertising .edit-advertising,
+.show-advertising .delete-advertising{
+    width: 100%;
+    text-align: center;
+    font-family: 'bnazanin';
+    margin-top: 10px;
+}
+
+.show-advertising .edit-advertising .btn-edit-advertising{
+    color: #28a745;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 14px;
+    border: none;
+    background: transparent;
+    width: 80px;
+}
+
+.show-advertising .delete-advertising .btn-delete-advertising{
+    color: #dc3545;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 14px;
+    border: none;
+    background: transparent;
+    width: 60px;
+}
+
+/* =========================== end advertising */
+/* =================================== start tbl advertising */
+.tbl-advertising{
+    font-family: 'bnazanin';
+    text-align: center;
+    border: 1px solid #343a40;
+    width: 100%;
+}
+
+.tbl-advertising thead tr th{
+    background-color: #343a40;
+    color: #ddd;
+    border: 1px solid #343a40;
+    font-size: 16px;
+    padding: 4px;
+}
+
+.tbl-advertising tbody tr td{
+    border: 1px solid #343a40;
+    vertical-align: middle;
+    padding: 4px;
+}
+
+/* =================================== end tbl advertising */
+/* =================================== start btn advertising */
+.btn-edit-advertising{
+    color: #fff;
+    background-color: #218838;
+    border: 1px solid #218838;
+    border-radius: 4px;
+    padding: 4px;
+    text-decoration: none;
+    font-size: 18px;
+    width: 33px;
+    height: 33px;
+    display: inline-block;
+    margin-left: 4px;
+    transition: all 0.5s;
+}
+.btn-edit-advertising:hover{
+    color: #218838;
+    background-color: #fff;
+}
+
+.btn-delete-advertising{
+    color: #fff;
+    background-color: #DC3545;
+    border: 1px solid #DC3545;
+    border-radius: 4px;
+    padding: 4px;
+    font-size: 18px;
+    width: 33px;
+    height: 33px;
+    transition: all 0.5s;
+}
+.btn-delete-advertising:hover{
+    color: #DC3545;
+    background-color: #fff;
+}
+
+/* =================================== end btn advertising */
+/* =================================== start modal delete advertising */
+.modal-delete-advertising .modal-footer .btn-delete-advertising-modal{
+    color: #fff;
+    background-color: #DC3545;
+    border: 1px solid #DC3545;
+    border-radius: 4px;
+    text-decoration: none;
+    font-family: 'bnazanin';
+    padding: 4px;
+    width: 50px;
+    text-align: center;
+    transition: all 0.5s;
+}
+.modal-delete-advertising .modal-footer .btn-delete-advertising-modal:hover{
+    color: #DC3545;
+    background-color: #fff;
+}
+
+.modal-delete-advertising .modal-footer .btn-noDelete-advertising-modal{
+    color: #fff;
+    background-color: #28a745;
+    border: 1px solid #28a745;
+    border-radius: 4px;
+    text-decoration: none;
+    font-family: 'bnazanin';
+    padding: 4px;
+    width: 50px;
+    text-align: center;
+    transition: all 0.5s;
+}
+.modal-delete-advertising .modal-footer .btn-delete-advertising-modal:hover{
+    color: #28a745;
+    background-color: #fff;
+}
+
+/* =================================== end modal delete advertising */
+/* =================================== start modal add advertising */
+.modal-add-advertising .frm-add-advertising .frm-text-advertising .lbl-advertising-text,
+.modal-add-advertising .frm-add-advertising .frm-image-advertising .lbl-advertising-image,
+.modal-add-advertising .frm-add-advertising .frm-title-advertising .lbl-advertising-title,
+.modal-add-advertising .frm-add-advertising .frm-description-advertising .lbl-advertising-description{
+    background-color: #343a40;
+    color: #fff;
+    float: right;
+    font-family: 'bnazanin';
+    font-size: 18px;
+    font-weight: bold;
+    margin-left: 5px;
+    padding: 5px;
+    border-radius: 4px;
+    width: 125px;
+    height: 37px;
+    text-align: center;
+}
+
+.modal-add-advertising .frm-add-advertising .frm-text-advertising .lbl-arrow,
+.modal-add-advertising .frm-add-advertising .frm-image-advertising .lbl-arrow,
+.modal-add-advertising .frm-add-advertising .frm-title-advertising .lbl-arrow,
+.modal-add-advertising .frm-add-advertising .frm-description-advertising .lbl-arrow{
+    background-color: #343a40;
+    color: #fff;
+    float: right;
+    font-family: 'bnazanin';
+    font-size: 18px;
+    font-weight: bold;
+    margin-left: 5px;
+    padding: 5px;
+    border-radius: 4px;
+    width: 30px;
+    height: 37px;
+    text-align: center;
+}
+
+.modal-add-advertising .frm-add-advertising .frm-text-advertising .txt-text-advertising,
+.modal-add-advertising .frm-add-advertising .frm-image-advertising .img-image-advertising,
+.modal-add-advertising .frm-add-advertising .frm-title-advertising .txt-title-advertising,
+.modal-add-advertising .frm-add-advertising .frm-description-advertising .txt-description-advertising{
+    background-color: #eee;
+    border: 1px solid #343a40;
+    float: right;
+    width: 300px;
+    height: 36px;
+    padding: 5px;
+    margin-bottom: 5px;
+    border-radius: 4px;
+    font-family: 'bnazanin';
+}
+
+.modal-add-advertising .frm-add-advertising .btn-add-Advertising-modal{
+    color: #fff;
+    background-color: #28a745;
+    border: 1px solid #28a745;
+    border-radius: 4px;
+    padding: 4px;
+    width: 150px;
+    transition: all 0.5s;
+}
+.modal-add-advertising .frm-add-advertising .btn-add-Advertising-modal:hover{
+    color: #28a745;
+    background-color: #fff;
+}
+
+/* =================================== end modal add advertising */
+/* =================================== start modal edit advertising */
+.modal-edit-advertising .frm-edit-advertising .advertising-title .lbl-advertising-title,
+.modal-edit-advertising .frm-edit-advertising .advertising-text .lbl-advertising-text,
+.modal-edit-advertising .frm-edit-advertising .advertising-description .lbl-advertising-description,
+.modal-edit-advertising .frm-edit-advertising .advertising-select-image .lbl-advertising-select-image,
+.modal-edit-advertising .frm-edit-advertising .advertising-show-image .lbl-advertising-show-image{
+    background-color: #343a40;
+    color: #fff;
+    float: right;
+    font-family: 'bnazanin';
+    font-size: 18px;
+    font-weight: bold;
+    margin-left: 5px;
+    padding: 5px;
+    border-radius: 4px;
+    width: 125px;
+    height: 37px;
+    text-align: center;
+}
+
+.modal-edit-advertising .frm-edit-advertising .advertising-title .lbl-arrow,
+.modal-edit-advertising .frm-edit-advertising .advertising-text .lbl-arrow,
+.modal-edit-advertising .frm-edit-advertising .advertising-description .lbl-arrow,
+.modal-edit-advertising .frm-edit-advertising .advertising-select-image .lbl-arrow,
+.modal-edit-advertising .frm-edit-advertising .advertising-show-image .lbl-arrow{
+    background-color: #343a40;
+    color: #fff;
+    float: right;
+    font-family: 'bnazanin';
+    font-size: 18px;
+    font-weight: bold;
+    margin-left: 5px;
+    padding: 5px;
+    border-radius: 4px;
+    width: 30px;
+    height: 37px;
+    text-align: center;
+}
+
+.modal-edit-advertising .frm-edit-advertising .advertising-title .txt-title-advertising,
+.modal-edit-advertising .frm-edit-advertising .advertising-text .txt-text-advertising,
+.modal-edit-advertising .frm-edit-advertising .advertising-description .txt-description-advertising,
+.modal-edit-advertising .frm-edit-advertising .advertising-select-image .img-select-image-advertising{
+    background-color: #eee;
+    border: 1px solid #343a40;
+    float: right;
+    width: 300px;
+    height: 36px;
+    padding: 5px;
+    margin-bottom: 5px;
+    border-radius: 4px;
+    font-family: 'bnazanin';
+}
+
+.modal-edit-advertising .frm-edit-advertising .advertising-show-image .img-show-image-advertising{
+    width: 75px;
+    height: 75px;
+    border: 1px solid #323232;
+    border-radius: 4px;
+}
+
+.modal-edit-advertising .frm-edit-advertising .btn-edit-advertising-modal{
+    color: #fff;
+    background-color: #28a745;
+    border: 1px solid #28a745;
+    border-radius: 4px;
+    padding: 4px;
+    width: 150px;
+    transition: all 0.5s;
+}
+.modal-edit-advertising .frm-edit-advertising .btn-edit-advertising-modal:hover{
+    color: #28a745;
+    background-color: #fff;
+}
+
+/* =================================== end modal edit advertising */

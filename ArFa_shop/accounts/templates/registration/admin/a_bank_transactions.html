@@ -1,0 +1,110 @@
+{% extends "registration/admin/base.html" %}
+
+{% block title %}
+    پنل ادمین | تراکنش‌های بانکی
+{% endblock title %}
+
+{% block navbar %}
+    {% include "registration/admin/navbar.html" %}
+{% endblock navbar %}
+
+{% block slidebar %}
+    {% include "registration/admin/sidebar.html" %}
+{% endblock slidebar %}
+
+{% block header %}
+    <div class="title-bank-transactions text-center">
+        <span class="bank-transactions">
+            <i class="fa-solid fa-money-check-dollar"></i>
+            تراکنش‌های بانکی
+        </span>
+        <div class="line-bank-transactions"></div>
+        <div class="breadcrumb-menu" style="margin-top: 10px;">
+            <span>
+                <a href="{% url 'adminPanel' %}">صفحه اصلی</a>
+            </span>
+            <i class="fa-solid fa-chevron-left"></i>
+            <span style="color: #a5a5a5;"> تراکنش‌های بانکی </span>
+        </div>
+    </div>
+{% endblock header %}
+
+{% block content %}
+
+    <div class="search-bank-transactions container text-center">
+        <div class="row">
+            <div class="col-3"></div>
+            <div class="col-6 d-flex justify-content-center">
+                <form action="" method="post" class="frm-search-bank-transactions">
+                    {% csrf_token %}
+                    <button type="submit">
+                        <i class="fa-solid fa-magnifying-glass"></i> <span>جستجو</span>
+                    </button>
+                    <input type="text" name="txt-search" placeholder="جستجوی کد سفارش">
+                </form>
+            </div>
+            <div class="col-3"></div>
+        </div>
+    </div>
+
+    <!-- message info -->
+    {% for message in messages %}
+        <div class="info-alert">
+            <button type="button" class="float-end btn-close-alert" id="btn-close-alert">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <li><i class="fa-solid fa-circle-info"></i> {{ message }} </li>
+        </div>
+    {% endfor %}
+    
+    <section class="content mt-4">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12" style="height: 450px; overflow: auto;">
+                    <table class="tbl-bank-transactions">
+                        <thead>
+                            <tr>
+                                <th>شناسه</th>
+                                <th>مبلغ</th>
+                                <th>کد سفارش</th>
+                                <th>وضعیت</th>
+                                <th>تاریخ</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        
+                            {% if transactions %}
+                                {% for transactions in transactions %}
+                                    <tr>
+                                        <td>{{ transactions.id }}</td>
+                                        <td>{{ transactions.amount }}</td>
+                                        <td>{{ transactions.tracking_code }}</td>
+                                        <td>{% if transactions.status == 'REDIRECT_TO_BANK' %}
+                                                <i class="fa-solid fa-circle-minus" style="color: #ffc107;"></i>
+                                                <span style="color: #ffc107;"> انتقال به بانک </span>
+                                            {% elif transactions.status == 'CANCEL_BY_USER' %}
+                                                <i class="fa-solid fa-circle-xmark" style="color: #dc3545;"></i>
+                                                <span style="color: #dc3545;"> لغو توسط کاربر </span>
+                                            {% elif transactions.status == 'COMPLETE' %}
+                                                <i class="fa-solid fa-circle-check" style="color: #28a745;"></i>
+                                                <span style="color: #28a745;"> تکمیل شده </span>
+                                            {% else %}
+                                                نامشخص
+                                            {% endif %}</td>
+                                        <td>{{ transactions.shamsi_date }}</td>
+                                    </tr>
+                                {% endfor %}
+                            {% else %}
+                                <tr >
+                                    <td colspan="5" style="padding:4px;">
+                                        <span style="font-family: 'bnazanin';"> تراکنشی برای نمایش وجود ندارد. </span>
+                                    </td>
+                                </tr>
+                            {% endif %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock content %}

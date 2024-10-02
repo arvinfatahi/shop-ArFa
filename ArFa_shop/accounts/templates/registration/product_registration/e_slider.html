@@ -1,0 +1,248 @@
+{% extends "registration/product_registration/base.html" %}
+
+{% block title %}
+    پنل کارمندان | اسلایدر
+{% endblock title %}
+
+{% block navbar %}
+    {% include "registration/product_registration/navbar.html" %}
+{% endblock navbar %}
+
+{% block slidebar %}
+    {% include "registration/product_registration/sidebar.html" with ticket_PR=ticket_PR %}
+{% endblock slidebar %}
+
+{% block header %}
+    <div class="title-sliders text-center">
+        <span class="slider">
+            <i class="fa-solid fa-images"></i>
+            اسلایدر
+        </span>
+        <div class="line-slider"></div>
+        <div class="breadcrumb-menu" style="margin-top: 10px;">
+            <span>
+                <a href="{% url 'eProductRegistration' %}">صفحه اصلی</a>
+            </span>
+            <i class="fa-solid fa-chevron-left"></i>
+            <span style="color: #a5a5a5;"> اسلایدر </span>
+        </div>
+    </div>
+{% endblock header %}
+  
+{% block content %}
+
+    <div class="search-add-slider container text-center">
+        <div class="row">
+            <div class="col-3"></div>
+            <div class="col-6 d-flex justify-content-center">
+                <div class="btn-add-slider">
+                    <a href="" data-bs-toggle="modal" data-bs-target="#addSlideModal">
+                        <i class="fa-regular fa-square-plus"> افزودن اسلاید </i>
+                    </a>
+                    <div class="line"></div>
+                </div>
+            </div>
+            <div class="col-3"></div>
+        </div>
+    </div>
+
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-1"></div>
+                <div class="col-10" style="height: 450px; overflow: auto;">
+                    <table class="tbl-slider">
+                        <thead>
+                            <tr>
+                                <th>شناسه</th>
+                                <th>عنوان</th>
+                                <th>تصویر</th>
+                                <th>قیمت اصلی</th>
+                                <th>قیمت تخفیفی</th>
+                                <th>فعالیت‌ها</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for slider in slider %}
+                                <tr>
+                                    <td>{{ slider.id }}</td>
+                                    <td>{{ slider.title }}</td>
+                                    <td>
+                                        <img src="{{ slider.image.url }}" style="width: 75px; height: 75px;" alt="">
+                                    </td>
+                                    <td>{{ slider.price }}</td>
+                                    <td>{{ slider.sale_price }}</td>
+                                    <td>
+                                        <button type="button" class="btn-edit-slider"
+                                            onclick="setValEditSlider('{{ slider.id }}','{{ slider.title }}','{{ slider.image }}','{{ slider.price }}','{{ slider.sale_price }}')"
+                                            data-bs-toggle="modal" data-bs-target="#editSliderModal">
+                                            <i class="fa-solid fa-pen-to-square"></i>
+                                        </button>
+                                        <button class="btn-delete-slider" onclick="urlDeleteSlide('/accounts/prDeleteSlide/{{ slider.id }}')" data-bs-toggle="modal" data-bs-target="#deletModal">
+                                            <i class="fa-solid fa-trash"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-1"></div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- The Delete Modal -->
+    <div class="modal fade modal-delete-slider" id="deletModal" style="margin-top: 200px;">
+        <div class="modal-dialog">
+            <div class="modal-content">
+        
+                <div class="modal-header bg-dark">
+                    <button type="button" class="btn-close bg-white" aria-label="Close" data-bs-dismiss="modal"></button>
+                </div>
+        
+                <div class="modal-body">
+                    <span style="font-family: 'bnazanin';">آیا می خواهید این اسلاید را حذف کنید؟</span>
+                </div>
+        
+                <div class="modal-footer">
+                    <button type="button" class="btn-noDelete-slider-modal" data-bs-dismiss="modal">
+                        <i class="fa-solid fa-xmark"></i>
+                        خیر
+                    </button>
+                    <a href="" class="btn-delete-slider-modal" id="delete-slider">
+                        <i class="fa-solid fa-check"></i>
+                        بله
+                    </a>
+                </div>
+        
+            </div>
+        </div>
+    </div>
+
+    <!-- The add slider Modal -->
+    <div class="modal fade modal-add-slider" id="addSlideModal" style="margin-top: 120px;">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <div class="modal-header bg-dark">
+                    <button type="button" class="btn-close bg-white" aria-label="Close" data-bs-dismiss="modal"></button>
+                </div>
+
+                <div class="modal-body">
+                    <form action="{% url 'prAddSlider' %}" class="frm-add-slider" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+
+                        <div class="slider-title">
+                            <span class="lbl-slider-title"> عنوان اسلاید </span>
+                            <span class="lbl-arrow"><i class="fa-solid fa-chevron-left"></i></span>
+                            {{ add_slider_form.title }}
+                        </div>
+                        
+                        <div class="slider-select-image">
+                            <span class="lbl-select-image"> تصویر اسلاید </span>
+                            <span class="lbl-arrow"><i class="fa-solid fa-chevron-left"></i></span>
+                            {{ add_slider_form.image }}
+                        </div>
+        
+                        <div class="slider-price">
+                            <span class="lbl-slider-price"> قیمت اصلی </span>
+                            <span class="lbl-arrow"><i class="fa-solid fa-chevron-left"></i></span>
+                            {{ add_slider_form.price }}
+                        </div>
+        
+                        <div class="slider-sale">
+                            <span class="lbl-slider-sale"> قیمت تخفیفی </span>
+                            <span class="lbl-arrow"><i class="fa-solid fa-chevron-left"></i></span>
+                            {{ add_slider_form.sale_price }}
+                        </div>
+
+                        <hr style="border: 1px solid #919191 !important; display: flex;">
+                
+                        <div class="d-flex justify-content-center">
+                            <button type="submit" class="btn-add-slider-modal">
+                            <i class="fa-solid fa-plus"> افزدون اسلاید </i>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- The edit slider Modal -->
+    <div class="modal fade modal-edit-slider mt-2" id="editSliderModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <div class="modal-header bg-dark">
+                    <button type="button" class="btn-close bg-white" aria-label="Close" data-bs-dismiss="modal"></button>
+                </div>
+
+                <div class="modal-body">
+                    <form action="" class="frm-edit-slider" id="frm-edit-slider" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+
+                        <div class="slider-title">
+                            <span class="lbl-slider-title"> عنوان اسلاید </span>
+                            <span class="lbl-arrow"><i class="fa-solid fa-chevron-left"></i></span>
+                            {{ edit_slider_form.title }}
+                        </div>
+                        
+                        <div class="slider-select-image">
+                            <span class="lbl-select-image"> انتخاب تصویر </span>
+                            <span class="lbl-arrow"><i class="fa-solid fa-chevron-left"></i></span>
+                            {{ edit_slider_form.image }}
+                        </div>
+
+                        <div class="slider-show-image">
+                            <span class="lbl-show-image"> نمایش تصویر </span>
+                            <span class="lbl-arrow"><i class="fa-solid fa-chevron-left"></i></span>
+                            <img src="" id="edit-slider-image" alt="">
+                        </div>
+
+                        <div class="slider-price">
+                            <span class="lbl-slider-price"> قیمت اصلی </span>
+                            <span class="lbl-arrow"><i class="fa-solid fa-chevron-left"></i></span>
+                            {{ edit_slider_form.price }}
+                        </div>
+
+                        <div class="slider-sale">
+                            <span class="lbl-slider-sale"> قیمت تخفیفی </span>
+                            <span class="lbl-arrow"><i class="fa-solid fa-chevron-left"></i></span>
+                            {{ edit_slider_form.sale_price }}
+                        </div>
+
+                        <hr style="border: 1px solid #919191 !important; display: flex;">
+
+                        <div class="text-center">
+                            <button type="submit" class="btn-edit-slider-modal">
+                                <i class="fa-solid fa-pen-to-square"> ویرایش اسلاید </i>
+                            </button>
+                        </div>
+                    </form>
+                </div> 
+
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function urlDeleteSlide(url){
+            document.getElementById('delete-slide').href = url
+        }
+        function setValEditSlider(id, title, image, price, sale_price){
+        document.getElementById('frm-edit-slider').action = '/accounts/prEditSlider/' + id + '/';
+        document.getElementById('edit-slider-title').value = title;
+        document.getElementById('edit-slider-image').src = '/media/' + image;
+        document.getElementById('edit-slider-price').value = price;
+        document.getElementById('edit-slider-salePrice').value = sale_price;
+        }
+        $(document).ready(function(){
+        $('#btn-close-alert').click(function(){
+            $('.info-alert').fadeOut();
+        });
+        });
+    </script>
+{% endblock content %}

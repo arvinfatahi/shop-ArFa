@@ -1,0 +1,306 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %}سبد خرید{% endblock title %}
+
+{% block body %}
+
+    {% include "discount_code.html" with discount_code_model_show=discount_code_model_show %}
+    
+    {% include "navbar.html" with all_categorys=all_categorys search_form=search_form %}
+
+    <section>
+        <div class="line-myCart"></div>
+        <nav aria-label="breadcrumb" class="breadcrumb-myCart">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{% url 'index' %}" style="color: #aaa;">خانه</a></li>
+                <i class="fa-solid fa-chevron-left"></i>
+                <li class="breadcrumb-item fw-lighter active" style="color: #aaa; margin-top: -3px;" aria-current="page">&nbsp; سبد خرید</li>
+            </ol>
+        </nav>
+        <header class="header-myCart py-1">
+            <div class="container px-4 px-lg-5 my-5">
+                <div class="title-myCart text-center">
+                    <h1 class="display-4 fw-bolder">
+                        <span><i class="fa-solid fa-basket-shopping"></i> سبد خرید</span>
+                    </h1>
+                    <div class="line"></div>
+                    <p>تمام محصولات خریداری شده را در سبد خرید خود ببینید.</p>
+                </div>
+            </div>
+        </header>
+
+        <div class="info-alert-cart">
+            <button type="button" class="float-end btn-close-alert" id="btn-close-alert">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <li><i class="fa-solid fa-circle-info"></i></li>
+        </div>
+    
+        {% if messages %}
+            {% for messages in messages %}
+                <div class="info-alert-cart-messages">
+                    <button type="button" class="float-end btn-close-alert-messages" id="btn-close-alert-messages">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                    <li><i class="fa-solid fa-circle-info">
+                        {{ messages }}
+                    </i></li>
+                </div>
+            {% endfor %}
+        {% endif %}
+        
+        <div class="container mt-5 mb-5">
+            <div class="row">
+                <div class="col-12">
+                    <div class="row gx-5 gy-0 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center" style="margin-top: 20px;">
+                        <div class="col-8 text-center">
+                            <div class="row">
+                                <table class="tbl-myCart">
+                                    <thead>
+                                        <tr>
+                                            <th>شناسه محصول</th>
+                                            <th>نام محصول</th>
+                                            <th>عکس محصول</th>
+                                            <th>تعداد محصول</th>
+                                            <th>قیمت محصول</th>
+                                            <th>حذف محصول</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% if request.session.my_cart %}
+                                            {% for product in request.session.my_cart %}
+                                                <tr id="product-{{ product.id }}">
+                                                    <td>{{ product.id }}</td>
+                                                    <td>{{ product.name }}</td>
+                                                    <td>
+                                                        <img src="{{ product.image }}" alt="{{ product.image }}" style="width: 75px; height: 75px; margin: 5px;">
+                                                    </td>
+                                                    <td style="width: 150px;">
+                                                        <form action="" id="frm-plus-product" method="post" style="float: right;">
+                                                            {% csrf_token %}
+                                                            <input type="hidden" name="product_id" value="{{ product.id }}">
+                                                            <button type="button" class="btn-plus-cart">
+                                                                <i class="fa-solid fa-plus"></i>
+                                                            </button>
+                                                        </form>
+                                                        <span class="qty" id="qty-{{ product.id }}">{{ product.qty }}</span>
+                                                        <form action="" id="frm-minus-product" method="post" style="float: left;">
+                                                            {% csrf_token %}
+                                                            <input type="hidden" name="product_id" value="{{ product.id }}">
+                                                            <button type="button" class="btn-minus-cart">
+                                                                <i class="fa-solid fa-minus"></i>
+                                                            </button>
+                                                        </form>
+                                                    </td>
+                                                    <td id="price-{{ product.id }}">{{ product.price }}</td>
+                                                    <td>
+                                                        <form action="{% url 'myCartDelete' product.id %}" id="frm-delete-product">
+                                                            {% csrf_token %}
+                                                            <input type="hidden" name="product_id" value="{{ product.id }}">
+                                                            <button type="button" class="btn-delete-myCart">
+                                                                <i class="fa-solid fa-trash"> حذف </i>
+                                                            </button>
+                                                        </form>
+                                                    </td>
+                                                </tr>
+                                            {% endfor %}
+                                        {% else %}
+                                            <tr>
+                                                <td colspan="6" class="p-2">سبد خرید شما خالی است.</td>
+                                            </tr>
+                                        {% endif %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="col-4" style="border-right: 1px solid #ddd;">
+                            <div class="payment">
+                                <div class="row">
+                                    <div class="discount-code">
+                                        <form action="{% url 'discountCodeAccep' %}" method="post">
+                                            {% csrf_token %}
+                                            <label for="" style="color: #198754; font-weight: bold;">کد تخفیف</label>
+                                            <input type="hidden" name="total_price_" value="
+                                                {% if total_price_ == None %}
+                                                    0
+                                                {% else %}
+                                                    {{ total_price_ }}
+                                                {% endif %}
+                                            ">
+                                            {{ discount_code_form.discount_code }}
+                                            <button type="submit" class="btn-discount-code">اعمال</button>
+                                        </form>
+                                    </div>
+                                    <div class="line"></div>
+                                    {% if total_qty_ is not Null %}
+                                        <div class="number-all-product">
+                                            <span>تعداد کل: </span>
+                                            <span id="total-qty">{{ total_qty_ }}</span>
+                                        </div>
+                                    {% else %}
+                                        <div class="number-all-product">
+                                            <span>تعداد کل: </span>
+                                            <span>0</span>
+                                        </div>
+                                    {% endif %}
+                                    {% if total_price_ is not Null %}
+                                        <div class="price-all-product" style="margin-top: 10px;">
+                                            <span>قیمت کل: </span>
+                                            <span id="total-price">{{ total_price_ }}</span>
+                                            <div style="border-top: 1px solid #aaa;">تــــــــــومان</div>
+                                        </div>
+                                    {% else %}
+                                        <div class="price-all-product" style="margin-top: 10px;">
+                                            <span>قیمت کل: </span>
+                                            <span>0</span>
+                                            <div style="border-top: 1px solid #aaa;">تــــــــــومان</div>
+                                        </div>
+                                    {% endif %}
+                                    {% if request.session.final_price_session %}
+                                        <div class="discount-all-product" style="margin-top: 10px;">
+                                            <div class="discount-code-delete">
+                                                <a href="{% url 'discountCodeDelete' %}" class="btn-discount-code-delete">
+                                                    <i class="fa-regular fa-circle-xmark"></i>
+                                                </a>
+                                            </div>
+                                            <span>تخفیف کل: </span>
+                                            <span id="final-price">{{ request.session.final_price_session }}</span>
+                                            <div style="border-top: 1px solid #aaa;">تــــــــــومان</div>
+                                        </div>
+                                    {% endif %}
+                                </div>
+                                <div class="line"></div>
+                                <div class="row">
+                                    <div class="col-12">
+                                        {% if request.user.is_authenticated %}
+                                            {% if request.session.my_cart %}
+                                                <a href="{% url 'reviewProductsCart' %}" class="btn-payment" id="btn-payment">
+                                                    <i class="fa-regular fa-credit-card"> پرداخت </i>
+                                                </a>
+                                            {% else %}
+                                                <div class="alert alert-danger text-center" id="empty-cart-message">
+                                                    <i class="fa-solid fa-circle-info"> برای پرداخت لطفا محصولی به سبد خرید خود اضافه کنید. </i>
+                                                </div>
+                                            {% endif %}
+                                        {% else %}
+                                            <div class="alert alert-danger text-center mt-3">
+                                                <i class="fa-solid fa-circle-info"> برای پرداخت لطفا وارد سایت شوید. </i>
+                                            </div>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
+    <script>
+        $(document).ready(function(){
+            $('#btn-close-alert-messages').click(function(){
+                $('.info-alert-cart-messages').hide();
+            });
+            // ---------------------- delete product in myCart
+            $('.btn-delete-myCart').click(function(){
+
+                var form = $(this).closest("#frm-delete-product");
+                var productID = form.find('input[name="product_id"]').val();
+                
+                $.ajax({
+                    type: "POST",
+                    url: "http://" + window.location.host + "/myCartDelete/" + productID + "/",
+                    data: $("#frm-delete-product").serialize(),
+                    success: function(result){
+                        if(result.status == 'productDeleteToCart')
+                        {
+                            $(".info-alert-cart li i").html("محصول از سبد خرید حذف شد.");
+                            $(".info-alert-cart").fadeIn();
+                            $(".cart-item-count").html(result.total_items);
+                            $('#total-price').html(result.total_price_);
+                            $('#total-qty').html(result.total_qty_);
+                            $('#product-' + productID).remove();
+                            $('#final-price').html(result.final_price_);
+                    
+                            if ($('.tbl-myCart tbody tr').length == 0) {
+                                $('.tbl-myCart tbody').html('<tr><td colspan="6" class="p-3">سبد خرید شما خالی است.</td></tr>');
+                            }
+                            
+                            // بررسی سبد خالی و پنهان کردن دکمه پرداخت
+                            if (result.cart_empty) {
+                                $('#btn-payment').hide();  // پنهان کردن دکمه پرداخت
+                                $('#empty-cart-message').show();  // نمایش پیام خالی بودن سبد
+                            } else {
+                                $('#btn-payment').show();  // نمایش دکمه پرداخت
+                                $('#empty-cart-message').hide();  // پنهان کردن پیام خالی بودن سبد
+                            }
+                        }
+                    },
+                    error: function(e){
+                        $(".info-alert-cart li i").html("محصول از سبد خرید حذف نشد لطفا دوباره تلاش کنید.");
+                        $(".info-alert-cart").fadeIn();
+                    }
+                });
+            });
+            // ---------------------- plusQTY product in myCart
+            $('.btn-plus-cart').click(function(){
+
+                var form = $(this).closest('#frm-plus-product');
+                var productID = form.find('input[name="product_id"]').val();
+
+                $.ajax({
+                    type: "POST",
+                    url: "http://" + window.location.host + "/plusQTY/" + productID + "/",
+                    data: $("#frm-plus-product").serialize(),
+                    success: function(result){
+                        if(result.status == 'plusQTYSuccess')
+                        {
+                            $('#qty-' + productID).html(result.QTY);
+                            $('#total-qty').html(result.total_qty_);
+                            $('#price-' + productID).html(result.price);
+                            $('#total-price').html(result.total_price_);
+                            $('#final-price').html(result.final_price_);
+                        }
+                    },
+                    error: function(e){
+                        $(".info-alert-cart li i").html("محصول از سبد خرید حذف نشد لطفا دوباره تلاش کنید.");
+                        $(".info-alert-cart").fadeIn();
+                    }
+                });
+            });
+            // ---------------------- minusQTY product in myCart
+            $('.btn-minus-cart').click(function(){
+
+                var form = $(this).closest('#frm-minus-product');
+                var productID = form.find('input[name="product_id"]').val();
+
+                $.ajax({
+                    type: "POST",
+                    url: "http://" + window.location.host + "/minusQTY/" + productID + "/",
+                    data: $("#frm-minus-product").serialize(),
+                    success: function(result){
+                        if(result.status == 'minusQTYSuccess')
+                        {
+                            $('#qty-' + productID).html(result.QTY);
+                            $('#total-qty').html(result.total_qty_);
+                            $('#price-' + productID).html(result.price);
+                            $('#total-price').html(result.total_price_);
+                            $('#final-price').html(result.final_price_);
+                        }
+                    },
+                    error: function(e){
+                        $(".info-alert-cart li i").html("محصول از سبد خرید حذف نشد لطفا دوباره تلاش کنید.");
+                        $(".info-alert-cart").fadeIn();
+                    }
+                });
+            });
+        });
+    </script>
+{% endblock body %}
+
+

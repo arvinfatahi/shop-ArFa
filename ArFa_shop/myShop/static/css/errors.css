@@ -1,0 +1,66 @@
+/* ------------------------------ info alert */
+.info-alert{
+    background-color: #00c9f3;
+    color: #fff;
+    font-family: 'bnazanin';
+    font-weight: bold;
+    list-style: none;
+    padding: 4px;
+    text-align: center;
+    width: 100%;
+    margin-bottom: 4px;
+}
+
+.info-alert .btn-close-alert{
+    border: 1px solid #007bff;
+    background-color: #007bff;
+    color: #fff;
+    border-radius: 4px;
+    width: 25px;
+    height: 25px;
+}
+
+/* ------------------------------ info alert cart */
+.info-alert-cart{
+    background-color: #00c9f3;
+    color: #fff;
+    font-family: 'bnazanin';
+    font-weight: bold;
+    list-style: none;
+    padding: 4px;
+    text-align: center;
+    width: 100%;
+    margin-bottom: 4px;
+    display: none;
+}
+
+.info-alert-cart .btn-close-alert{
+    border: 1px solid #007bff;
+    background-color: #007bff;
+    color: #fff;
+    border-radius: 4px;
+    width: 25px;
+    height: 25px;
+}
+
+/* =============================== info alert cart messages */
+.info-alert-cart-messages{
+    background-color: #00c9f3;
+    color: #fff;
+    font-family: 'bnazanin';
+    font-weight: bold;
+    list-style: none;
+    padding: 4px;
+    text-align: center;
+    width: 100%;
+    margin-bottom: 4px;
+}
+
+.info-alert-cart-messages .btn-close-alert-messages{
+    border: 1px solid #007bff;
+    background-color: #007bff;
+    color: #fff;
+    border-radius: 4px;
+    width: 25px;
+    height: 25px;
+}

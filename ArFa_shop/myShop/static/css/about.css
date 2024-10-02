@@ -1,0 +1,89 @@
+.line-about{
+    background: radial-gradient(circle at 10% 20%, rgb(0, 0, 0) 0%, rgb(64, 64, 64) 90.2%);
+    height: 4px;
+}
+
+/* ---------------------------- breadcrumb */
+.breadcrumb-about{
+    margin-bottom: 4px;
+    margin-top: 4px;
+    background: radial-gradient(circle at 10% 20%, rgb(0, 0, 0) 0%, rgb(64, 64, 64) 90.2%);
+}
+
+.breadcrumb-about ol{
+    margin: 10px;
+}
+
+.breadcrumb-about i{
+    color: #aaa;
+    margin-top: 5px;
+    margin-right: 5px;
+}
+
+/* ---------------------------- header */
+.header-about{
+    height: 180px;
+    background: radial-gradient(circle at 10% 20%, rgb(0, 0, 0) 0%, rgb(64, 64, 64) 90.2%);
+}
+
+.header-about .title-about {
+    font-family:'bnazanin';
+    font-size: 40px;
+    font-weight: bold;
+    margin: 0 auto;
+    transition: all 0.5s;
+}
+
+.header-about .title-about span {
+    color: #aaa;
+    transition: all 0.5s;
+}
+
+.header-about .title-about .line {
+    height: 2px;
+    width: 200px;
+    margin: 5px auto;
+    background-color: #aaa;
+    transition: all 0.5s;
+}
+
+.header-about .title-about p{
+    font-size: 16px;
+    font-family: 'bnazanin';
+    color: #aaa;
+    margin-top: 20px;
+}
+
+/* ================================= about */
+.about{
+    box-shadow: 0px 0px 10px #aaa;
+    border-radius: 20px;
+}
+
+.about img{
+    width: 100%;
+    height: 400px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+
+.about p{
+    font-family: 'bnazanin';
+    text-align: justify;
+    margin-top: 10px;
+    color: #323232;
+    width: 100%;
+    padding: 20px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.not-about{
+    background: radial-gradient(circle at 10% 20%, rgb(0, 0, 0) 0%, rgb(64, 64, 64) 90.2%);
+    font-size: 40px;
+    text-align: center;
+    color: #aaa;
+    font-family: 'bnazanin';
+    padding: 50px;
+    border-radius: 20px
+}

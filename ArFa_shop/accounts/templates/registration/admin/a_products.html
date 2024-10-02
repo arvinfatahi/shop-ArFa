@@ -1,0 +1,447 @@
+{% extends "registration/admin/base.html" %}
+
+{% block title %}
+    پنل ادمین | محصولات
+{% endblock title %}
+
+{% block navbar %}
+    {% include "registration/admin/navbar.html" %}
+{% endblock navbar %}
+
+{% block slidebar %}
+    {% include "registration/admin/sidebar.html" %}
+{% endblock slidebar %}
+
+{% block header %}
+    <div class="title-products text-center">
+        <span class="product">
+            <i class="fa-solid fa-basket-shopping"></i> 
+            محصولات
+        </span>
+        <div class="line-products"></div>
+        <div class="breadcrumb-menu" style="margin-top: 10px;">
+            <span>
+                <a href="{% url 'adminPanel' %}">صفحه اصلی</a>
+            </span>
+            <i class="fa-solid fa-chevron-left"></i>
+            <span style="color: #a5a5a5;"> محصولات </span>
+        </div>
+    </div>
+{% endblock header %}
+
+{% block content %}
+
+    <div class="search-add-products container text-center">
+        <div class="row">
+            <div class="col-3"></div>
+            <div class="col-6 d-flex justify-content-center">
+                <div class="btn-add-product">
+                    <a href="" data-bs-toggle="modal" data-bs-target="#addProductModal">
+                        <i class="fa-regular fa-square-plus"> افزودن محصول </i>
+                    </a>
+                    <div class="line"></div>
+                </div>
+                <!-- <form action="" method="post" class="frm-search-product">
+                    {% csrf_token %}
+                    <button type="submit">
+                        <i class="fa-solid fa-magnifying-glass"></i> <span>جستجو</span>
+                    </button>
+                    <input type="text" name="txt-search" placeholder="جستجوی محصول">
+                </form> -->
+            </div>
+            <div class="col-3"></div>
+        </div>
+    </div>
+
+    <!-- message info -->
+    {% for message in messages %}
+      <div class="info-alert">
+        <button type="button" class="float-end btn-close-alert" id="btn-close-alert">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+        <li><i class="fa-solid fa-circle-info"></i> {{ message }} </li>
+      </div>
+    {% endfor %}
+
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12" style="height: 450px; overflow: auto;">
+                    <table class="tbl-products">
+                        <thead>
+                            <tr>
+                                <th>شناسه</th>
+                                <th>نام محصول</th>
+                                <th>درباره محصول</th>
+                                <th>تصویر</th>
+                                <th>دسته</th>
+                                <th>تعداد</th>
+                                <th>قیمت اصلی</th>
+                                <th>قیمت تخفیفی</th>
+                                <th>وضعیت</th>
+                                <th>اسلایدر</th>
+                                <th>فعالیت‌ها</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% if products %}
+                                {% for products in products %}
+                                    <tr>
+                                        <td>{{ products.id }}</td>
+                                        <td style="width: 150px;">{{ products.name }}</td>
+                                        <td style="width: 200px;">{{ products.description }}</td>
+                                        <td><img src="{{ products.image.url }}" style="width: 75px; height: 75px;" alt=""></td>
+                                        <td>{{ products.category }}</td>
+                                        <td>{{ products.number }}</td>
+                                        {% if products.is_sale == True %}
+                                            <td class="text-danger"><strike>{{ products.price }}</strike></td> 
+                                            <td>{{ products.sale_price }}</td>
+                                        {% else %}
+                                            <td>{{ products.price }}</td> 
+                                            <td>-</td>
+                                        {% endif %}
+                                        
+                                        {% if products.state == True %}
+                                            <td>
+                                              <span style="color: #218838;">موجود</span>
+                                            </td>
+                                        {% else %}
+                                            <td>
+                                              <span style="color: #c82333;">ناموجود</span>
+                                            </td>
+                                        {% endif %}
+                                        <td>
+                                            {% if products.slider == True %}
+                                                <i class="fa-solid fa-circle-check text-success"></i>
+                                            {% else %}
+                                                <i class="fa-solid fa-circle-minus text-danger"></i>
+                                            {% endif %}
+                                        </td>
+                                        <td>
+                                            <button type="button" class="btn-add-image"
+                                              onclick="urlAddImagesProduct('{{ products.id }}')"
+                                              data-bs-toggle="modal" data-bs-target="#addImagesProductModal">
+                                              <i class="fa-solid fa-images"></i>
+                                            </button>
+                                            <button type="button" class="btn-edit-product"
+                                              onclick="setValEditProduct('{{ products.id }}','{{ products.name }}','{{ products.price }}','{{ products.category }}','{{ products.description }}','{{ products.image }}','{{ products.is_sale }}','{{ products.sale_price }}','{{ products.number }}','{{ products.slider }}','{{ products.state }}')"
+                                              data-bs-toggle="modal" data-bs-target="#editProductModal">
+                                              <i class="fa-solid fa-pen-to-square"></i>
+                                            </button>
+                                            <button type="button" class="btn-delete-product"
+                                                onclick="urlDeleteProduct('/accounts/aDeleteProduct/{{ products.id }}')" 
+                                                data-bs-toggle="modal" data-bs-target="#deletModal">
+                                                <i class="fa-solid fa-trash"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            {% else %}
+                                <tr >
+                                    <td colspan="11" style="padding:4px;">
+                                        <span style="font-family: 'bnazanin';"> محصولی برای نمایش وجود ندارد. </span>
+                                    </td>
+                                </tr>
+                            {% endif %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- The Delete Modal -->
+    <div class="modal fade modal-delete-product" id="deletModal" style="margin-top: 200px;">
+      <div class="modal-dialog">
+        <div class="modal-content">
+    
+          <div class="modal-header bg-dark">
+            <button type="button" class="btn-close bg-white" aria-label="Close" data-bs-dismiss="modal"></button>
+          </div>
+    
+          <div class="modal-body">
+            <span style="font-family: 'bnazanin';">آیا می خواهید این محصول را حذف کنید؟</span>
+          </div>
+    
+          <div class="modal-footer">
+            <button type="button" class="btn-noDelete-product-modal" data-bs-dismiss="modal">
+              <i class="fa-solid fa-xmark"></i>
+              خیر
+            </button>
+            <a href="" class="btn-delete-product-modal" id="delete-product">
+              <i class="fa-solid fa-check"></i>
+              بله
+            </a>
+          </div>
+    
+        </div>
+      </div>
+    </div>
+
+    <!-- The add product Modal -->
+    <div class="modal fade modal-add-product mt-5" id="addProductModal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+
+          <div class="modal-header bg-dark">
+            <button type="button" class="btn-close bg-white" aria-label="Close" data-bs-dismiss="modal"></button>
+          </div>
+
+          <div class="modal-body">
+            <form action="{% url 'aAddProduct' %}" class="frm-add-product" method="post" enctype="multipart/form-data">
+              {% csrf_token %}
+
+              <div class="product-name">
+                <span class="lbl-product-name"> نام محصول </span>
+                <span class="lbl-arrow"><i class="fa-solid fa-chevron-left"></i></span>
+                {{ add_product_form.name }}
+              </div>
+              
+              <div class="product-price">
+                <span class="lbl-product-price"> قیمت محصول </span>
+                <span class="lbl-arrow"><i class="fa-solid fa-chevron-left"></i></span>
+                {{ add_product_form.price }}
+              </div>
+
+              <div class="product-category">
+                <span class="lbl-product-category"> دسته بندی محصول </span>
+                <span class="lbl-arrow"><i class="fa-solid fa-chevron-left"></i></span>
+                {{ add_product_form.category }}
+              </div>
+
+              <div class="product-description">
+                <span class="lbl-product-description"> درباره محصول </span>
+                <span class="lbl-arrow"><i class="fa-solid fa-chevron-left"></i></span>
+                {{ add_product_form.description }}
+              </div>
+
+              <div class="product-image">
+                <span class="lbl-product-image"> تصویر محصول </span>
+                <span class="lbl-arrow"><i class="fa-solid fa-chevron-left"></i></span>
+                {{ add_product_form.image }}
+              </div>
+
+              <div class="product-sale">
+                <span class="lbl-product-sale"> تخفیف محصول </span>
+                <span class="lbl-arrow"><i class="fa-solid fa-chevron-left"></i></span>
+                {{ add_product_form.is_sale }}
+              </div>
+              
+              <div class="product-sale-price">
+                <span class="lbl-product-sale-price"> تخفیف قیمت </span>
+                <span class="lbl-arrow"><i class="fa-solid fa-chevron-left"></i></span>
+                {{ add_product_form.sale_price }}
+              </div>
+
+              <div class="product-number">
+                <span class="lbl-product-number"> تعداد محصول </span>
+                <span class="lbl-arrow"><i class="fa-solid fa-chevron-left"></i></span>
+                {{ add_product_form.number }}
+              </div>
+
+              <div class="product-slider">
+                <span class="lbl-product-slider"> اسلایدر </span>
+                <span class="lbl-arrow"><i class="fa-solid fa-chevron-left"></i></span>
+                {{ edit_product_form.slider }}
+              </div>
+
+              <div class="product-state">
+                <span class="lbl-product-state"> وضعیت محصول </span>
+                <span class="lbl-arrow"><i class="fa-solid fa-chevron-left"></i></span>
+                {{ add_product_form.state }}
+              </div>
+              <hr>
+              <div class="d-flex justify-content-center">
+                <button type="submit" class="btn-add-product-modal">
+                  <i class="fa-solid fa-plus"> افزدون محصول </i>
+                </button>
+              </div>
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- The add image product Modal -->
+    <div class="modal fade modal-add-images-product" id="addImagesProductModal" style="margin-top: -10px;">
+      <div class="modal-dialog">
+        <div class="modal-content">
+
+          <div class="modal-header bg-dark">
+            <button type="button" class="btn-close bg-white" aria-label="Close" data-bs-dismiss="modal"></button>
+          </div>
+
+          <div class="modal-body">
+            <form action="" class="frm-add-images-product" id="frm-add-images-product" method="post" enctype="multipart/form-data">
+              {% csrf_token %}
+
+              <div class="product-images">
+                <span class="lbl-product-images"> بارگزاری تصاویر دیگر از محصول </span>
+                <span class="lbl-arrow"><i class="fa-solid fa-chevron-left" style="margin-top: 25px;"></i></span>
+                {{ add_images_product_form.image }}
+                <div class="text-center mb-1">
+                  <button type="submit" class="btn-add-images-product-modal">
+                    <i class="fa-solid fa-plus"> افزدون تصاویر </i>
+                  </button>
+                </div>
+              </div>
+              
+              <div class="line"></div>
+
+              <div class="show-product-images-other">
+                <div class="lbl-product-images-other"> سایر تصاویر محصول </div>
+                <span class="lbl-arrow"><i class="fa-solid fa-chevron-down"></i></span>
+                <div>
+                  {% for gallery_product_model in gallery_product_model %}
+                    <div class="product-image-container" data-product-id="{{ gallery_product_model.product_id }}">
+                      <a href="{% url 'aDeleteImages' gallery_product_model.id %}" 
+                          class="delete-product-image">حذف</a>
+                      <img src="{{ gallery_product_model.image.url }}" 
+                            id="product-images-{{ gallery_product_model.product_id }}" 
+                            data-product-id="{{ gallery_product_model.product_id }}"
+                            class="show-products-images" 
+                            alt="">
+                    </div>
+                  {% endfor %}
+                </div>
+              </div>
+
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- The edit product Modal -->
+    <div class="modal fade modal-edit-product mt-2" id="editProductModal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+
+          <div class="modal-header bg-dark">
+            <button type="button" class="btn-close bg-white" aria-label="Close" data-bs-dismiss="modal"></button>
+          </div>
+
+          <div class="modal-body">
+            <form action="" class="frm-edit-product" id="frm-edit-product" method="post" enctype="multipart/form-data">
+              {% csrf_token %}
+
+              <div class="product-name">
+                <span class="lbl-product-name"> نام محصول </span>
+                <span class="lbl-arrow"><i class="fa-solid fa-chevron-left"></i></span>
+                {{ edit_product_form.name }}
+              </div>
+              
+              <div class="product-price">
+                <span class="lbl-product-price"> قیمت محصول </span>
+                <span class="lbl-arrow"><i class="fa-solid fa-chevron-left"></i></span>
+                {{ edit_product_form.price }}
+              </div>
+
+              <div class="product-category">
+                <span class="lbl-product-category"> دسته بندی محصول </span>
+                <span class="lbl-arrow"><i class="fa-solid fa-chevron-left"></i></span>
+                {{ edit_product_form.category }}
+              </div>
+
+              <div class="product-description">
+                <span class="lbl-product-description"> درباره محصول </span>
+                <span class="lbl-arrow"><i class="fa-solid fa-chevron-left"></i></span>
+                {{ edit_product_form.description }}
+              </div>
+
+              <div class="show-product-image">
+                <span class="lbl-product-image"> تصویر محصول </span>
+                <span class="lbl-arrow"><i class="fa-solid fa-chevron-left"></i></span>
+                <img src="" id="edit-product-image" alt="">
+              </div>
+
+              <div class="select-product-image">
+                <span class="lbl-product-image"> انتخاب تصویر </span>
+                <span class="lbl-arrow"><i class="fa-solid fa-chevron-left"></i></span>
+                {{ edit_product_form.image }}
+              </div>
+
+              <div class="product-sale">
+                <span class="lbl-product-sale"> تخفیف محصول </span>
+                <span class="lbl-arrow"><i class="fa-solid fa-chevron-left"></i></span>
+                {{ edit_product_form.is_sale }}
+              </div>
+              
+              <div class="product-sale-price">
+                <span class="lbl-product-sale-price"> تخفیف قیمت </span>
+                <span class="lbl-arrow"><i class="fa-solid fa-chevron-left"></i></span>
+                {{ edit_product_form.sale_price }}
+              </div>
+
+              <div class="product-number">
+                <span class="lbl-product-number"> تعداد محصول </span>
+                <span class="lbl-arrow"><i class="fa-solid fa-chevron-left"></i></span>
+                {{ edit_product_form.number }}
+              </div>
+
+              <div class="product-slider">
+                <span class="lbl-product-slider"> اسلایدر </span>
+                <span class="lbl-arrow"><i class="fa-solid fa-chevron-left"></i></span>
+                {{ edit_product_form.slider }}
+              </div>
+
+              <div class="product-state">
+                <span class="lbl-product-state"> وضعیت محصول </span>
+                <span class="lbl-arrow"><i class="fa-solid fa-chevron-left"></i></span>
+                {{ edit_product_form.state }}
+              </div>
+              <hr>
+              <div class="d-flex justify-content-center">
+                <button type="submit" class="btn-edit-product-modal">
+                  <i class="fa-solid fa-pen-to-square"> ویرایش محصول </i>
+                </button>
+              </div>
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script>
+        function urlDeleteProduct(url){
+            document.getElementById('delete-product').href = url;
+        }
+        function urlAddImagesProduct(id) {
+            document.getElementById('frm-add-images-product').action = '/accounts/aAddImagesProduct/' + id + '/';
+
+            // همه تصاویر و دکمه‌های حذف را پنهان کنید
+            var containers = document.getElementsByClassName('product-image-container');
+            
+            for (var i = 0; i < containers.length; i++) {
+                containers[i].style.display = 'none';
+            }
+
+            // نمایش ظرف‌های مربوط به محصول انتخاب شده
+            var selectedContainers = document.querySelectorAll('div[data-product-id="' + id + '"]');
+            selectedContainers.forEach(function(container) {
+                container.style.display = 'block';
+            });
+        }
+        function setValEditProduct(id, name, price, category, description, image, is_sale, sale_price, number, slider, state){
+            document.getElementById('frm-edit-product').action = '/accounts/aEditProduct/' + id + '/';
+            document.getElementById('edit-product-name').value = name;
+            document.getElementById('edit-product-price').value = price;
+            document.getElementById('edit-product-category').value = category;
+            document.getElementById('edit-product-description').value = description;
+            document.getElementById('edit-product-image').src = '/media/' + image;
+            document.getElementById('edit-product-sale').checked = is_sale;
+            document.getElementById('edit-product-sale-price').value = sale_price;
+            document.getElementById('edit-product-number').value = number;
+            document.getElementById('edit-product-slider').checked = slider;
+            document.getElementById('edit-product-state').checked = state;
+        }
+        $(document).ready(function(){
+            $('#btn-close-alert').click(function(){
+                $('.info-alert').fadeOut();
+            });
+        });
+    </script>
+{% endblock content %}

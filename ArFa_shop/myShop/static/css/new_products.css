@@ -1,0 +1,81 @@
+/* ---------------------------- title */
+.title-new_products {
+    font-family:'bnazanin';
+    font-size: 40px;
+    font-weight: bold;
+    margin: 0 auto;
+    transition: all 0.5s;
+}
+
+.title-new_products a {
+    color: #323232;
+    transition: all 0.5s;
+}
+
+.title-new_products .line {
+    height: 2px;
+    width: 100px;
+    margin: 5px auto;
+    background-color: #323232;
+    transition: all 0.5s;
+}
+
+.title-new_products a:hover {
+    color: #4141ff;
+}
+
+.title-new_products a:hover + .line {
+    background-color: #4141ff;
+    width: 200px;
+}
+
+/* ------------------------- products box */
+.new_products-box {
+    border-radius: 30px;
+    overflow: hidden;
+}
+
+.new_products-box .new_products{
+    color: #191970;
+    background: linear-gradient(0deg, #fdfbfb, #ebedff);
+    border: 1px solid #ccf;
+    margin-top: 10px;
+    border-radius: 20px;
+    overflow: hidden;
+    transition: all 1s;
+}
+.new_products-box .new_products:hover{
+    transform: scale(0.95);
+    border: none;
+    box-shadow: 0px 0px 10px #aaf;
+}
+
+.new_products-box .new_products img {
+    width: 100%;
+    height: 200px;
+}
+
+.new_products-box .new_products:hover img{
+    cursor: pointer;
+    transform: scale(1.1) rotate(-5deg);
+    transition: all 0.5s;
+}
+
+.new_products-box .new_products .btn-add-cart{
+    color: #191970;
+    background-color: #eef;
+    border: 1px solid #ccf;
+    padding: 5px;
+    margin: 5px;
+    border-radius: 4px;
+}
+
+.new_products-box .not-new_products{
+    background: radial-gradient(circle at 10% 20%, rgb(0, 0, 0) 0%, rgb(64, 64, 64) 90.2%);
+    font-size: 40px;
+    text-align: center;
+    color: #aaa;
+    font-family: 'bnazanin';
+    padding: 50px;
+    border-radius: 20px
+}

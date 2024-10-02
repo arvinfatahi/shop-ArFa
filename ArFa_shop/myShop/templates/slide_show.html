@@ -1,0 +1,109 @@
+{% load static %}
+{% load humanize %}
+<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+
+<style>
+    .swiper-pagination-bullet {
+        background-color: #007bff !important;
+        width: 50px !important;
+        height: 10px !important;
+        border-radius: 0% !important;
+    }
+
+    .swiper-pagination-bullet-active {
+        background-color: #ff5722 !important;
+    }
+
+    .swiper-pagination {
+        bottom: 10px !important;
+        text-align: center !important;
+    }
+
+</style>
+
+<!-- mySwiper -->
+<div class="benner-slider">
+    <div class="swiper swiper-slider">
+        <div class="swiper-wrapper">
+            {% if slider %}
+                {% for slider in slider %}
+                    <div class="swiper-slide">
+                        <div class="container-fl">
+                            <div class="row">
+                                <div class="col-2"></div>
+                                <div class="col-4">
+                                    <img src="{{ slider.image.url }}" alt="">
+                                </div>
+                                <div class="col-4">
+                                    <div class="elements">
+                                        <div class="title text-center">{{ slider.name }}</div>
+                                        <div class="price text-center">
+                                            <i class="fa-solid fa-money-bill-wave"></i>
+                                            {% if slider.is_sale == True %}
+                                                <span class="text-decoration-line-through">{{ slider.price|intcomma }}</span> |
+                                                <span>{{ slider.sale_price|intcomma }}</span>&nbsp;
+                                                <span style="font-family: 'bnazanin';"> تومان </span>
+                                            {% else %}
+                                                <span class="text-decoration-line-through">{{ slider.price }}</span>
+                                                <span style="font-family: 'bnazanin';">تومان</span>    
+                                            {% endif %}
+                                        </div>
+                                        <div class="add-to-cart text-center">
+                                            <a href="{% url 'productDetails' slider.id %}">
+                                                <i class="fa-solid fa-cart-shopping"></i>
+                                                <span>خرید محصول</span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-2"></div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <div class="container-fluid" style="background: linear-gradient(90deg, #900, #ff6b6b);">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="not-slider">
+                                    <i class="fa-solid fa-circle-info"></i>
+                                    محصولی در اسلایدر برای نمایش وجود ندارد. لطفا بعدا سر بزنید.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+            
+        </div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+        <div style="width: 25px;">
+            <div class="swiper-pagination"></div>
+        </div>
+    </div>
+</div>
+
+                        
+<!-- Include Swiper JS -->
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+<!-- Initialize Swiper -->
+<script>
+    var swiper = new Swiper(".swiper-slider", {
+        cssMode: true,
+        navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+        },
+        pagination: {
+            el: ".swiper-pagination",
+        },
+        mousewheel: true,
+        keyboard: true,
+    });
+</script>
+
+
+

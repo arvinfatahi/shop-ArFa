@@ -1,0 +1,440 @@
+{% extends "registration/admin/base.html" %}
+
+{% block title %}
+    پنل ادمین | کارمندان
+{% endblock title %}
+
+{% block navbar %}
+    {% include "registration/admin/navbar.html" %}
+{% endblock navbar %}
+
+{% block slidebar %}
+    {% include "registration/admin/sidebar.html" %}
+{% endblock slidebar %}
+
+{% block header %}
+    <div class="title-employees text-center">
+        <span class="employee">
+            <i class="fa-solid fa-user-tie"></i>
+            کارمندان
+        </span>
+        <div class="line-employees"></div>
+        <div class="breadcrumb-menu" style="margin-top: 10px;">
+            <span>
+                <a href="{% url 'adminPanel' %}">صفحه اصلی</a>
+            </span>
+            <i class="fa-solid fa-chevron-left"></i>
+            <span style="color: #a5a5a5;"> کارمندان </span>
+        </div>
+    </div>
+{% endblock header %}
+
+{% block content %}
+    
+    <div class="search-add-employees container text-center">
+        <div class="row">
+            <div class="col-3"></div>
+            <div class="col-6 d-flex justify-content-center">
+                <div class="btn-add-employee">
+                    <a href="" data-bs-toggle="modal" data-bs-target="#addEmployeeModal">
+                        <i class="fa-regular fa-square-plus"> افزودن کارمند </i>
+                    </a>
+                    <div class="line"></div>
+                </div>
+                <!-- <form action="" method="post" class="frm-search-employee">
+                    {% csrf_token %}
+                    <button type="submit">
+                        <i class="fa-solid fa-magnifying-glass"></i> <span>جستجو</span>
+                    </button>
+                    <input type="text" name="txt-search" placeholder="جستجوی کارمند">
+                </form> -->
+            </div>
+            <div class="col-3"></div>
+        </div>
+    </div>
+    
+    <!-- message info -->
+    {% for message in messages %}
+        <div class="info-alert">
+            <button type="button" class="float-end btn-close-alert" id="btn-close-alert">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <li><i class="fa-solid fa-circle-info"></i> {{ message }} </li>
+        </div>
+    {% endfor %}
+
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12" style="height: 450px; overflow: auto;">
+                    <table class="tbl-employees">
+                        <thead>
+                          <tr>
+                            <th>شناسه</th>
+                            <th>نام کاربری</th>
+                            <th>نام کامل</th>
+                            <th>ایمیل</th>
+                            <th>شماره تلفن</th>
+                            <th>آدرس</th>
+                            <th>سمت</th>
+                            <th>حقوق</th>
+                            <th>عکس</th>
+                            <th>تاریخ استخدام</th>
+                            <th>فعالیت</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                            {% if employees %}
+                                {% for employees in employees %}
+                                    <tr>
+                                        <td>{{ employees.id }}</td>
+                                        <td>{{ employees.username }}</td>
+                                        <td>{{ employees.get_full_name }}</td>
+                                        <td>{{ employees.email }}</td>
+                                        <td>{{ employees.phone }}</td>
+                                        <td style="width: 230px;">{{ employees.address }}</td>
+                                        {% if employees.position == 1 %}
+                                            <td>مدیر</td>
+                                        {% elif employees.position == 2 %}
+                                            <td>پشتیبان</td>
+                                        {% elif employees.position == 3 %}
+                                            <td>ثبت کالا</td>
+                                        {% elif employees.position == 4 %}
+                                            <td>حسابدار</td>
+                                        {% elif employees.position == 5 %}
+                                            <td>پست کالا</td>
+                                        {% endif %}
+                                        <td>
+                                            {% if employees.right == null %}
+                                                <span class="text-danger">0</span>
+                                            {% else %}
+                                                <span>{{ employees.right }}</span>
+                                            {% endif %}
+                                        </td>
+                                        {% if employees.image.url is not None %}
+                                            <td><img src="{{ employees.image.url }}" style="width: 75px; height: 75px;" alt=""></td>
+                                        {% endif %}
+                                        
+                                        <td style="width: 130px;">
+                                            <div>{{ employees.shamsi_date_joined }}</div>
+                                            <div>{{ employees.date_joined|time }}</div>
+                                        </td>
+                                        <td style="width: 100px;">
+                                            <button class="btn-edit-employee" style="margin-bottom: 6px;"
+                                                onclick="setValEditEmployee('{{ employees.id }}','{{ employees.first_name }}','{{ employees.last_name }}','{{ employees.position }}','{{ employees.email }}','{{ employees.phone }}','{{ employees.address }}','{{ employees.right }}','{{ employees.image.url }}')"
+                                                data-bs-toggle="modal" data-bs-target="#editEmployeeModal">
+                                                <i class="fa-solid fa-pen-to-square"></i>
+                                            </button>
+                                            <button class="btn-delete-employee"
+                                                onclick="urlDeleteEmployee('/accounts/aDeleteEmployee/{{ employees.id }}')" 
+                                                data-bs-toggle="modal" data-bs-target="#employeeModal">
+                                                <i class="fa-solid fa-trash"></i>
+                                            </button>
+                                            <button type="button" class="btn-setting-employee"
+                                                onclick="setValUsernamePassword('{{ employees.id }}','{{ employees.username }}')"
+                                                data-toggle="modal" data-target="#settingEmployeeModal">
+                                                <i class="fa-solid fa-gear"></i>
+                                            </button>
+                                            <a href="" class="btn-send-message-employee">
+                                                <i class="fa-solid fa-message"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            {% else %}
+                                <tr >
+                                  <td colspan="11" style="padding:4px;">
+                                      <span style="font-family: 'bnazanin';"> کارمندی برای نمایش وجود ندارد. </span>
+                                  </td>
+                                </tr>
+                            {% endif %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- The Delete Modal -->
+    <div class="modal fade modal-delete-employee" id="employeeModal" style="margin-top: 200px;">
+        <div class="modal-dialog">
+            <div class="modal-content">
+        
+                <div class="modal-header bg-dark">
+                    <button type="button" class="btn-close bg-white" aria-label="Close" data-bs-dismiss="modal"></button>
+                </div>
+          
+                <div class="modal-body">
+                    <span style="font-family: 'bnazanin';">آیا می خواهید این کارمند را حذف کنید؟</span>
+                </div>
+          
+                <div class="modal-footer">
+                    <button type="button" class="btn-noDelete-employee-modal" data-bs-dismiss="modal">
+                        <i class="fa-solid fa-xmark"></i>
+                        خیر
+                    </button>
+                    <a href="" class="btn-delete-employee-modal" id="delete-employee">
+                        <i class="fa-solid fa-check"></i>
+                        بله
+                    </a>
+                </div>
+        
+            </div>
+        </div>
+    </div>
+
+    <!-- The add employee Modal -->
+    <div class="modal fade modal-add-employee" id="addEmployeeModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <div class="modal-header bg-dark">
+                    <button type="button" class="btn-close bg-white" aria-label="Close" data-bs-dismiss="modal"></button>
+                </div>
+
+                <div class="modal-body">
+                    <form action="{% url 'aAddEmployee' %}" method="post" class="frm-add-employee" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="employee-username">
+                            <span class="lbl-employee-username">نام کاربری</span>
+                            <span class="lbl-arrow"><i class="fa-solid fa-chevron-left"></i></span>
+                            {{ add_employee_form.username }}
+                        </div>
+
+                        <div class="employee-password">
+                            <span class="lbl-employee-password">رمز عبور</span>
+                            <span class="lbl-arrow"><i class="fa-solid fa-chevron-left"></i></span>
+                            {{ add_employee_form.password1 }}
+                        </div>
+
+                        <div class="employee-re-password">
+                            <span class="lbl-employee-re-password">تکرار رمز عبور</span>
+                            <span class="lbl-arrow"><i class="fa-solid fa-chevron-left"></i></span>
+                            {{ add_employee_form.password2 }}
+                        </div>
+
+                        <div class="employee-first-name">
+                            <span class="lbl-employee-first-name">نام</span>
+                            <span class="lbl-arrow"><i class="fa-solid fa-chevron-left"></i></span>
+                            {{ add_employee_form.first_name }}
+                        </div>
+
+                        <div class="employee-last-name">
+                            <span class="lbl-employee-last-name">نام خانوادگی</span>
+                            <span class="lbl-arrow"><i class="fa-solid fa-chevron-left"></i></span>
+                            {{ add_employee_form.last_name }}
+                        </div>
+                        
+                        <div class="employee-position">
+                            <span class="lbl-employee-position">پست</span>
+                            <span class="lbl-arrow"><i class="fa-solid fa-chevron-left"></i></span>
+                            {{ add_employee_form.position }}
+                        </div>
+
+                        <div class="employee-email">
+                            <span class="lbl-employee-email">ایمیل</span>
+                            <span class="lbl-arrow"><i class="fa-solid fa-chevron-left"></i></span>
+                            {{ add_employee_form.email }}
+                        </div>
+
+                        <div class="employee-phone">
+                            <span class="lbl-employee-phone">تلفن</span>
+                            <span class="lbl-arrow"><i class="fa-solid fa-chevron-left"></i></span>
+                            {{ add_employee_form.phone }}
+                        </div>
+
+                        <div class="employee-address">
+                            <span class="lbl-employee-address">آدرس</span>
+                            <span class="lbl-arrow"><i class="fa-solid fa-chevron-left"></i></span>
+                            {{ add_employee_form.address }}
+                        </div>
+
+                        <div class="employee-right">
+                            <span class="lbl-employee-right">حقوق</span>
+                            <span class="lbl-arrow"><i class="fa-solid fa-chevron-left"></i></span>
+                            {{ add_employee_form.right }}
+                        </div>
+                        
+                        <div class="employee-image-profile">
+                            <span class="lbl-employee-image-profile">عکس پروفایل</span>
+                            <span class="lbl-arrow"><i class="fa-solid fa-chevron-left"></i></span>
+                            {{ add_employee_form.image }}
+                        </div>
+
+                        {{ add_employee_form.is_staff }}
+
+                        <hr style="border: 1px solid #919191 !important; display: flex;">
+                          
+                          <div class="d-flex justify-content-center">
+                              <button type="submit" class="btn-add-employee-modal">
+                                  <i class="fa-solid fa-plus"> افزودن کارمند </i>
+                              </button>
+                          </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- The edit employee Modal -->
+    <div class="modal fade modal-edit-employee" id="editEmployeeModal" style="margin-top: 50px;">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <div class="modal-header bg-dark">
+                    <button type="button" class="btn-close bg-white" aria-label="Close" data-bs-dismiss="modal"></button>
+                </div>
+
+                <div class="modal-body">
+                    <form action="" class="frm-edit-employee" id="frm-edit-employee" method="post">
+                        {% csrf_token %}
+
+                        <div class="employee-first-name">
+                            <span class="lbl-employee-first-name">نام</span>
+                            <span class="lbl-arrow"><i class="fa-solid fa-chevron-left"></i></span>
+                            {{ edit_employee_form.first_name }}
+                        </div>
+
+                        <div class="employee-last-name">
+                            <span class="lbl-employee-last-name">نام خانوادگی</span>
+                            <span class="lbl-arrow"><i class="fa-solid fa-chevron-left"></i></span>
+                            {{ edit_employee_form.last_name }}
+                        </div>
+
+                        <div class="employee-position">
+                            <span class="lbl-employee-position">پست</span>
+                            <span class="lbl-arrow"><i class="fa-solid fa-chevron-left"></i></span>
+                            {{ edit_employee_form.position }}
+                        </div>
+
+                        <div class="employee-email">
+                            <span class="lbl-employee-email">ایمیل</span>
+                            <span class="lbl-arrow"><i class="fa-solid fa-chevron-left"></i></span>
+                            {{ edit_employee_form.email }}
+                        </div>
+
+                        <div class="employee-phone">
+                            <span class="lbl-employee-phone">تلفن</span>
+                            <span class="lbl-arrow"><i class="fa-solid fa-chevron-left"></i></span>
+                            {{ edit_employee_form.phone }}
+                        </div>
+
+                        <div class="employee-address">
+                            <span class="lbl-employee-address">آدرس</span>
+                            <span class="lbl-arrow"><i class="fa-solid fa-chevron-left"></i></span>
+                            {{ edit_employee_form.address }}
+                        </div>
+
+                        <div class="employee-right">
+                            <span class="lbl-employee-right">حقوق</span>
+                            <span class="lbl-arrow"><i class="fa-solid fa-chevron-left"></i></span>
+                            {{ edit_employee_form.right }}
+                        </div>
+                        
+                        <div class="employee-select-image">
+                            <span class="lbl-employee-select-image">انتخاب عکس</span>
+                            <span class="lbl-arrow"><i class="fa-solid fa-chevron-left"></i></span>
+                            {{ edit_employee_form.image }}
+                        </div>
+                        
+                        <div class="employee-show-image">
+                            <span class="lbl-employee-show-image">نمایش عکس</span>
+                            <span class="lbl-arrow"><i class="fa-solid fa-chevron-left"></i></span>
+                            <img src="" class="show-image" id="edit-employee-show-image" alt="">
+                        </div>
+                        
+                        <hr style="border: 1px solid #919191 !important; display: flex;">
+                        
+                        <div class="d-flex justify-content-center">
+                            <button type="submit" class="btn-edit-employee-modal">
+                                <i class="fa-solid fa-pen-to-square"> ویرایش کارمند </i>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- setting users Modal -->
+    <div class="modal fade modal-setting-employee" id="settingEmployeeModal" style="margin-top: 150px;" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+
+                <div class="modal-header bg-dark">
+                    <button type="button" class="btn-close bg-white" aria-label="Close" data-dismiss="modal"></button>
+                </div>
+
+                <div class="modal-body">
+                    <form action="" class="frm-edit-employee-username" id="frm-edit-employee-username" method="post">
+                        {% csrf_token %}
+
+                        <div class="employee-username">
+                            <span class="lbl-employee-username"> نام کاربری </span>
+                            <span class="lbl-arrow"><i class="fa-solid fa-chevron-left"></i></span>
+                            {{ edit_username_form.username }}
+                        </div>
+
+                        <div class="text-center">
+                            <button type="submit" class="btn-edit-employee-username-modal">
+                                <i class="fa-solid fa-pen-to-square"> ویرایش نام کاربری </i>
+                            </button>
+                        </div>
+                    </form>
+                    <hr>
+                    <form action="" class="frm-edit-employee-password" id="frm-edit-employee-password" method="post">
+                        {% csrf_token %}
+
+                        <div class="employee-password">
+                            <span class="lbl-employee-password"> رمز عبور </span>
+                            <span class="lbl-arrow"><i class="fa-solid fa-chevron-left"></i></span>
+                            {{ edit_password_form.password1 }}
+                        </div>
+
+                        <div class="employee-rePassword">
+                            <span class="lbl-employee-rePassword"> تکرار رمز عبور </span>
+                            <span class="lbl-arrow"><i class="fa-solid fa-chevron-left"></i></span>
+                            {{ edit_password_form.password2 }}
+                        </div>
+
+                        <div class="text-center">
+                            <button type="submit" class="btn-edit-employee-password-modal">
+                                <i class="fa-solid fa-pen-to-square"> ویرایش رمز عبور </i>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function urlDeleteEmployee(url){
+            document.getElementById('delete-employee').href = url
+        }
+        function setValEditEmployee(id, first_name, last_name, position, email, phone, address, right, image){
+            document.getElementById('frm-edit-employee').action = '/accounts/aEditEmployee/' + id + '/';
+            document.getElementById('edit-employee-first-name').value = first_name;
+            document.getElementById('edit-employee-last-name').value = last_name;
+            document.getElementById('edit-employee-position').value = position;
+            document.getElementById('edit-employee-email').value = email;
+            document.getElementById('edit-employee-phone').value = phone;
+            document.getElementById('edit-employee-address').value = address;
+            document.getElementById('edit-employee-right').value = right;
+            document.getElementById('edit-employee-show-image').src = image;
+        }
+        function setValUsernamePassword(id, username){
+            document.getElementById('frm-edit-employee-username').action = '/accounts/changeUsernameAdminEmployee/' + id + '/';
+            document.getElementById('frm-edit-employee-password').action = '/accounts/changePassAdminEmployee/' + id + '/';
+            document.getElementById('edit-users-username').value = username;
+        }
+        $(document).ready(function(){
+            $('#btn-close-alert').click(function(){
+                $('.info-alert').fadeOut();
+            });
+        });
+    </script>
+{% endblock content %}

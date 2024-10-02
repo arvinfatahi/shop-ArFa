@@ -1,0 +1,66 @@
+{% load static %}
+
+<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+
+<section>
+    <div class="container px-4 px-lg-5 mt-5">
+        <!-- title -->
+        <div class="title-category-product text-center">
+            
+            <a href="{% url 'allCategory' %}" class="text-decoration-none"><i class="fa-solid fa-layer-group"></i> خرید براساس دسته بندی</a>
+            <div class="line"></div>
+            <p style="font-size: 16px; font-weight: normal;">براساس دسته‌های مورد نظر خرید کنید.</p>
+
+        </div>
+
+        <div class="benner-category">
+            <div class="swiper swiper-category">
+                <div class="swiper-wrapper">
+                    {% if all_categorys %}
+                        {% for all_categorys in all_categorys %}
+                            <div class="swiper-slide">
+                                <div class="category">
+                                    <i class="fa-solid fa-layer-group" style="color: #323232; font-size: 40px;"></i>
+                                    <div class="title text-center">
+                                        <span>{{ all_categorys.name }}</span>
+                                    </div>
+                                    
+                                    <div class="btn-see-category text-center">
+                                        <a href="{% url 'allProductsCategory' all_categorys.id %}" class="mt-auto">
+                                            <i class="fa-solid fa-eye"> مشاهده </i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    {% else %}
+                        <div class="col-12">
+                            <div class="not-categorys">
+                                <i class="fa-solid fa-circle-info"></i>
+                                دسته‌ای برای نمایش وجود ندارد. لطفا بعدا سر بزنید.
+                            </div>
+                        </div>
+                    {% endif %}
+                    
+                </div>
+                <div class="swiper-pagination" style="background-color: #eee; padding: 4px; border: 1px solid #ddd; border-radius: 50px;"></div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+
+
+<script>
+    var swiper = new Swiper(".swiper-category", {
+        slidesPerView: 5,
+        spaceBetween: 30,
+        pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+        },
+    });
+</script>

@@ -1,0 +1,145 @@
+@keyframes animationSale{
+    from{font-size: 14px;}
+    to{font-size: 18px;}
+}
+
+/* =============================================== green */
+.main-advertising-box .advertising-green{
+    background: linear-gradient(90deg, #378B29, #74D680);
+    padding: 20px;
+    font-family: 'bnazanin';
+    border-radius: 30px;
+    height: 300px;
+    display: flex;
+}
+
+.main-advertising-box .advertising-green .advertising-txt .sale-label{
+    background-color: #fff;
+    color: #378B29;
+    padding: 5px;
+    font-size: 14px;
+    border-radius: 50px;
+    animation: animationSale;
+    animation-iteration-count: infinite;
+    animation-duration: 2s;
+    animation-direction: alternate;
+}
+/* =============================================== red */
+.main-advertising-box .advertising-red{
+    background: linear-gradient(90deg, #900, #ff6b6b);
+    padding: 20px;
+    font-family: 'bnazanin';
+    border-radius: 30px;
+    height: 300px;
+    display: flex;
+}
+
+.main-advertising-box .advertising-red .advertising-txt .sale-label{
+    position: relative;
+    top: 0px;
+    background-color: #fff;
+    color: #900;
+    padding: 5px;
+    font-size: 14px;
+    border-radius: 50px;
+    animation: animationSale;
+    animation-iteration-count: infinite;
+    animation-duration: 2s;
+    animation-direction: alternate;
+}
+
+/* =============================================== purple */
+.main-advertising-box .advertising-purple{
+    background: linear-gradient(90deg, #6C33A3, #c180ff);
+    padding: 20px;
+    font-family: 'bnazanin';
+    border-radius: 30px;
+    height: 300px;
+    display: flex;
+}
+
+.main-advertising-box .advertising-purple .advertising-txt .sale-label{
+    position: relative;
+    top: 0px;
+    background-color: #fff;
+    color: #6C33A3;
+    padding: 5px;
+    font-size: 14px;
+    border-radius: 50px;
+    animation: animationSale;
+    animation-iteration-count: infinite;
+    animation-duration: 2s;
+    animation-direction: alternate;
+}
+
+/* =============================================== blue */
+.main-advertising-box .advertising-blue{
+    background: linear-gradient(90deg, #29539B, #94bbfd);
+    padding: 20px;
+    font-family: 'bnazanin';
+    border-radius: 30px;
+    height: 300px;
+    display: flex;
+}
+
+.main-advertising-box .advertising-blue .advertising-txt .sale-label{
+    position: relative;
+    top: 0px;
+    background-color: #fff;
+    color: #29539B;
+    padding: 5px;
+    font-size: 14px;
+    border-radius: 50px;
+    animation: animationSale;
+    animation-iteration-count: infinite;
+    animation-duration: 2s;
+    animation-direction: alternate;
+}
+
+/* ============================================== */
+.main-advertising-box .advertising-green img,
+.main-advertising-box .advertising-red img,
+.main-advertising-box .advertising-purple img,
+.main-advertising-box .advertising-blue img{
+    width: 90%;
+    height: 95%;
+}
+
+.main-advertising-box .advertising-green .advertising-txt,
+.main-advertising-box .advertising-red .advertising-txt,
+.main-advertising-box .advertising-purple .advertising-txt,
+.main-advertising-box .advertising-blue .advertising-txt{
+    text-align: center;
+}
+
+.main-advertising-box .advertising-green .advertising-txt .sale-text,
+.main-advertising-box .advertising-red .advertising-txt .sale-text,
+.main-advertising-box .advertising-purple .advertising-txt .sale-text,
+.main-advertising-box .advertising-blue .advertising-txt .sale-text{
+    margin-top: 10px;
+    top: 80px;
+    position: relative;
+    font-size: 18px;
+    font-weight: bold;
+    color: #fff;
+}
+
+.main-advertising-box .advertising-green .advertising-txt .sale-title,
+.main-advertising-box .advertising-red .advertising-txt .sale-title,
+.main-advertising-box .advertising-purple .advertising-txt .sale-title,
+.main-advertising-box .advertising-blue .advertising-txt .sale-title{
+    color: #fff;
+    font-weight: bold;
+    position: relative;
+    top: 50px;
+}
+
+.main-advertising-box .not-advertising{
+    background: radial-gradient(circle at 10% 20%, rgb(0, 0, 0) 0%, rgb(64, 64, 64) 90.2%);
+    font-size: 40px;
+    text-align: center;
+    color: #aaa;
+    font-family: 'bnazanin';
+    padding: 50px;
+    border-radius: 20px
+}

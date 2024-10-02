@@ -1,0 +1,245 @@
+{% extends "registration/admin/base.html" %}
+
+{% block title %}
+    پنل ادمین | برندها
+{% endblock title %}
+
+{% block navbar %}
+    {% include "registration/admin/navbar.html" %}
+{% endblock navbar %}
+
+{% block slidebar %}
+    {% include "registration/admin/sidebar.html" %}
+{% endblock slidebar %}
+
+{% block header %}
+    <div class="title-brands text-center">
+        <span class="brands">
+            <i class="fa-solid fa-clipboard-check"></i>
+            برندها
+        </span>
+        <div class="line-brands"></div>
+        <div class="breadcrumb-menu" style="margin-top: 10px;">
+            <span>
+                <a href="{% url 'adminPanel' %}">صفحه اصلی</a>
+            </span>
+            <i class="fa-solid fa-chevron-left"></i>
+            <span style="color: #a5a5a5;"> برندها </span>
+        </div>
+    </div>
+{% endblock header %}
+
+{% block content %}
+
+    <div class="search-add-brands container text-center">
+        <div class="row">
+            <div class="col-3"></div>
+            <div class="col-6 d-flex justify-content-center">
+                <!-- <form action="" method="post" class="frm-search-brands">
+                    {% csrf_token %}
+                    <button type="submit">
+                        <i class="fa-solid fa-magnifying-glass"></i> <span>جستجو</span>
+                    </button>
+                    <input type="text" name="txt-search" placeholder="جستجوی برند">
+                </form> -->
+            </div>
+            <div class="col-3"></div>
+        </div>
+    </div>
+
+    <!-- message info -->
+    {% for message in messages %}
+        <div class="info-alert">
+            <button type="button" class="float-end btn-close-alert" id="btn-close-alert">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <li><i class="fa-solid fa-circle-info"></i> {{ message }} </li>
+        </div>
+    {% endfor %}
+
+    <section class="content">
+        <div class="container-fluid mb-4 mt-4">
+            <div class="row gx-4 gy-4 pb-4" style="height: 450px; overflow: auto;">
+
+                <div class="col-3">
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#addBrandModal">
+                        <div class="add-brand-box">
+                            <i class="fa-solid fa-circle-plus"></i>
+                        </div>
+                    </a>
+                </div>
+
+                {% if brand_show %}
+                    {% for brand_show in brand_show %}
+                        <div class="col-3">
+                            <div class="show-brands">
+                                <img src="{{ brand_show.image.url }}" style="filter: grayscale();" alt="">
+                                <div class="txt-brand"> {{ brand_show.name }} </div>
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div class="edit-brand">
+                                            <button type="button" class="btn-edit-brand"
+                                                onclick="setValEditBrand('{{ brand_show.id }}','{{ brand_show.name }}','{{ brand_show.image }}')"
+                                                data-bs-toggle="modal" data-bs-target="#editBrandModal">
+                                                <i class="fa-solid fa-pen-to-square"></i>
+                                                <span> ویرایش </span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="delete-brand">
+                                            <button class="btn-delete-brand"
+                                                onclick="urlDeleteBrand('/accounts/aDeleteBrand/{{ brand_show.id }}')"
+                                                data-bs-toggle="modal" data-bs-target="#deletBrandModal">
+                                                <i class="fa-solid fa-trash"></i>
+                                                <span> حذف </span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    <div class="col-12">
+                        <div class="alert info-alert" style="font-size: 30px;">
+                            <i class="fa-solid fa-circle-info"></i>
+                            برندی وجود ندارد. لطف با زدن + برندی اضافه کنید.
+                        </div>
+                    </div>
+                {% endif %}
+                
+                
+            </div>
+        </div>
+    </section>
+
+    <!-- The Delete brand Modal -->
+    <div class="modal fade modal-delete-brands" id="deletBrandModal" style="margin-top: 200px;">
+        <div class="modal-dialog">
+            <div class="modal-content">
+        
+                <div class="modal-header bg-dark">
+                    <button type="button" class="btn-close bg-white" aria-label="Close" data-bs-dismiss="modal"></button>
+                </div>
+        
+                <div class="modal-body">
+                    <span style="font-family: 'bnazanin';">آیا می خواهید این برند را حذف کنید؟</span>
+                </div>
+        
+                <div class="modal-footer">
+                    <button type="button" class="btn-noDelete-brands-modal" data-bs-dismiss="modal">
+                        <i class="fa-solid fa-xmark"></i>
+                        خیر
+                    </button>
+                    <a href="" class="btn-delete-brands-modal" id="delete-brand">
+                        <i class="fa-solid fa-check"></i>
+                        بله
+                    </a>
+                </div>
+        
+            </div>
+        </div>
+    </div>
+
+    <!-- The add Brand Modal -->
+    <div class="modal fade modal-add-brands" id="addBrandModal" style="margin-top: 200px;">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <div class="modal-header bg-dark">
+                    <button type="button" class="btn-close bg-white" aria-label="Close" data-bs-dismiss="modal"></button>
+                </div>
+
+                <div class="modal-body">
+                    <form action="{% url 'aAddBrand' %}" method="post" class="frm-add-brands" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        
+                        <div class="brands-name">
+                            <span class="lbl-brands-name"> نام برند </span>
+                            <span class="lbl-arrow"><i class="fa-solid fa-chevron-left"></i></span>
+                            {{ add_brand_form.name }}
+                        </div>
+
+                        <div class="brands-image">
+                            <span class="lbl-brands-image" style="height: 36px;"> تصویر برند </span>
+                            <span class="lbl-arrow" style="height: 36px;"><i class="fa-solid fa-chevron-left"></i></span>
+                            {{ add_brand_form.image }}
+                        </div>
+                        <hr style="border: 1px solid #919191 !important; display: flex;">
+                        <div class="text-center">
+                            <button type="submit" class="btn-add-brands-modal">
+                                <i class="fa-solid fa-plus"> افزدون برند </i>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- The edit Brand Modal -->
+    <div class="modal fade modal-edit-brands" id="editBrandModal" style="margin-top: 150px;">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+            <div class="modal-header bg-dark">
+                <button type="button" class="btn-close bg-white" aria-label="Close" data-bs-dismiss="modal"></button>
+            </div>
+
+            <div class="modal-body">
+                <form action="" method="post" class="frm-edit-brands" id="frm-edit-brands" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    
+                    <div class="brands-name">
+                        <span class="lbl-brands-name"> نام برند </span>
+                        <span class="lbl-arrow"><i class="fa-solid fa-chevron-left"></i></span>
+                        {{ edit_brand_form.name }}
+                    </div>
+
+                    <div class="select-brands-image">
+                        <span class="lbl-brands-image" style="height: 36px;"> انتخاب تصویر </span>
+                        <span class="lbl-arrow" style="height: 36px;"><i class="fa-solid fa-chevron-left"></i></span>
+                        {{ edit_brand_form.image }}
+                    </div>
+
+                    <div class="show-brands-image">
+                        <span class="lbl-brands-image" style="height: 36px;"> تصویر برند </span>
+                        <span class="lbl-arrow" style="height: 36px;"><i class="fa-solid fa-chevron-left"></i></span>
+                        <img src="" id="edit-brands-image" alt="">
+                    </div>
+
+                    <hr style="border: 1px solid #919191 !important; display: flex;">
+
+                    <div class="text-center">
+                        <button type="submit" class="btn-edit-brands-modal">
+                            <i class="fa-solid fa-pen-to-square"> ویرایش برند </i>
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+
+            </div>
+        </div>
+    </div>
+     
+  <script>
+    function urlDeleteBrand(url){
+        document.getElementById('delete-brand').href = url
+    }
+    function setValEditBrand(id, name, image){
+        document.getElementById('frm-edit-brands').action = '/accounts/aEditBrand/' + id + '/';
+        document.getElementById('edit-brands-name').value = name;
+        document.getElementById('edit-brands-image').src = '/media/' + image;
+    }
+    $(document).ready(function(){
+      $('#btn-close-alert').click(function(){
+        $('.info-alert').fadeOut();
+      });
+    });
+  </script>
+
+{% endblock content %}

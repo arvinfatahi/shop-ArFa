@@ -1,0 +1,92 @@
+{% extends "registration/product_registration/base.html" %}
+
+{% block title %}
+    پنل کارمندان | صفحه اصلی
+{% endblock title %}
+
+{% block navbar %}
+    {% include "registration/product_registration/navbar.html" %}
+{% endblock navbar %}
+
+{% block slidebar %}
+    {% include "registration/product_registration/sidebar.html" with ticket_PR=ticket_PR %}
+{% endblock slidebar %}
+
+{% block header %}
+    <div class="title-mainPage text-center">
+        <span class="mainPage">
+            <i class="fa-solid fa-house"></i>
+            صفحه اصلی
+        </span>
+        <div class="line-admin"></div>
+        <div class="breadcrumb-menu" style="margin-top: 10px;">
+            <span> به پنل کارمند ثبت کالا خوش آمدید </span>
+        </div>
+    </div>
+{% endblock header %}
+
+{% block content %}
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="container-fluid mb-4">
+            <div class="row">
+
+                <div class="col-lg-3 col-6">
+                    <div class="products-box">
+                        <i class="icon fa-solid fa-basket-shopping"></i>
+                        <div class="title">محصولات</div>
+                        <div class="products-login">
+                            <a href="{% url 'prProducts' %}">
+                                <span>ورود</span>
+                                <i class="fas fa-arrow-circle-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-6">
+                    <div class="categorys-box">
+                        <i class="icon fa-solid fa-layer-group"></i>
+                        <div class="title">دسته‌ها</div>
+                        <div class="categorys-login">
+                            <a href="{% url 'prCategory' %}">
+                                <span>ورود</span>
+                                <i class="fas fa-arrow-circle-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-6">
+                    <div class="avertising-box">
+                        <i class="icon fa-solid fa-rectangle-ad"></i>
+                        <div class="title">تبلیغات</div>
+                        <div class="avertising-login">
+                            <a href="{% url 'prMainAvertising' %}">
+                                <span>ورود</span>
+                                <i class="fas fa-arrow-circle-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-6">
+                    <div class="discount-code-box">
+                        <i class="icon fa-solid fa-percent"></i>
+                        <div class="title">کد تخفیف</div>
+                        <div class="discount-code-login">
+                            <a href="{% url 'prDiscountCode' %}">
+                                <span>ورود</span>
+                                <i class="fas fa-arrow-circle-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+{% endblock content %}

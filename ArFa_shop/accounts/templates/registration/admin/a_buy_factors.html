@@ -1,0 +1,114 @@
+{% extends "registration/admin/base.html" %}
+
+{% block title %}
+    پنل ادمین | فاکتورهای خرید
+{% endblock title %}
+
+{% block navbar %}
+    {% include "registration/admin/navbar.html" %}
+{% endblock navbar %}
+
+{% block slidebar %}
+    {% include "registration/admin/sidebar.html" %}
+{% endblock slidebar %}
+
+{% block header %}
+    <div class="title-buy-factors text-center">
+        <span class="buy-factors">
+            <i class="fa-solid fa-file"></i>
+            فاکتورهای خرید
+        </span>
+        <div class="line-buy-factors"></div>
+        <div class="breadcrumb-menu" style="margin-top: 10px;">
+            <span>
+                <a href="{% url 'adminPanel' %}">صفحه اصلی</a>
+            </span>
+            <i class="fa-solid fa-chevron-left"></i>
+            <span style="color: #a5a5a5;"> فاکتورهای خرید </span>
+        </div>
+    </div>
+{% endblock header %}
+
+{% block content %}
+
+    <div class="search-buy-factors container text-center">
+        <div class="row">
+            <div class="col-3"></div>
+            <div class="col-6 d-flex justify-content-center">
+                <!-- <form action="" method="post" class="frm-search-buy-factors">
+                    {% csrf_token %}
+                    <button type="submit">
+                        <i class="fa-solid fa-magnifying-glass"></i> <span>جستجو</span>
+                    </button>
+                    <input type="text" name="txt-search" placeholder="جستجوی فاکتور">
+                </form> -->
+            </div>
+            <div class="col-3"></div>
+        </div>
+    </div>
+
+    <!-- message info -->
+    {% for message in messages %}
+      <div class="info-alert">
+        <button type="button" class="float-end btn-close-alert" id="btn-close-alert">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+        <li><i class="fa-solid fa-circle-info"></i> {{ message }} </li>
+      </div>
+    {% endfor %}
+
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12" style="height: 450px; overflow: auto;">
+                    <table class="tbl-buy-factors">
+                        <thead>
+                            <tr>
+                                <th>شناسه</th>
+                                <th>نام کاربری</th>
+                                <th>نام کامل</th>
+                                <th>کد سفارش</th>
+                                <th>شماره موبایل</th>
+                                <th>آدرس</th>
+                                <th>صدور فاکتور</th>
+                                <th>محصولات</th>
+                                <th>تاریخ خرید</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% if factor_show %}
+                                {% for factor_show in factor_show %}
+                                    <tr>
+                                        <td>{{ factor_show.id }}</td>
+                                        <td>{{ factor_show.user.username }}</td>
+                                        <td>{{ factor_show.user.get_full_name }}</td>
+                                        <td>{{ factor_show.bank_transaction.tracking_code }}</td>
+                                        <td>{{ factor_show.user.phone }}</td>
+                                        <td style="width:300px;">{{ factor_show.user.province }} - {{ factor_show.user.city }} - {{ factor_show.user.address }}</td>
+                                        <td>
+                                            {% if factor_show.is_factor == 1 %}
+                                                بله
+                                            {% else %}
+                                                خیر
+                                            {% endif %}</td>
+                                        <td>
+                                            <a href="{% url 'showProductsUser' factor_show.id %}" class="btn-user-products"> محصولات </a>
+                                        </td>
+                                        <td>{{ factor_show.shamsi_date }}</td>
+                                    </tr>
+                                {% endfor %}
+                            {% else %}
+                                <tr >
+                                    <td colspan="10" style="padding:4px;">
+                                        <span style="font-family: 'bnazanin';"> فاکتوری برای نمایش وجود ندارد. </span>
+                                    </td>
+                                </tr>
+                            {% endif %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock content %}

@@ -1,0 +1,105 @@
+<!-- Footer-->
+<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+<div class="footer">
+    <div class="body">
+        <div class="container">
+            <div class="row">
+                <div class="col-1"></div>
+                <div class="col-10">
+                    <div class="row gx-5 mt-5">
+                        <!-- address -->
+                        <div class="col-md-4">
+                            <div class="address">
+                                <div class="title text-center"> آدرس </div>
+                                <hr>
+                                <div>
+                                    <div class="map" id="map"></div>
+                                </div>
+                                <div class="txt-location"><i class="fa-solid fa-location-dot"></i> ایران - کرمانشاه - روانسر </div>
+                            </div>
+                        </div>
+                        
+                        <!-- service -->
+                        <div class="col-md-4">
+                            <div class="service">
+                                <div class="title text-center" style="font-size: 24px; font-weight: bold;"> خدمات </div>
+                                <hr>
+                                <div class="txt-service row">
+                                    <div><i class="fa-solid fa-truck-fast"></i> امکان تحویل اکسپرس</div>
+                                    <div><i class="fa-regular fa-credit-card"></i> امکان پرداخت در محل</div>
+                                    <div><i class="fa-solid fa-clock"></i> 24 ساعته</div>
+                                    <div><i class="fa-solid fa-rotate-left"></i> هفت روز ضمانت بازگشت کالا</div>
+                                    <div><i class="fa-solid fa-o"></i> ضمانت اصل بودن کالا</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- social-networks -->
+                        <div class="col-md-4">
+                            <div class="social-networks">
+                                <div class="title text-center" style="font-size: 24px; font-weight: bold;"> با ما همراه باشید </div>
+                                <hr>
+                                <div class="logo text-center">
+                                    <div class="instagram">
+                                        <a href="#">
+                                            <i class="fa-brands fa-instagram"></i>
+                                            <span> اینستاگرام </span>
+                                        </a>
+                                    </div>
+                                    <div class="telegram">
+                                        <a href="#">
+                                            <i class="fa-brands fa-telegram"></i>
+                                            <span> تلگرام </span>
+                                        </a>
+                                    </div>
+                                    <div class="whatsapp">
+                                        <a href="#">
+                                            <i class="fa-brands fa-whatsapp"></i>
+                                            <span> واتساپ </span>
+                                        </a>
+                                    </div>
+                                    <div class="pinterest">
+                                        <a href="#">
+                                            <i class="fa-brands fa-pinterest"></i>
+                                            <span> پینتریست </span>
+                                        </a>
+                                    </div>
+                                    <div class="linkedin">
+                                        <a href="#">
+                                            <i class="fa-brands fa-linkedin"></i>
+                                            <span> لینکدین </span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-1"></div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <div class="copyright">
+                        <p class="m-0 text-center">Copyright &copy; {% now "Y"  %}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<script>
+    // تنظیم نقشه و مرکز آن (مثلاً تهران)
+    var map = L.map('map').setView([34.7191, 46.6503], 13);
+
+    // بارگذاری و نمایش نقشه از OpenStreetMap
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 18,
+    }).addTo(map);
+
+    // اضافه کردن یک نشان‌گر (مارکر) روی نقشه
+    L.marker([34.7191, 46.6503]).addTo(map)
+    .bindPopup('شهرستان روانسر')
+    .openPopup();
+</script>

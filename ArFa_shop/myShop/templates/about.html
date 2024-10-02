@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% load humanize %}
+{% load static %}
+
+{% block title %}درباره ما{% endblock title %}
+
+{% block body %}
+
+    {% include "discount_code.html" with discount_code_model_show=discount_code_model_show %}
+    
+    {% include "navbar.html" with all_categorys=all_categorys %}
+    
+    <section>
+        <div class="line-about"></div>
+        <nav aria-label="breadcrumb" class="breadcrumb-about">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{% url 'index' %}" style="color: #aaa;">خانه</a></li>
+                <i class="fa-solid fa-chevron-left"></i>
+                <li class="breadcrumb-item fw-lighter active" style="color: #aaa;" aria-current="page">&nbsp; درباره ما</li>
+            </ol>
+        </nav>
+        <header class="header-about py-1">
+            <div class="container px-4 px-lg-5 my-5">
+                <div class="title-about text-center">
+                    <h1 class="display-4 fw-bolder">
+                        <span><i class="fa-solid fa-people-group"></i> تیم ما</span>
+                    </h1>
+                    
+                </div>
+            </div>
+        </header>
+
+        <div class="container mt-5 mb-5">
+            <div class="row gx-5 gy-5">
+                {% if about_show %}
+                    {% for about_show in about_show %}
+                        <div class="col-4">
+                            <div class="about">
+                                <img src="{{ about_show.image.url }}" alt="">
+                                <p>{{ about_show.about }}</p>
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    <div class="col-12">
+                        <div class="not-about">
+                            <i class="fa-solid fa-circle-info"></i>
+                            تیمی وجود ندارد. منتظریم تا اعضای تیم معرفی شود.
+                        </div>
+                    </div>
+                {% endif %}
+                
+            </div>
+        </div>
+    </section>
+
+{% endblock body %}

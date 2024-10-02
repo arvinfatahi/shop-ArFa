@@ -1,0 +1,292 @@
+{% extends "registration/admin/base.html" %}
+
+{% block title %}
+    پنل ادمین | کدهای تخفیف
+{% endblock title %}
+
+{% block navbar %}
+    {% include "registration/admin/navbar.html" with ticket_admin=ticket_admin %}
+{% endblock navbar %}
+
+{% block slidebar %}
+    {% include "registration/admin/sidebar.html" with ticket_admin=ticket_admin %}
+{% endblock slidebar %}
+
+{% block header %}
+    <div class="title-discount-code text-center">
+        <span class="discount-code">
+            <i class="fa-solid fa-percent"></i>
+            کد تخفیف
+        </span>
+        <div class="line-discount-code"></div>
+        <div class="breadcrumb-menu" style="margin-top: 10px;">
+            <span>
+                <a href="{% url 'adminPanel' %}">صفحه اصلی</a>
+            </span>
+            <i class="fa-solid fa-chevron-left"></i>
+            <span style="color: #a5a5a5;"> کد تخفیف </span>
+        </div>
+    </div>
+{% endblock header %}
+
+{% block content %}
+    <div class="search-add-discount-code container text-center">
+        <div class="row">
+            <div class="col-3"></div>
+            <div class="col-6 d-flex justify-content-center">
+                <div class="btn-show-discount-code">
+                    <a href="" data-bs-toggle="modal" data-bs-target="#addDiscountCodeModal">
+                        <i class="fa-regular fa-square-plus"> افزودن کد تخفیف </i>
+                    </a>
+                    <div class="line"></div>
+                </div>
+                <!-- <form action="" method="post" class="frm-search-discount-code">
+                    {% csrf_token %}
+                    <button type="submit">
+                        <i class="fa-solid fa-magnifying-glass"></i> <span>جستجو</span>
+                    </button>
+                    <input type="text" name="txt-search" placeholder="جستجوی کد تخفیف">
+                </form> -->
+            </div>
+            <div class="col-3"></div>
+        </div>
+    </div>
+
+    <!-- message info -->
+    {% for message in messages %}
+      <div class="info-alert">
+        <button type="button" class="float-end btn-close-alert" id="btn-close-alert">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+        <li><i class="fa-solid fa-circle-info"></i> {{ message }} </li>
+      </div>
+    {% endfor %}
+
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12" style="height: 450px; overflow: auto;">
+                    <table class="tbl-discount-code">
+                        <thead>
+                            <tr>
+                                <th>شناسه</th>
+                                <th>کد تخفیف</th>
+                                <th>درصد تخفیف</th>
+                                <th>توضیحات</th>
+                                <th>تاریخ شروع</th>
+                                <th>تاریخ اتمام</th>
+                                <th>وضعیت</th>
+                                <th>فعالیت‌ها</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% if all_discount_code %}
+                                {% for all_discount_code in all_discount_code  %}
+                                    <tr>
+                                        <td>{{ all_discount_code.id }}</td>
+                                        <td>{{ all_discount_code.discount_code }}</td>
+                                        <td>{{ all_discount_code.discount_percent }}</td>
+                                        <td style="width: 350px;">{{ all_discount_code.description }}</td>
+                                        <td>{{ all_discount_code.shamsi_start_date }}</td>
+                                        <td>{{ all_discount_code.shamsi_end_date }}</td>
+                                        {% if all_discount_code.is_active == True %}
+                                            <td style="color: #218838;">فعال</td>
+                                        {% else %}
+                                            <td style="color: #DC3545;">غیر فعال</td>
+                                        {% endif %}
+                                        <td>
+                                            <button type="button" class="btn-edit-product"
+                                                onclick="setValEditDiscountCode('{{ all_discount_code.id }}','{{ all_discount_code.discount_code }}','{{ all_discount_code.discount_percent }}','{{ all_discount_code.description }}','{{ all_discount_code.end_date }}','{{ all_discount_code.is_active }}')"
+                                                data-bs-toggle="modal" data-bs-target="#editDiscountCodeModal">
+                                                <i class="fa-solid fa-pen-to-square"></i>
+                                            </button>
+                                            <button type="button" class="btn-delete-discount-code" onclick="urlDeleteDiscountCode('/accounts/aDeleteDiscountCode/{{ all_discount_code.id }}')" data-bs-toggle="modal" data-bs-target="#deletModal">
+                                                <i class="fa-solid fa-trash"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            {% else %}
+                                <tr >
+                                    <td colspan="8" style="padding:4px;">
+                                        <span style="font-family: 'bnazanin';"> کد تخفیفی برای نمایش وجود ندارد. </span>
+                                    </td>
+                                </tr>
+                            {% endif %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- The Delete discount code Modal -->
+    <div class="modal fade modal-delete-discount-code" id="deletModal" style="margin-top: 200px;">
+        <div class="modal-dialog">
+            <div class="modal-content">
+        
+                <div class="modal-header bg-dark">
+                    <button type="button" class="btn-close bg-white" aria-label="Close" data-bs-dismiss="modal"></button>
+                </div>
+        
+                <div class="modal-body">
+                    <span style="font-family: 'bnazanin';">آیا می خواهید این کد تخفیف را حذف کنید؟</span>
+                </div>
+        
+                <div class="modal-footer">
+                    <button type="button" class="btn-noDelete-discount-code-modal" data-bs-dismiss="modal">
+                        <i class="fa-solid fa-xmark"></i>
+                        خیر
+                    </button>
+                    <a href="" class="btn-delete-discount-code-modal" id="delete-discount-code">
+                        <i class="fa-solid fa-check"></i>
+                        بله
+                    </a>
+                </div>
+        
+            </div>
+        </div>
+    </div>
+
+    <!-- The add discount code Modal -->
+    <div class="modal fade modal-add-discount-code" id="addDiscountCodeModal" style="margin-top: 150px;">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <div class="modal-header bg-dark">
+                    <button type="button" class="btn-close bg-white" aria-label="Close" data-bs-dismiss="modal"></button>
+                </div>
+
+                <div class="modal-body">
+                    <form action="{% url 'aAddDiscountCode' %}" method="post" class="frm-add-discount-code" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        
+                        <div class="discount-code">
+                            <span class="lbl-discount-code"> کد تخفیف </span>
+                            <span class="lbl-arrow"><i class="fa-solid fa-chevron-left"></i></span>
+                            {{ discount_code_form.discount_code }}
+                        </div>
+
+                        <div class="discount-percent">
+                            <span class="lbl-discount-percent" style="height: 36px;"> درصد تخفیف </span>
+                            <span class="lbl-arrow" style="height: 36px;"><i class="fa-solid fa-chevron-left"></i></span>
+                            {{ discount_code_form.discount_percent }}
+                        </div>
+                        
+                        <div class="description">
+                            <span class="lbl-description" style="height: 36px;"> توضیحات </span>
+                            <span class="lbl-arrow" style="height: 36px;"><i class="fa-solid fa-chevron-left"></i></span>
+                            {{ discount_code_form.description }}
+                        </div>
+
+                        <div class="end-date">
+                            <span class="lbl-end-date" style="height: 36px;"> تاریخ اتمام </span>
+                            <span class="lbl-arrow" style="height: 36px;"><i class="fa-solid fa-chevron-left"></i></span>
+                            {{ discount_code_form.end_date }}
+                        </div>
+
+                        <div class="is-avtive">
+                            <span class="lbl-is-avtive" style="height: 36px;"> فعال </span>
+                            <span class="lbl-arrow" style="height: 36px;"><i class="fa-solid fa-chevron-left"></i></span>
+                            {{ discount_code_form.is_active }}
+                        </div>
+                        
+                        <hr style="border: 1px solid #919191 !important; display: flex;">
+                        
+                        <div class="text-center">
+                            <button type="submit" class="btn-add-discount-code-modal">
+                                <i class="fa-solid fa-plus"> افزدون کد تخفیف </i>
+                            </button>
+                        </div>
+                    </form>
+                    {{ discount_code_form.media }}
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- The edit discount code Modal -->
+    <div class="modal fade modal-edit-discount-code" id="editDiscountCodeModal" style="margin-top: 130px;">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <div class="modal-header bg-dark">
+                    <button type="button" class="btn-close bg-white" aria-label="Close" data-bs-dismiss="modal"></button>
+                </div>
+
+                <div class="modal-body">
+                    <form action="" method="post" class="frm-edit-discount-code" id="frm-edit-discount-code" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        
+                        <div class="discount-code">
+                            <span class="lbl-discount-code"> کد تخفیف </span>
+                            <span class="lbl-arrow"><i class="fa-solid fa-chevron-left"></i></span>
+                            {{ edit_discount_code_form.discount_code }}
+                        </div>
+
+                        <div class="discount-percent">
+                            <span class="lbl-discount-percent" style="height: 36px;"> درصد تخفیف </span>
+                            <span class="lbl-arrow" style="height: 36px;"><i class="fa-solid fa-chevron-left"></i></span>
+                            {{ edit_discount_code_form.discount_percent }}
+                        </div>
+                        
+                        <div class="description">
+                            <span class="lbl-description" style="height: 36px;"> توضیحات </span>
+                            <span class="lbl-arrow" style="height: 36px;"><i class="fa-solid fa-chevron-left"></i></span>
+                            {{ edit_discount_code_form.description }}
+                        </div>
+
+                        <div class="show-end-date">
+                            <span class="lbl-show-end-date" style="height: 36px;"> تاریخ اتمام </span>
+                            <span class="lbl-arrow" style="height: 36px;"><i class="fa-solid fa-chevron-left"></i></span>
+                            <span class="show-date" id="show-date"></span>
+                        </div>
+
+                        <div class="new-end-date">
+                            <span class="lbl-new-end-date" style="height: 36px;"> تاریخ جدید </span>
+                            <span class="lbl-arrow" style="height: 36px;"><i class="fa-solid fa-chevron-left"></i></span>
+                            {{ edit_discount_code_form.end_date }}
+                        </div>
+
+                        <div class="is-avtive">
+                            <span class="lbl-is-avtive" style="height: 36px;"> فعال </span>
+                            <span class="lbl-arrow" style="height: 36px;"><i class="fa-solid fa-chevron-left"></i></span>
+                            {{ edit_discount_code_form.is_active }}
+                        </div>
+                        
+                        <hr style="border: 1px solid #919191 !important; display: flex;">
+                        
+                        <div class="text-center">
+                            <button type="submit" class="btn-edit-discount-code-modal">
+                                <i class="fa-solid fa-pen-to-square"> ویرایش کد تخفیف </i>
+                            </button>
+                        </div>
+                    </form>
+                    {{ edit_discount_code_form.media }}
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function urlDeleteDiscountCode(url){
+            document.getElementById('delete-discount-code').href = url
+        }
+        function setValEditDiscountCode(id, discount_code, discount_percent, description, end_date, is_active) {
+            document.getElementById('frm-edit-discount-code').action = '/accounts/aEditDiscountCode/' + id + '/';
+            document.getElementById('edit-discount-code').value = discount_code;
+            document.getElementById('edit-discount-percent').value = discount_percent;
+            document.getElementById('edit-description').value = description;
+            document.getElementById('show-date').innerHTML = end_date;
+            document.getElementById('edit-is-active').checked = is_active;
+        }
+
+        $(document).ready(function(){
+            $('#btn-close-alert').click(function(){
+                $('.info-alert').fadeOut();
+            });
+        });
+    </script>
+{% endblock content %}

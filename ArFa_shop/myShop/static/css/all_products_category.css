@@ -1,0 +1,112 @@
+.line-all-products-category{
+    background: radial-gradient(circle at 10% 20%, rgb(0, 0, 0) 0%, rgb(64, 64, 64) 90.2%);
+    height: 4px;
+}
+/* ---------------------------- breadcrumb */
+.breadcrumb-all-products-category{
+    margin-bottom: 4px;
+    margin-top: 4px;
+    background: radial-gradient(circle at 10% 20%, rgb(0, 0, 0) 0%, rgb(64, 64, 64) 90.2%);
+}
+
+.breadcrumb-all-products-category ol{
+    margin: 10px;
+}
+
+.breadcrumb-all-products-category i{
+    color: #aaa;
+    margin-top: 5px;
+    margin-right: 5px;
+}
+
+/* -------------------------- header */
+.header-all-products-category{
+    height: 200px;
+    background: radial-gradient(circle at 10% 20%, rgb(0, 0, 0) 0%, rgb(64, 64, 64) 90.2%);
+}
+
+.header-all-products-category .title-all-products-category {
+    font-family:'bnazanin';
+    font-size: 40px;
+    font-weight: bold;
+    margin: 0 auto;
+    transition: all 0.5s;
+}
+
+.header-all-products-category .title-all-products-category span {
+    color: #aaa;
+    transition: all 0.5s;
+}
+
+.header-all-products-category .title-all-products-category .line {
+    height: 2px;
+    width: 200px;
+    margin: 5px auto;
+    background-color: #aaa;
+    transition: all 0.5s;
+}
+
+.header-all-products-category .title-all-products-category p{
+    font-size: 16px;
+    font-family: 'bnazanin';
+    color: #aaa;
+    margin-top: 20px;
+}
+
+/* -------------------------- all products category box */
+.all-products-category-box {
+    height: 1100px;
+    border-radius: 30px;
+    overflow: hidden;
+}
+
+.all-products-category-box .products-category{
+    color: #323232;
+    background: linear-gradient(0deg, #fdfbfb, #ebedee);
+    border: 1px solid #ccc;
+    margin-top: 10px;
+    border-radius: 20px;
+    overflow: hidden;
+    transition: all 1s;
+}
+.all-products-category-box .products-category:hover{
+    transform: scale(0.95);
+    border: none;
+    box-shadow: 0px 0px 10px #aaa;
+}
+
+.all-products-category-box .products-category img {
+    width: 100%;
+    height: 200px;
+}
+
+.all-products-category-box .products-category:hover img{
+    cursor: pointer;
+    transform: scale(1.1) rotate(-5deg);
+    transition: all 1s;
+}
+.all-products-category-box .products-category .btn-add-cart{
+    color: #323232;
+    padding: 5px;
+    margin: 5px;
+    background-color: #eee;
+    border: 1px solid #aaa;
+    border-radius: 4px;
+}
+
+/* ------------------------- paginator */
+nav {
+    display: flex;
+    justify-content: center;
+}
+  
+.pagination {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+  
+.pagination li {
+    margin: 0 1px;
+}

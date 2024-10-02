@@ -1,0 +1,538 @@
+{% extends "base.html" %}
+{% load humanize %}
+
+{% load static %}
+
+{% block title %}جزئیات محصول {{ product.name }}{% endblock title %}
+
+{% block body %}
+    <!-- cnd jquery -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    
+    {% include "discount_code.html" with discount_code_model_show=discount_code_model_show %}
+
+    {% include "navbar.html" with all_categorys=all_categorys %}
+    <style>
+        .swiper-pagination-bullet {
+            background-color: #000 !important;
+            width: 50px !important;
+            height: 10px !important;
+            border-radius: 0% !important;
+        }
+        
+        .swiper-pagination-bullet-active {
+            background-color: #323232 !important;
+        }
+        
+        .swiper-pagination {
+            bottom: 0px !important;
+            text-align: center !important;
+            background-color: #ddd;
+            padding-bottom: 2px;
+            border-radius: 20px;
+        }
+        
+    </style>
+
+    <section>
+        <div class="line-product-details"></div>
+        <nav aria-label="breadcrumb" class="breadcrumb-product-details">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{% url 'index' %}" style="color: #aaa;">خانه</a></li>
+                <i class="fa-solid fa-chevron-left"></i>
+                <li class="breadcrumb-item fw-lighter active" style="color: #aaa; margin-top: -3px;" aria-current="page">&nbsp; جزئیات {{ product.name }}</li>
+            </ol>
+        </nav>
+        <header class="header-product-details py-1">
+            <div class="container px-4 px-lg-5 my-5">
+                <div class="title-product-details text-center">
+                    <h1 class="display-4 fw-bolder">
+                        <span><i class="fa-solid fa-circle-info"></i> جزئیات {{ product.name }}</span>
+                    </h1>
+                    <div class="line"></div>
+                    <p>جزئیات محصول {{ product.name }} را در این صفحه مشاهده کنید تا خرید بهتری داشته باشید.</p>
+                </div>
+            </div>
+        </header>
+        
+        <!-- message info -->
+        {% for message in messages %}
+            <div class="info-alert" style="display: block;">
+                <button type="button" class="float-end btn-close-alert" id="btn-close-alert">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+                <li><i class="fa-solid fa-circle-info"></i> {{ message }} </li>
+            </div>
+        {% endfor %}
+
+        <div class="info-alert-cart">
+            <button type="button" class="float-end btn-close-alert" id="btn-close-alert">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <li><i class="fa-solid fa-circle-info"></i></li>
+        </div>
+
+        <div class="container mt-5 mb-5">
+            <div class="row">
+                <div class="col-3">
+                    <div class="row gx-1">
+                        <div class="product-image">
+                            <div class="img">
+                                <img src="{{ product.image.url }}" alt="{{ product.name }}">
+                            </div>
+                            <div class="imgs text-center">
+                                {% for gallery_product in gallery_product %}
+                                    <img src="{{ gallery_product.image.url }}" onclick="openImgModal('{{ gallery_product.image.url }}')" alt="">
+                                {% endfor %}
+                            </div>
+                            <div class="openImgModal" id="openImgModal">
+                                <span class="close" onclick="closeModal()">&times;</span>
+                                <img class="modalImage" id="modalImage">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-5">
+                    <div class="row gx-1">
+                        <div class="product_details">
+                            <div class="row gx-4">
+                            
+                                <div class="col-md-9">
+                                    <div class="title">
+                                        <i class="fa-solid fa-circle-check"></i>
+                                        <span>{{ product.name }}</span>
+                                    </div>
+                                    
+                                    <div class="description">
+                                        <i class="fa-solid fa-circle-check"></i>
+                                        <span>{{ product.description }}</span>
+                                    </div>
+
+                                    <div class="state">
+                                        {% if product.state %}
+                                            <i class="fa-solid fa-circle-check"></i>
+                                            <span> موجود </span>
+                                        {% else %}
+                                            <i class="fa-solid fa-circle-xmark"></i>
+                                            <span> ناموجود </span>
+                                        {% endif %}
+                                    </div>
+                                    
+                                    <div class="category">
+                                        <i class="fa-solid fa-circle-check"></i>
+                                        <span> {{ category.name }} </span>
+                                    </div>
+
+                                    {% if product.is_sale %}
+                                        <div class="available" style="color: #ff414d; border: 1px solid #ff414d;">
+                                            <i class="fa-solid fa-circle-check"></i>
+                                            <span> تخفیف </span>
+                                        </div>
+                                    {% endif %}
+                                    
+                                </div>
+
+                                <div class="col-md-3">
+
+                                    <div class="shar-comment">
+                                        <a href="#comment-record" style="margin-left: 8px;">
+                                            <i class="fa-solid fa-comments"></i>
+                                        </a>
+                                        <a href="#">
+                                        <i class="fa-solid fa-share-nodes" style="margin-left: 8px;"></i>
+                                        </a>
+                                        <a href="#">
+                                            <i class="fa-solid fa-flag"></i>
+                                        </a>
+                                    </div>
+
+                                    <div class="number-satisfaction">
+                                        <span class="icon"><i class="fa-solid fa-arrow-up-9-1"></i></span>
+                                        <span class="txt"> تعداد رای </span>
+                                        <span class="result"> {{ satisfaction_count }} </span>
+                                        <div class="spac"></div>
+                                    </div>
+
+                                    <div class="level-satisfaction">
+                                        <span class="icon"><i class="fa-solid fa-star"></i></span>
+                                        <span class="txt"> میزان رای </span>
+                                        <span class="result"> {{ satisfaction_percent }}% </span>
+                                        <div class="spac"></div>
+                                    </div>
+
+                                    <div class="likeDisLike" style="height: 65px;">
+                                        <span class="icon"><i class="fa-solid fa-heart"></i></span> 
+                                        <span class="txt"> علاقه‌مندی </span>
+                                        <form action="{% url 'productLike' product.id %}" class="frm-like">
+                                            {% csrf_token %}
+                                            <button type="submit" class="btn-like">
+                                                <i class="fa-solid fa-thumbs-up">
+                                                    {% for likes_product in likes_product %}
+                                                        <span style="font-family: 'bnazanin';">{{ likes_product.likes_count }}</span>
+                                                    {% endfor %}
+                                                </i>
+                                            </button>
+                                        </form>
+                                        <form action="{% url 'productDisLike' product.id %}" class="frm-disLike">
+                                            {% csrf_token %}
+                                            <button type="submit" class="btn-disLike">
+                                                <i class="fa-solid fa-thumbs-down">
+                                                    {% for dis_likes_product in dis_likes_product %}
+                                                        <span style="font-family: 'bnazanin';">{{ dis_likes_product.dis_likes_count }}</span>
+                                                    {% endfor %}
+                                                </i>
+                                            </button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-4">
+                    <div class="row">
+                        <div class="product-price">
+                            <div class="price text-center"> <!-- class="text-decoration-line-through" style="color: #ff414d; font-size: 24px;" -->
+                                {% if product.is_sale == True %}
+                                    <span> قیمت محصول: </span>
+                                    <span class="is-orginal-price"> {{ product.price }} </span>
+                                    <i class="fa-solid fa-chevron-left"></i>
+                                    <span class="is-sale-price"> {{ product.sale_price }} </span>
+                                    <span> تـــــــــــــومان </span>
+                                {% else %}
+                                    <span class="i-orginal-price"> {{ product.price }} </span>
+                                    <span> تـــــــــــــومان </span>
+                                {% endif %}
+                            </div>
+                            
+                            <form action="" class="frm-add-product text-center mt-3">
+                                {% csrf_token %}
+                                <button type="button" class="btn-add-cart mt-auto">
+                                    <i class="fa-solid fa-cart-shopping"> خرید محصول </i>
+                                </button>
+                            </form>
+                            {% if request.user.is_authenticated %}
+                                <div class="satisfaction-record">
+                                
+                                    <div class="satisfaction-txt">
+                                        <i class="fa-solid fa-percent"></i> <span> میزان رضایت از کالا </span>
+                                    </div>
+                                    
+                                    <form action="{% url 'satisfactionAdd' product.id request.user.id %}" class="frm-satisfaction p-2 mt-2" method="post">
+                                        {% csrf_token %}
+                                        <div class="d-flex justify-content-center">
+                                            <span id="rangeValue">100</span><span>%</span>
+                                        </div>
+                                        <input type="range" name="range_satisfaction" class="form-range" min="0" max="100" step="1" id="customRange" oninput="updateValue(this.value)">
+                                        <div class="d-flex justify-content-center">
+                                            <button type="submit" class="btn-record">
+                                                <i class="fa-solid fa-check"> ثبت </i>
+                                            </button>
+                                        </div>
+                                    </form>
+                                </div>
+                            {% else %}
+                                <div class="login-box row p-2">
+                                    <div class="col-12 text-center">
+                                        <div style="margin-bottom: 10px;"> برای پسندیدن و ثبت رای به این کالا لطفا وارد سایت شوید. </div>
+                                        <a href="{% url 'loginRegisterUser' %}" class="btn-login">
+                                            <i class="fa-solid fa-right-to-bracket"></i>
+                                            <span> ورود </span>
+                                        </a>
+                                    </div>
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- title -->
+            <div class="title-similar-products text-center mt-5">
+                
+                <a href="{% url 'allProducts' %}" class="text-decoration-none"><i class="fa-solid fa-robot"></i> محصولات مشابه </a>
+                <div class="line"></div>
+                <p style="font-size: 16px; font-weight: normal;">بدنبال محصولات مشابه بگردید.</p>
+            
+            </div>
+            <!-- similar products -->
+            <div class="swiper similar-products">
+                <div class="swiper-wrapper">
+                    {% for similar_products in similar_products %}
+                        <div class="swiper-slide">
+                            <div class="product">
+                                <img src="{{ similar_products.image.url }}" alt="">
+                                <div class="line"></div>
+                                <div class="title">
+                                    <span> {{ similar_products.name }} </span>
+                                </div>
+                                <div class="price">
+                                    {% if similar_products.is_sale == True %}
+                                        <span>{{ similar_products.sale_price }}</span>|
+                                        <span>{{ similar_products.price }}</span>
+                                    {% else %}
+                                        <span>{{ similar_products.price }}</span>
+                                    {% endif %}
+                                </div>
+                                <div class="add-cart">
+                                    <a href="{% url 'productDetails' similar_products.id %}" class="btn-add-cart">
+                                        <i class="fa-solid fa-cart-shopping"></i>
+                                        <span> خرید محصول </span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                    {% for similar_products in similar_products %}
+                        <div class="swiper-slide">
+                            <div class="product">
+                                <img src="{{ similar_products.image.url }}" alt="">
+                                <div class="line"></div>
+                                <div class="title">
+                                    <span> {{ similar_products.name }} </span>
+                                </div>
+                                <div class="price">
+                                    {% if similar_products.is_sale == True %}
+                                        <span>{{ similar_products.sale_price }}</span>|
+                                        <span>{{ similar_products.price }}</span>
+                                    {% else %}
+                                        <span>{{ similar_products.price }}</span>
+                                    {% endif %}
+                                </div>
+                                <div class="add-cart">
+                                    <a href="{% url 'productDetails' similar_products.id %}" class="btn-add-cart">
+                                        <i class="fa-solid fa-cart-shopping"></i>
+                                        <span> خرید محصول </span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+            
+            <!-- comment -->
+            <div class="row">
+                <div class="row mt-3">
+                    <div class="col-12">
+                        <div class="comment-record" id="comment-record">
+
+                            <div class="comment-title text-center">
+                                <i class="fa-solid fa-comment-medical"></i> 
+                                <span> نظر خود را برای محصول {{ product.name }} ثبت کنید. </span>
+                            </div>
+                            
+                            <div class="comment-body">
+                                {% if request.user.is_authenticated %}
+                                    <form action="{% url 'commentAdd' product.id request.user.id %}" class="frm-comment-add" method="post">
+                                        {% csrf_token %}
+                                        <div class="txt-comment text-center">
+                                            <textarea name="comment_text" placeholder="نظر خود را درباره این محصول به اشتراک بگذارید"></textarea>
+                                        </div>
+                                        <div class="d-flex justify-content-center">
+                                            <button type="submit" class="btn-record-comment">
+                                                <i class="fa-solid fa-plus"> ثبت نظر </i>
+                                            </button>
+                                        </div>
+                                    </form>
+                                {% else %}
+                                    <div class="login text-center">
+                                        <div>برای ثبت نظر لطفا وارد سایت شوید.</div>
+                                        <a href="{% url 'loginRegisterUser' %}">
+                                            <i class="fa-solid fa-right-to-bracket"> ورود </i>
+                                        </a>
+                                    </div>
+                                {% endif %}
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mt-3">
+                    <div class="col-12">
+                        <div class="show-comments">
+                            <div class="row g-0 mb-5">
+                            
+                                <div class="show-comment-title text-center">
+                                    <i class="fa-solid fa-comments"></i>
+                                    <span> نظرات کاربران در مورد {{ product.name }} </span>
+                                </div>
+
+                                <div class="show-comment-body">
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div class="row g-0">
+                                                {% for comment in comment_show %}
+    <div class="all-comments">
+        <div class="col-12">
+            <div class="comment-container">
+                <span style="float: right; color: #323232;">
+                    <b class="fa-solid fa-comment-dots"></b>
+                </span>
+                <div class="txt-comment-show">{{ comment.comment_text }}</div>
+                <div class="line"></div>
+                <div class="info text-center">
+                    <span>
+                        <i class="fa-solid fa-clock"></i> {{ comment.published_comment|time:"H-i-s" }}
+                    </span>
+                    &nbsp;&nbsp;
+                    <span>
+                        <i class="fa-regular fa-calendar-days"></i> {{ comment.shamsi_published_comment }}
+                    </span>
+                    &nbsp;&nbsp;
+                    <span>
+                        <i class="fa-solid fa-user"></i> {{ comment.user.username }}
+                    </span>
+                    &nbsp;&nbsp;
+                    {% if request.user.is_authenticated %}
+                        {% if request.user.id == comment.user.id %}
+                            <a href="">
+                                <i class="fa-solid fa-trash"></i> حذف نظر
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                </div>
+            </div>
+            {% if request.user.is_authenticated %}
+                <form action="{% url 'replayCommentAdd' product.id request.user.id comment.id %}" method="post" class="frm-replay-comment text-center">
+                    {% csrf_token %}
+                    <input type="text" name="comment_text" class="txt-replay-comment float-start" placeholder="پاسخ به این نظر">
+                    <button type="submit" class="btn-replay-comment">
+                        <i class="fa-solid fa-reply"></i> پاسخ دادن
+                    </button>
+                </form>
+            {% else %}
+                <div class="login text-center">
+                    <div class="line"></div>
+                    <span>برای پاسخ به نظر لطفا وارد سایت شوید</span><br>
+                    <a href="{% url 'loginRegisterUser' %}">
+                        <i class="fa-solid fa-right-to-bracket"></i> ورود
+                    </a>
+                    <div class="line"></div>
+                </div>
+            {% endif %}
+
+            {% for replay_comment in replay_comment_show %}
+                {% if comment.id == replay_comment.comment.id %}
+                    <div class="row g-0">
+                        <div class="col-1"></div>
+                        <div class="col-11">
+                            <div class="comment-container">
+                                <span style="float: right; color: #242424;">
+                                    <b class="fa-solid fa-comment-dots"></b>
+                                </span>
+                                <div class="txt-comment-show" style="color: #626262;">
+                                    {{ replay_comment.comment_text }}
+                                </div>
+                                <div class="line"></div>
+                                <div class="info text-center">
+                                    <span>
+                                        <i class="fa-solid fa-clock"></i> {{ replay_comment.published_comment|time:"H-i-s" }}
+                                    </span>
+                                    &nbsp;&nbsp;
+                                    <span>
+                                        <i class="fa-regular fa-calendar-days"></i> {{ replay_comment.shamsi_published_comment }}
+                                    </span>
+                                    &nbsp;&nbsp;
+                                    <span>
+                                        <i class="fa-solid fa-user"></i> {{ replay_comment.user.username }}
+                                    </span>
+                                    &nbsp;&nbsp;
+                                    {% if request.user.is_authenticated %}
+                                        {% if request.user.id == replay_comment.user.id %}
+                                            <a href="">
+                                                <i class="fa-solid fa-trash"></i> حذف نظر
+                                            </a>
+                                        {% endif %}
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+{% endfor %}
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <!-- cdn swiper -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('#btn-close-alert').click(function(){
+                $('.info-alert').fadeOut();
+            });
+            $('.btn-add-cart').click(function(){
+                $.ajax({
+                    type: "POST",
+                    url: "http://" + window.location.host + "{% url 'productBuy' product.id %}",
+                    data: $(".frm-add-product").serialize(),
+                    success: function(result){
+                      if(result.status == 'productAddToCart')
+                      {
+                        $(".info-alert-cart li i").html("محصول به سبد خرید اضافه شد.");
+                        $(".info-alert-cart").fadeIn();
+                        $(".cart-item-count").html(result.total_items);
+                      }
+                      else if(result.status == 'productNotFind')
+                      {
+                        $(".info-alert-cart li i").html("محصول یافت نشد");
+                        $(".info-alert-cart").fadeIn();
+                      }
+                      else if(result.status == 'productAddTpCartBefore'){
+                        $(".info-alert-cart li i").html("این محصول قبلاً به سبد خرید اضافه شده است.");
+                        $(".info-alert-cart").fadeIn();
+                      }
+                      else
+                      {
+                        $(".info-alert-cart li i").html("محصول به سبد اضافه نشد لطفا دوباره تلاش کنید.");
+                        $(".info-alert-cart").fadeIn();
+                      }
+                    },
+                    error: function(e){
+                      $(".info-alert-cart li i").html("محصول به سبد اضافه نشد لطفا دوباره تلاش کنید.");
+                      $(".info-alert-cart").fadeIn();
+                    }
+                });
+            });
+            $('#btn-close-alert').click(function(){
+                $('.info-alert-cart').fadeOut();
+            });
+        });
+        function openImgModal(url) {
+            var modal = document.getElementById("openImgModal");
+            var modalImg = document.getElementById("modalImage").src = url;
+            modal.style.display = "block";
+        }
+        
+        function closeModal() {
+            var modal = document.getElementById("openImgModal");
+            modal.style.display = "none";
+        }
+        var swiper = new Swiper(".similar-products", {
+            slidesPerView: 4,
+            spaceBetween: 30,
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+            },
+        });
+    </script>
+{% endblock body %}

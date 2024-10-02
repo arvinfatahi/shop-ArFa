@@ -1,0 +1,74 @@
+{% load static %}
+
+<!-- <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" /> -->
+
+<section>
+    <div class="container px-4 px-lg-5 mt-5">
+        <!-- title -->
+        <div class="title-brand text-center">
+            
+            <a href="#" class="text-decoration-none"><i class="fa-solid fa-clipboard-check"> همکاری با برندها </i></a>
+            <div class="line"></div>
+            <p style="font-size: 16px; font-weight: normal;">همکاری ما با برندهای مختلف</p>
+            
+        </div>
+        <div class="benner-brand row">
+            <div class="col-12">
+                <div class="d-flex justify-content-center">
+                    {% if brands %}
+                        {% for brands in brands %}
+                            <div class="brand">
+                                <img src="{{ brands.image.url }}" alt="">
+                                <div class="d-flex justify-content-center" style="margin-top: 10px; border-top: 1px solid #ddd; padding: 5px;">
+                                    <span>{{ brands.name }}</span>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    {% else %}
+                        <div class="col-12">
+                            <div class="not-brands">
+                                <i class="fa-solid fa-circle-info"></i>
+                                برندی برای نمایش وجود ندارد. لطفا بعدا سر بزنید.
+                            </div>
+                        </div>
+                    {% endif %}
+                    
+                </div>
+            </div>
+        </div>
+        <!-- <div class="benner-brand">
+            <div class="swiper swiper-brand">
+                <div class="swiper-wrapper">
+                    {% for brands in brands %}
+                        <div class="swiper-slide">
+                            <div class="brand">
+                                <span>{{ brands.name }}</span>
+                                <img src="{{ brands.image.url }}" alt="">
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+        </div> -->
+    </div>
+</section>
+
+<!-- <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script> -->
+
+
+
+
+
+
+
+<!-- <script>
+    var swiper = new Swiper(".swiper-brand", {
+        slidesPerView: 3,
+        spaceBetween: 30,
+        pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+        },
+    });
+</script> -->

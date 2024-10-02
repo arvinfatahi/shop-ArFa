@@ -1,0 +1,187 @@
+/* ------------------------------ title users */
+.title-buy-factors{
+    background-color: #343a40;
+    padding: 18px;
+    font-family: 'bnazanin';
+    color: #ddd;
+    box-shadow: 0px 0px 5px #343a40;
+    height: 130px;
+}
+
+.title-buy-factors .buy-factors{
+    font-size: 32px;
+    font-weight: bold;
+}
+
+.title-buy-factors .line-buy-factors{
+    background-color: #a5a5a5;
+    height: 4px;
+    width: 20%;
+    margin: 5px auto;
+    border-radius: 6px;
+}
+
+.title-buy-factors .breadcrumb-menu a{
+    text-decoration: none;
+    color: #ddd;
+    transition: all 0.5s;
+}
+
+.title-buy-factors .breadcrumb-menu a:hover{
+    color: #fff;
+}
+
+/* ------------------------------ search buy factors */
+.search-buy-factors{
+    background-color: #fff;
+    box-shadow: 0px 0px 5px #ddd;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+.search-buy-factors .frm-search-buy-factors{
+    float: right;
+}
+
+.search-buy-factors .frm-search-buy-factors button{
+    color: #ddd;
+    background-color: #343a40;
+    padding: 5px;
+    border-top-right-radius: 50px;
+    border-bottom-right-radius: 50px;
+    border: none;
+    font-size: 14px;
+    font-family: 'bnazanin';
+    transition: all 0.5s;
+}
+
+.search-buy-factors .frm-search-buy-factors button:hover{
+    background-color: rgba(52, 58, 64, 0.8);
+}
+
+.search-buy-factors .frm-search-buy-factors input{
+    border: 1px solid #343a40;
+    border-bottom-left-radius: 50px;
+    border-top-left-radius: 50px;
+    padding: 4px;
+    font-size: 14px;
+    font-family: 'bnazanin';
+    width: 150px;
+    transition: all 0.5s;
+}
+.search-buy-factors .frm-search-buy-factors input:focus{
+    width: 200px;
+}
+
+/* ------------------------------ table buy factors */
+.tbl-buy-factors{
+    font-family: 'bnazanin';
+    text-align: center;
+    border: 1px solid #343a40;
+    width: 100%;
+}
+
+.tbl-buy-factors thead tr th{
+    background-color: #343a40;
+    color: #ddd;
+    border: 1px solid #343a40;
+    font-size: 16px;
+    padding: 4px;
+}
+
+.tbl-buy-factors tbody tr td{
+    border: 1px solid #343a40;
+    vertical-align: middle;
+    padding: 4px;
+}
+
+.tbl-buy-factors tbody .btn-user-products{
+    border: none;
+    text-decoration: underline;
+    background-color: transparent;
+    color: #007bff;
+    font-family: 'bnazanin';
+}
+.tbl-buy-factors tbody .btn-user-products:hover{
+    color: #323232;
+    text-decoration: none;
+}
+
+/* ------------------------------ btn */
+.btn-print-factor{
+    color: #fff;
+    background-color: #218838;
+    border: 1px solid #218838;
+    border-radius: 4px;
+    padding: 4px;
+    text-decoration: none;
+    font-size: 18px;
+    width: 33px;
+    height: 33px;
+    display: inline-block;
+    margin-left: 4px;
+    transition: all 0.5s;
+}
+.btn-print-factor:hover{
+    color: #218838;
+    background-color: #fff;
+}
+
+.btn-delete-factors{
+    color: #fff;
+    background-color: #DC3545;
+    border: 1px solid #DC3545;
+    border-radius: 4px;
+    padding: 4px;
+    width: 33px;
+    height: 33px;
+    margin-left: 4px;
+    vertical-align: top;
+    transition: all 0.5s;
+}
+
+.btn-delete-factors i{
+    font-size: 18px;
+}
+
+.btn-delete-factors:hover{
+    color: #DC3545;
+    background-color: #fff;
+}
+
+/* ==================================== start modal delete buy factor */
+.modal-delete-buy-factor .modal-footer .btn-delete-buy-factor-modal{
+    color: #fff;
+    background-color: #DC3545;
+    border: 1px solid #DC3545;
+    border-radius: 4px;
+    text-decoration: none;
+    font-family: 'bnazanin';
+    padding: 4px;
+    width: 50px;
+    text-align: center;
+    transition: all 0.5s;
+}
+.modal-delete-buy-factor .modal-footer .btn-delete-buy-factor-modal:hover{
+    color: #DC3545;
+    background-color: #fff;
+}
+
+.modal-delete-buy-factor .modal-footer .btn-noDelete-buy-factor-modal{
+    color: #fff;
+    background-color: #28a745;
+    border: 1px solid #28a745;
+    border-radius: 4px;
+    text-decoration: none;
+    font-family: 'bnazanin';
+    padding: 4px;
+    width: 50px;
+    text-align: center;
+    transition: all 0.5s;
+}
+.modal-delete-buy-factor .modal-footer .btn-noDelete-buy-factor-modal:hover{
+    color: #28a745;
+    background-color: #fff;
+}
+
+/* ==================================== end modal delete buy factor */

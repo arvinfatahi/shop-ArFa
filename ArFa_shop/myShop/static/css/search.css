@@ -1,0 +1,55 @@
+/* ========================= title */
+.title .title-search{
+    font-family:'bnazanin';
+    font-size: 40px;
+    font-weight: bold;
+    width: 100%;
+}
+
+.title .line{
+    background-color: #323232;
+    width: 50%;
+    height: 4px;
+    border-radius: 4px;
+}
+
+/* =========================search products box */
+.search-products-box {
+    border-radius: 30px;
+    overflow: hidden;
+}
+
+.search-products-box .search{
+    color: #323232;
+    background: linear-gradient(0deg, #fdfbfb, #ebedee);
+    border: 1px solid #ccc;
+    margin-top: 10px;
+    border-radius: 20px;
+    overflow: hidden;
+    transition: all 1s;
+}
+.search-products-box .search:hover{
+    transform: scale(0.95);
+    background-color: #ddd;
+}
+
+.search-products-box .search img {
+    width: 100%;
+    height: 200px;
+}
+
+.search-products-box .search:hover img{
+    cursor: pointer;
+    transform: scale(1.1) rotate(-5deg);
+    transition: all 0.5s;
+}
+
+.search-products-box .search .btn-add-cart{
+    color: #323232;
+    background-color: #eee;
+    border: 1px solid #ccc;
+    text-decoration: none;
+    padding: 5px;
+    margin: 5px;
+    border-radius: 4px;
+}

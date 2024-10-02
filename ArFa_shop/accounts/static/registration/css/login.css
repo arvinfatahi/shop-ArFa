@@ -1,0 +1,67 @@
+body{
+    height: 100vh;
+    background: linear-gradient(180deg, #252440 0%, #2F2A61 50%, #0F0C2A 100%);
+}
+
+.login {
+    background: linear-gradient(180deg, #252440 0%, #2F2A61 50%, #0F0C2A 100%);
+    box-shadow: 0px 0px 20px #000;
+    margin-top: 200px;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.login .login-title{
+    color: #E0DEDE;
+    font-size: 32px;
+    font-weight: bold;
+    font-family: 'bnazanin';
+}
+
+.login .frm-login{
+    margin: 20px 0px;
+}
+
+.login .frm-login .username,
+.login .frm-login .password{
+    background-color: #E0DEDE;
+    border: none;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    padding: 4px;
+    width: 400px;
+    text-align: center;
+}
+
+.login .frm-login .fa-user,
+.login .frm-login .fa-key{
+    background-color: #E0DEDE;
+    color: #2F2A61;
+    padding: 5px;
+    border-radius: 4px;
+    font-size: 24px;
+    margin-bottom: 10px;
+    vertical-align: sub;
+}
+
+.login .frm-login .btn-login{
+    background-color: #573B8A;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 4px;
+    font-size: 24px;
+    font-family: 'bnazanin';
+    font-weight: bold;
+    width: 150px;
+    margin-top: 10px;
+}
+
+.login .frm-login .forgot{
+    margin-top: 10px;
+    color: #E0DEDE;
+    font-family: 'bnazanin';
+    font-size: 14px;
+    font-weight: bold;
+    text-decoration: none;
+}

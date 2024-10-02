@@ -1,0 +1,109 @@
+{% extends "registration/admin/base.html" %}
+
+{% block title %}
+    پنل ادمین | کاربران
+{% endblock title %}
+
+{% block navbar %}
+    {% include "registration/admin/navbar.html" %}
+{% endblock navbar %}
+
+{% block slidebar %}
+    {% include "registration/admin/sidebar.html" %}
+{% endblock slidebar %}
+
+{% block header %}
+    <div class="title-show-products-user text-center">
+        <span class="show-products-user">
+            <i class="fa-solid fa-user"></i>
+            محصولات کاربر
+        </span>
+        <div class="line-show-products-user"></div>
+        <div class="breadcrumb-menu" style="margin-top: 10px;">
+            <span>
+                <a href="{% url 'adminPanel' %}"> صفحه اصلی </a>
+            </span>
+            <i class="fa-solid fa-chevron-left"></i>
+            <span>
+                <a href="{% url 'aBuyFactors' %}"> فاکتورهای خرید </a>
+            </span>
+            <i class="fa-solid fa-chevron-left"></i>
+            <span style="color: #a5a5a5;"> محصولات کاربر </span>
+        </div>
+    </div>
+{% endblock header %}
+
+{% block content %}
+
+    <div class="search-show-products-user container text-center">
+        <div class="row">
+            <div class="col-3"></div>
+            <div class="col-6 d-flex justify-content-center">
+                <form action="" method="post" class="frm-search-show-products-user">
+                    {% csrf_token %}
+                    <button type="submit">
+                        <i class="fa-solid fa-magnifying-glass"></i> <span>جستجو</span>
+                    </button>
+                    <input type="text" name="txt-search" placeholder="جستجوی محصولات">
+                </form>
+            </div>
+            <div class="col-3"></div>
+        </div>
+    </div>
+
+    <!-- message info -->
+    {% for message in messages %}
+      <div class="info-alert">
+        <button type="button" class="float-end btn-close-alert" id="btn-close-alert">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+        <li><i class="fa-solid fa-circle-info"></i> {{ message }} </li>
+      </div>
+    {% endfor %}
+
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12" style="height: 450px; overflow: auto;">
+                    <table class="tbl-show-products-user">
+                        <thead>
+                            <tr>
+                                <th>شناسه</th>
+                                <th>کد سفارش</th>
+                                <th>نام خریدار</th>
+                                <th>نام محصول</th>
+                                <th>تصویر محصول</th>
+                                <th>تعداد محصول</th>
+                                <th>تاریخ خرید</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% if factor_product_show %}
+                                {% for factor_product_show in factor_product_show %}
+                                    <tr>
+                                        <td>{{ factor_product_show.id }}</td>
+                                        <td>{{ factor_product_show.factor.bank_transaction }}</td>
+                                        <td>{{ factor_product_show.factor.user.get_full_name }}</td>
+                                        <td>{{ factor_product_show.product.name }}</td>
+                                        <td>
+                                            <img src="{{ factor_product_show.product.image.url }}" style="width: 75px; height: 75px;" alt="">
+                                        </td>
+                                        <td>{{ factor_product_show.number }}</td>
+                                        <td>{{ factor_product_show.shamsi_buy_date }}</td>
+                                    </tr>
+                                {% endfor %}
+                            {% else %}
+                                <tr >
+                                    <td colspan="7" style="padding:4px;">
+                                        <span style="font-family: 'bnazanin';"> محصولی برای نمایش وجود ندارد. </span>
+                                    </td>
+                                </tr>
+                            {% endif %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock content %}

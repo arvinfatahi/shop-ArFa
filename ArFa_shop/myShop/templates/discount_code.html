@@ -1,0 +1,15 @@
+{% load static %}
+{% if discount_code_model_show %}
+    <div class="discount-code-box row p-1">
+        <div class="col-12">
+            
+                <div class="discount-code">
+                    <div class="container" style="padding: 20px;">
+                        <span class="txt-discount"> {{ discount_code_model_show.description }} </span>
+                        <span class="code-discount"> {{ discount_code_model_show.discount_code }} </span>
+                    </div>
+                </div>
+            
+        </div>
+    </div>
+{% endif %}

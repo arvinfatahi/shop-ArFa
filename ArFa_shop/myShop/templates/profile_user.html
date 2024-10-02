@@ -1,0 +1,531 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %}فروشگاه آرفا{% endblock title %}
+
+{% block body %}
+    
+    {% include "discount_code.html" with discount_code_model_show=discount_code_model_show %}
+    
+    {% include "navbar.html" with all_categorys=all_categorys search_form=search_form %}
+    
+    <section>
+        <div class="line-profile"></div>
+        <nav aria-label="breadcrumb" class="breadcrumb-profile">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{% url 'index' %}" style="color: #aaa;">خانه</a></li>
+                <i class="fa-solid fa-chevron-left"></i>
+                <li class="breadcrumb-item fw-lighter active" style="color: #aaa;" aria-current="page">&nbsp; پروفایل</li>
+            </ol>
+        </nav>
+        <header class="header-all-products py-1">
+            <div class="container px-4 px-lg-5 my-5">
+                <div class="title-all-products text-center">
+                    <h1 class="display-4 fw-bolder">
+                        <span><i class="fa-solid fa-address-card"></i> پروفایل</span>
+                    </h1>
+                    <div class="line"></div>
+                    <p>نمایش پروفایل {{ user.username }}</p>
+                </div>
+            </div>
+        </header>
+
+        <!-- message info -->
+        {% for message in messages %}
+            <div class="info-alert" style="display: block;">
+                <button type="button" class="float-end btn-close-alert" id="btn-close-alert">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+                <li><i class="fa-solid fa-circle-info"></i> {{ message }} </li>
+            </div>
+        {% endfor %}
+
+        <div class="container mt-4 mb-4">
+            <div class="row">
+                <div class="col-2">
+                    <div class="left-profile">
+
+                        <!-- username -->
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="username">
+                                    <div class="icon">
+                                        <i class="fa-solid fa-user" ></i>
+                                    </div>
+                                    <div class="text">{{ user.username }}</div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- profile -->
+                        <div class="row">
+                            <div class="col-12">
+                                <a href="#show-edit-profile" class="profile" id="btn-profile">
+                                    <i class="fa-solid fa-address-card"></i>
+                                    <span> پروفایل </span>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- ticket -->
+                        <div class="row">
+                            <div class="col-12">
+                                <a href="#show-ticket" class="ticket" id="btn-ticket">
+                                    <i class="fa-solid fa-message"></i>
+                                    <span> تیکت </span>
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <!-- statistics -->
+                        <div class="row">
+                            <div class="col-12">
+                                <a href="#show-statistics" class="statistics" id="btn-statistics">
+                                    <i class="fa-solid fa-chart-simple"></i>
+                                    <span> آمار </span>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- setting -->
+                        <div class="row">
+                            <div class="col-12">
+                                <a href="#show-setting" class="setting" id="btn-setting" style="margin-bottom: 0px;">
+                                    <i class="fa-solid fa-gears"></i>
+                                    <span> تنظیمات </span>
+                                </a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-10">
+                    <div class="right-profile">
+
+                        <!-- profile -->
+                        <div class="show-edit-profile" id="show-edit-profile" style="display: block;">
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="benner-profile">
+                                        <a href="#show-profile" class="btn-show-profile" id="btn-show-profile">نمایش پروفایل</a>
+                                        <a href="#edit-profile" class="btn-edit-profile" id="btn-edit-profile">ویرایش پروفایل</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="show-profile" id="show-profile" style="display: block;">
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <div class="show-username">
+                                                    <span class="lbl-username" style="margin-right: 10px;">نام کاربری</span>
+                                                    <span class="lbl-icon"><i class="fa-solid fa-chevron-left"></i></span>
+                                                    <div>{{ user.username }}</div>
+                                                </div>
+                                                <div class="show-number-phone">
+                                                    <span class="lbl-number-phone" style="margin-right: 10px;">تلفن</span>
+                                                    <span class="lbl-icon"><i class="fa-solid fa-chevron-left"></i></span>
+                                                    <div>{{ user.phone }}</div>
+                                                </div>
+                                            </div>
+                                            <div class="col-6">
+                                                <div class="show-full-name">
+                                                    <span class="lbl-full-name">نام کامل</span>
+                                                    <span class="lbl-icon"><i class="fa-solid fa-chevron-left"></i></span>
+                                                    <div>{{ user.get_full_name }}</div>
+                                                </div>
+                                                <div class="show-email">
+                                                    <span class="lbl-email">ایمیل</span>
+                                                    <span class="lbl-icon"><i class="fa-solid fa-chevron-left"></i></span>
+                                                    <div>{{ user.email }}</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                            
+                                        <div class="show-address" style="margin-right: 10px;">
+                                            <span class="lbl-address"><span>آدرس</span></span>
+                                            <span class="lbl-icon"><i class="fa-solid fa-chevron-left"></i></span>
+                                            <div style="width: 84.3%;">{{ user.province }} - {{ user.city }} - {{ user.address }}</div>
+                                        </div>
+                                        
+                                    </div>
+                                    <div class="edit-profile" id="edit-profile" style="display: none;">
+                                        <form action="{% url 'editProfileUser' user.id %}" class="frm-show-edit-profile" id="frm-show-edit-profile" method="post">
+                                            {% csrf_token %}
+                                            
+                                            <div class="row">
+                                                <div class="col-6">
+                                                    <div class="edit-first-name" style="margin-right: 10px;">
+                                                        <span class="lbl-first-name">
+                                                            <i class="fa-solid fa-star-of-life"></i>
+                                                            نام
+                                                        </span>
+                                                        <span class="lbl-arrow"><i class="fa-solid fa-chevron-left"></i></span>
+                                                        <div>{{ edit_profile_user_form.first_name }}</div>
+                                                    </div>
+                                                    <div class="edit-phone" style="margin-right: 10px;">
+                                                        <span class="lbl-phone">
+                                                            <i class="fa-solid fa-star-of-life"></i>
+                                                            تلفن
+                                                        </span>
+                                                        <span class="lbl-arrow"><i class="fa-solid fa-chevron-left"></i></span>
+                                                        <div>{{ edit_profile_user_form.phone }}</div>
+                                                    </div>
+                                                    <div class="edit-province" style="margin-right: 10px;">
+                                                        <span class="lbl-province">
+                                                            <i class="fa-solid fa-star-of-life"></i>
+                                                            استان
+                                                        </span>
+                                                        <span class="lbl-arrow"><i class="fa-solid fa-chevron-left"></i></span>
+                                                        <div>{{ edit_profile_user_form.province }}</div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-6">
+                                                    <div class="edit-last-name">
+                                                        <span class="lbl-last-name">
+                                                            <i class="fa-solid fa-star-of-life"></i>
+                                                            نام خانوادگی
+                                                        </span>
+                                                        <span class="lbl-arrow"><i class="fa-solid fa-chevron-left"></i></span>
+                                                        <div>{{ edit_profile_user_form.last_name }}</div>
+                                                    </div>
+                                                    <div class="edit-email">
+                                                        <span class="lbl-email">ایمیل</span>
+                                                        <span class="lbl-arrow"><i class="fa-solid fa-chevron-left"></i></span>
+                                                        <div>{{ edit_profile_user_form.email }}</div>
+                                                    </div>
+                                                    <div class="edit-city">
+                                                        <span class="lbl-city">
+                                                            <i class="fa-solid fa-star-of-life"></i>
+                                                            شهر
+                                                        </span>
+                                                        <span class="lbl-arrow"><i class="fa-solid fa-chevron-left"></i></span>
+                                                        <div>{{ edit_profile_user_form.city }}</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="edit-address" style="margin-right: 10px;">
+                                                <span class="lbl-address">
+                                                    <i class="fa-solid fa-star-of-life"></i>
+                                                    آدرس
+                                                </span>
+                                                <span class="lbl-arrow"><i class="fa-solid fa-chevron-left"></i></span>
+                                                <div>{{ edit_profile_user_form.address }}</div>
+                                            </div>
+                        
+                                            <div class="text-center">
+                                                <button type="submit" class="btn-edit-profile">
+                                                    <i class="fa-solid fa-pen-to-square"> ویرایش </i>
+                                                </button>
+                                            </div>
+
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- ticket -->
+                        <div class="show-send-ticket" id="show-send-ticket" style="display: none;">
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="benner-ticket">
+                                        <a href="#send-ticket" class="btn-send-ticket" id="btn-send-ticket">ارسال تیکت</a>
+                                        <a href="#show-ticket" class="btn-show-ticket" id="btn-show-ticket">نمایش تیکت</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="send-ticket" id="send-ticket" style="display: block">
+                                        <form action="{% url 'sendTicket' user.id %}" class="frm-send-ticket" method="post">
+                                            {% csrf_token %}
+
+                                            <div class="section mb-1">
+                                                <span class="lbl-ticket-send"> ارسال به بخش </span>
+                                                <span class="lbl-arrow"><i class="fa-solid fa-chevron-left"></i></span>
+                                                {{ ticket_form.section }}
+                                            </div>
+                                            
+                                            <div class="subject mb-1">
+                                                <span class="lbl-ticket-send"> موضوع </span>
+                                                <span class="lbl-arrow"><i class="fa-solid fa-chevron-left"></i></span>
+                                                {{ ticket_form.subject }}
+                                            </div>
+
+                                            <div class="txt-ticket mb-1">
+                                                <span class="lbl-ticket-send"> متن تیکت </span>
+                                                <span class="lbl-arrow"><i class="fa-solid fa-chevron-left"></i></span>
+                                                {{ ticket_form.text }}
+                                            </div>
+
+                                            <div class="d-flex justify-content-center mt-2">
+                                                <button class="btn-ticket-send">
+                                                    <i class="fa-solid fa-paper-plane"> ارسال تیکت </i>
+                                                </button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="show-ticket" id="show-ticket" style="display: none;">
+                                        <table class="tbl-show-ticket table text-center">
+                                            <thead>
+                                            <tr>
+                                                <th scope="col">شناسه</th>
+                                                <th scope="col">بخش</th>
+                                                <th scope="col">موضوع</th>
+                                                <th scope="col">تیکت</th>
+                                                <th scope="col">وضعیت</th>
+                                                <th scope="col">فعالیت‌ها</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody class="table-group-divider">
+                                                {% if ticket_send_show %}
+                                                    {% for ticket_send_show in ticket_send_show %}
+                                                        <tr>
+                                                            <td>{{ ticket_send_show.id }}</td>
+                                                            {% if ticket_send_show.receive.position == 1 %}
+                                                                <td>مدیر</td>
+                                                            {% elif ticket_send_show.receive.position == 2 %}
+                                                                <td>پشتیبانی</td>
+                                                            {% elif ticket_send_show.receive.position == 3 %}
+                                                                <td>ثبت کالا</td>
+                                                            {% elif ticket_send_show.receive.position == 4 %}
+                                                                <td>حسابداری</td>
+                                                            {% elif ticket_send_show.receive.position == 5 %}
+                                                                <td>پست کالا</td>
+                                                            {% endif %}
+                                                            <td>{{ ticket_send_show.subject }}</td>
+                                                            {% if ticket_send_show|length >= 50 %}
+                                                                <td>{{ ticket_send_show.text|slice:"50" }}...</td>
+                                                            {% else %}
+                                                                <td>{{ ticket_send_show.text }}</td>
+                                                            {% endif %}
+                                                            {% if ticket_send_show.state == 1 %}
+                                                                <td>
+                                                                    <span style="color: #dc3545;">منتظر پاسخ</span>
+                                                                </td>
+                                                            {% else %}
+                                                                <td>
+                                                                    <span style="color: #198754;">پاسخ داده شده</span>
+                                                                </td>
+                                                            {% endif %}
+                                                            <td>
+                                                                <button type="button" onclick="setUrlDelete('{{ ticket_send_show.id }}','{{ user.id }}')" class="btn-delete-ticket" data-bs-toggle="modal" data-bs-target="#deleteTicketModal">
+                                                                    <i class="fa-solid fa-trash"></i>
+                                                                </button>
+                                                                <a href="{% url 'showTicket' ticket_send_show.id %}" class="btn-say-ticket">
+                                                                    <i class="fa-solid fa-eye"></i>
+                                                                </a>
+                                                            </td>
+                                                        </tr>
+                                                    {% endfor %}
+                                                {% else %}
+                                                    <tr>
+                                                        <td colspan="6" style="padding:4px;">
+                                                            <span style="font-family: 'bnazanin';"> تیکتی برای نمایش وجود ندارد. </span>
+                                                        </td>
+                                                    </tr>
+                                                {% endif %}
+                                                
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="show-statistics" id="show-statistics" style="display: none;">
+                            <style>
+                                .construction{
+                                    background: linear-gradient(109.6deg, rgba(0, 0, 0, 0.93) 11.2%, rgb(63, 61, 61) 78.9%);
+                                    padding: 20px;
+                                    border-radius: 20px;
+                                }
+                                .title{
+                                    font-size: 35px;
+                                }
+                                .icon{
+                                    font-size: 65px;
+                                }
+                            </style>
+                            <section>
+                                <div class="container px-4 px-lg-5 mt-5">
+                                    <div class="construction">
+                                        <div class="title-seller-product text-center">
+                
+                                            <a class="text-decoration-none text-warning"><i class="fa-solid fa-chart-simple"></i> آمار کاربر </a>
+                                            <div class="line bg-warning"></div>
+                                            
+                                        </div>
+                            
+                                    
+                                        <div class="row text-center">
+                                            <div class="col-2"></div>
+                                            <div class="col-4">
+                                                <div class="title text-warning">متاسفیم</div>
+                                                <div class="txt_1 text-warning">سایت در دست ساخت می باشد</div>
+                                                <div class="txt_2 text-warning" style="font-size:13px;">اما جای نگرانی نیست به زودی بر می گردیم.</div>
+                                            </div>
+                                            <div class="col-4">
+                                                <div class="icon">
+                                                    <i class="fa-solid fa-person-digging text-warning"></i>
+                                                </div>
+                                            </div>
+                                            <div class="col-2"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+                        
+                        <!-- setting -->
+                        <div class="show-setting" id="show-setting" style="display: none;">
+                            <form action="{% url 'editUsername' user.id %}" class="frm-edit-username" method="post">
+                                {% csrf_token %}
+                                
+                                <div class="username">
+                                    <span class="lbl-username">نام کاربری</span>
+                                    <span class="lbl-arrow"><i class="fa-solid fa-chevron-left"></i></span>
+                                    {{ edit_profile_user_username_form.username }}
+                                </div>
+                
+                                <div class="text-center">
+                                    <button type="submit" class="btn-edit-usernsme">
+                                        <i class="fa-solid fa-pen-to-square"> ویرایش نام کاربری </i>
+                                    </button>
+                                </div>
+                            </form>
+                
+                            <form action="{% url 'editPassword' user.id %}" class="frm-edit-password" method="post">
+                                {% csrf_token %}
+                                
+                                <div class="password1">
+                                    <span class="lbl-password1">رمز عبور</span>
+                                    <span class="lbl-arrow"><i class="fa-solid fa-chevron-left"></i></span>
+                                    {{ edit_profile_user_password_form.password1 }}
+                                </div>
+                                
+                                <div class="password2">
+                                    <span class="lbl-password2">تکرار رمز عبور</span>
+                                    <span class="lbl-arrow"><i class="fa-solid fa-chevron-left"></i></span>
+                                    {{ edit_profile_user_password_form.password2 }}
+                                </div>
+                                
+                                <div class="text-center">
+                                    <button type="submit" class="btn-edit-password">
+                                        <i class="fa-solid fa-pen-to-square"> ویرایش رمز عبور </i>
+                                    </button>
+                                </div>
+                                
+                            </form>
+                
+                            <div class="delete-account text-center mt-3">
+                                <a href="#" class="btn-delete-account">
+                                    <i class="fa-solid fa-trash"></i>
+                                    <span> حذف حساب کاربری </span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- The delete ticket Modal -->
+    <div class="modal fade modal-delete-ticket" id="deleteTicketModal" style="margin-top: 200px;">
+        <div class="modal-dialog">
+            <div class="modal-content">
+        
+                <div class="modal-header bg-dark">
+                    <button type="button" class="btn-close bg-white" aria-label="Close" data-bs-dismiss="modal"></button>
+                </div>
+        
+                <div class="modal-body">
+                    <span style="font-family: 'bnazanin';">آیا می خواهید این تیکت را حذف کنید؟</span>
+                </div>
+        
+                <div class="modal-footer">
+                    <button type="button" class="btn-noDelete-ticket-modal" data-bs-dismiss="modal">
+                        <i class="fa-solid fa-xmark"></i>
+                        خیر
+                    </button>
+                    <a href="" class="btn-delete-ticket-modal" id="delete-ticket">
+                        <i class="fa-solid fa-check"></i>
+                        بله
+                    </a>
+                </div>
+        
+            </div>
+        </div>
+    </div>
+    
+    <!-- cnd jquery -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
+    <script>
+        function setUrlDelete(id_ticket, id_user){
+            document.getElementById('delete-ticket').href = '/deleteTicket/' + id_ticket + '/' + id_user;
+        }
+        $(document).ready(function(){
+            document.querySelector('select.ticket-section option[value="2"]').disabled = true;
+            $('#btn-close-alert').click(function(){
+                $('.info-alert').fadeOut();
+            });
+            $('.modal').on('hidden.bs.modal', function () {
+                $('.modal-backdrop').remove();
+            });
+            $('#btn-profile').click(function(event) {
+                event.preventDefault(); // جلوگیری از اسکرول صفحه
+                $('#show-send-ticket').hide();
+                $('#show-statistics').hide();
+                $('#show-setting').hide();
+                $('#show-edit-profile').show();
+            });
+            $('#btn-ticket').click(function(event) {
+                event.preventDefault(); // جلوگیری از اسکرول صفحه
+                $('#show-edit-profile').hide();
+                $('#show-statistics').hide();
+                $('#show-setting').hide();
+                $('#show-send-ticket').show();
+            });
+            $('#btn-statistics').click(function(event) {
+                event.preventDefault(); // جلوگیری از اسکرول صفحه
+                $('#show-edit-profile').hide();
+                $('#show-send-ticket').hide();
+                $('#show-setting').hide();
+                $('#show-statistics').show();
+            });
+            $('#btn-setting').click(function(event) {
+                event.preventDefault(); // جلوگیری از اسکرول صفحه
+                $('#show-edit-profile').hide();
+                $('#show-send-ticket').hide();
+                $('#show-statistics').hide();
+                $('#show-setting').show();
+            });
+            $('#btn-show-profile').click(function(event){
+                event.preventDefault();
+                $('#show-profile').show()
+                $('#edit-profile').hide()
+            });
+            $('#btn-edit-profile').click(function(event){
+                event.preventDefault();
+                $('#show-profile').hide()
+                $('#edit-profile').show()
+            });
+            $('#btn-send-ticket').click(function(event){
+                event.preventDefault();
+                $('#show-ticket').hide()
+                $('#send-ticket').show()
+            });
+            $('#btn-show-ticket').click(function(event){
+                event.preventDefault();
+                $('#show-ticket').show()
+                $('#send-ticket').hide()
+            });
+        });
+    </script>
+{% endblock body %}

@@ -1,0 +1,57 @@
+{% load static %}
+<!-- section sale product -->
+<section>
+    <div class="container px-4 px-lg-5 mt-5">
+        <!-- title -->
+        <div class="title-sale-product text-center">
+
+            <a href="{% url 'allSaleProducts' %}" class="text-decoration-none"><i class="fa-solid fa-percent"></i> محصولات تخفیف دار</a>
+            <div class="line"></div>
+            <p style="font-size: 16px; font-weight: normal;">با بیشترین تخفیف از ما خرید کنید.</p>
+            
+        </div><br>
+        <!-- products -->
+        <div class="sale-products-box row p-1">
+            <div class="col-12">
+                <div class="row gx-2 gy-1 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+                    {% if sale_products %}
+                        {% for sale_products in sale_products %}
+                            <div class="col">
+                                <div class="product">
+                                    <div class="position-relative" style="top: 15px; right: 30px;">
+                                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                                            تخفیف
+                                        </span>
+                                    </div>
+                                    <img class="card-img-top" src="{{ sale_products.image.url }}" alt="..." /><hr>
+                                    <div class="p-1">
+                                        <div class="text-center" style="font-family: 'bnazanin';">
+                                            <h5 class="fw-bolder">{{ sale_products.name }}</h5>
+                                            <span class="text-decoration-line-through">{{ sale_products.price }}</span> |
+                                            <span>{{ sale_products.sale_price }}</span>
+                                        </div>
+                                    </div>
+                                    <!-- Product actions-->
+                                    <div class="p-4 pt-0 mt-1 border-top-0 bg-transparent">
+                                        <div class="text-center p-2">
+                                            <a class="p-2 mt-auto btn-add-cart" href="#">
+                                                <i class="fa-solid fa-cart-shopping"> خرید محصول </i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    {% else %}
+                        <div class="col-12">
+                            <div class="not-sale_products">
+                                <i class="fa-solid fa-circle-info"></i>
+                                محصول تخفیف داری برای نمایش وجود ندارد. لطفا بعدا سر بزنید.
+                            </div>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

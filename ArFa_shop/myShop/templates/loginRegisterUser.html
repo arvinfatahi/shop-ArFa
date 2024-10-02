@@ -1,0 +1,66 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ورود کاربر</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+	<link rel="stylesheet" href="{% static 'css/login-user.css' %}">
+</head>
+<body dir="rtl">
+	
+    <div class="main">
+		{% if messages %}
+			{% for messages in messages %}
+				<ul>
+					<li style="color: #aaa;">{{ messages }}</li>
+				</ul>
+			{% endfor %}
+		{% endif %}
+		<input type="checkbox" id="chk" aria-hidden="true" checked>
+
+			<div class="signup">
+				<form action="{% url 'registerUser' %}" method="post">
+					{% csrf_token %}
+					<label for="chk" aria-hidden="true">
+						<i class="fa-solid fa-user-plus"> ثبت نام </i>
+					</label>
+					{{ register_form.username }}
+					{{ register_form.phone }}
+					{{ register_form.password1 }}
+					{{ register_form.password2 }}
+					<button type="submit">ثبت نام</button>
+				</form>
+			</div>
+
+			<div class="login">
+				<form action="{% url 'loginUser' %}" method="post">
+					{% csrf_token %}
+					<label for="chk" aria-hidden="true">
+						<i class="fa-solid fa-right-to-bracket"> ورود </i>
+					</label>
+					{{ login_form.username }}
+					{{ login_form.password }}
+					<button type="submit">ورود</button>
+				</form>
+				<div class="forget-password">
+					<a href="{% url 'password_reset' %}"> فراموشی رمز عبور </a>
+				</div>
+			</div>
+	</div>
+
+	<style>
+		body{
+			margin: 0;
+			padding: 0;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			min-height: 100vh;
+			font-family: 'Jost', sans-serif;
+			background: linear-gradient(to bottom, #0f0c29, #302b63, #24243e);
+		}
+	</style>
+</body>
+</html>

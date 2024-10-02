@@ -1,0 +1,227 @@
+{% extends "registration/admin/base.html" %}
+{% load static %}
+{% block title %}
+    پنل ادمین | دسته‌ها
+{% endblock title %}
+
+{% block navbar %}
+    {% include "registration/admin/navbar.html" %}
+{% endblock navbar %}
+
+{% block slidebar %}
+    {% include "registration/admin/sidebar.html" %}
+{% endblock slidebar %}
+
+{% block header %}
+    <div class="title-categorys text-center">
+        <span class="categorys">
+            <i class="fa-solid fa-layer-group"></i>
+            دسته‌ها
+        </span>
+        <div class="line-categorys"></div>
+        <div class="breadcrumb-menu" style="margin-top: 10px;">
+            <span>
+                <a href="{% url 'adminPanel' %}">صفحه اصلی</a>
+            </span>
+            <i class="fa-solid fa-chevron-left"></i>
+            <span style="color: #a5a5a5;"> دسته بندی </span>
+        </div>
+    </div>
+{% endblock header %}
+
+{% block content %}
+    
+    <div class="search-add-categorys container text-center">
+        <div class="row">
+            <div class="col-3"></div>
+            <div class="col-6 d-flex justify-content-center">
+                <!-- <form action="" method="post" class="frm-search-category">
+                    {% csrf_token %}
+                    <button type="submit">
+                        <i class="fa-solid fa-magnifying-glass"></i> <span>جستجو</span>
+                    </button>
+                    <input type="text" name="txt-search" placeholder="جستجوی دسته">
+                </form> -->
+            </div>
+            <div class="col-3"></div>
+        </div>
+    </div>
+
+    <!-- message info -->
+    {% for message in messages %}
+        <div class="info-alert">
+            <button type="button" class="float-end btn-close-alert" id="btn-close-alert">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <li><i class="fa-solid fa-circle-info"></i> {{ message }} </li>
+        </div>
+    {% endfor %}
+
+    <section class="content">
+        <div class="container-fluid mb-4 mt-4">
+            <div class="row gx-4 gy-4 pb-4" style="height: 450px; overflow: auto;">
+               
+                <div class="col-2">
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#addCategoryModal">
+                        <div class="add-category-box">
+                            <i class="fa-solid fa-circle-plus"></i>
+                        </div>
+                    </a>
+                </div>
+
+                {% if categorys %}
+                    {% for categorys in categorys %}
+                        <div class="col-2">
+                            <div class="show-categorys">
+                                <img src="{% static 'registration/image/category_icon.png' %}" alt="">
+                                <div class="txt-category"> {{ categorys.name }} </div>
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div class="edit-category">
+                                            <button type="button" class="btn-edit-category"
+                                                onclick="setValEditCategory('{{ categorys.id }}','{{ categorys.name }}')"
+                                                data-bs-toggle="modal" data-bs-target="#editCategoryModal">
+                                                <i class="fa-solid fa-pen-to-square"></i>
+                                                <span> ویرایش </span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="delete-category">
+                                            <button type="button" class="btn-delete-category"
+                                                onclick="urlDeleteCategory('/accounts/aDeleteCategory/{{ categorys.id }}')"
+                                                data-bs-toggle="modal" data-bs-target="#deletCategoryModal">
+                                                <i class="fa-solid fa-trash"></i>
+                                                <span> حذف </span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                        </div>
+                {% endfor %}
+                {% else %}
+                    <div class="col-12">
+                        <div class="alert info-alert" style="font-size: 30px;">
+                            <i class="fa-solid fa-circle-info"></i>
+                            دسته‌ای وجود ندارد. لطف با زدن + دسته‌ای اضافه کنید.
+                        </div>
+                    </div>
+                {% endif %}
+                
+
+            </div>
+        </div>
+    </section>
+
+    <!-- The Delete category Modal -->
+    <div class="modal fade modal-delete-category" id="deletCategoryModal" style="margin-top: 200px;">
+        <div class="modal-dialog">
+            <div class="modal-content">
+        
+                <div class="modal-header bg-dark">
+                    <button type="button" class="btn-close bg-white" aria-label="Close" data-bs-dismiss="modal"></button>
+                </div>
+          
+                <div class="modal-body">
+                    <span style="font-family: 'bnazanin';">آیا می خواهید این دسته را حذف کنید؟</span>
+                </div>
+          
+                <div class="modal-footer">
+                    <button type="button" class="btn-noDelete-category-modal" data-bs-dismiss="modal">
+                        <i class="fa-solid fa-xmark"></i>
+                        خیر
+                    </button>
+                    <a href="" class="btn-delete-category-modal" id="delete-category">
+                        <i class="fa-solid fa-check"></i>
+                        بله
+                    </a>
+                </div>
+        
+            </div>
+        </div>
+    </div>
+
+    <!-- The add Category Modal -->
+    <div class="modal fade modal-add-category" id="addCategoryModal" style="margin-top: 200px;">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <div class="modal-header bg-dark">
+                    <button type="button" class="btn-close bg-white" aria-label="Close" data-bs-dismiss="modal"></button>
+                </div>
+
+                <div class="modal-body">
+                    <form action="{% url 'aAddCategory' %}" class="frm-add-category" method="post">
+                        {% csrf_token %}
+
+                        <div class="category-name">
+                            <span class="lbl-category-name"> نام دسته </span>
+                            <span class="lbl-arrow"><i class="fa-solid fa-chevron-left"></i></span>
+                            {{ add_category_form.name }}
+                        </div>
+                        
+                        <hr style="border: 1px solid #919191 !important; display: flex;">
+                        
+                        <div class="d-flex justify-content-center">
+                            <button type="submit" class="btn-add-category-modal">
+                                <i class="fa-solid fa-plus"> افزدون دسته </i>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- The edit Category Modal -->
+    <div class="modal fade modal-edit-category" id="editCategoryModal" style="margin-top: 200px;">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <div class="modal-header bg-dark">
+                    <button type="button" class="btn-close bg-white" aria-label="Close" data-bs-dismiss="modal"></button>
+                </div>
+
+                <div class="modal-body">
+                    <form action="" class="frm-edit-category" id="frm-edit-category" method="post">
+                        {% csrf_token %}
+
+                        <div class="category-name">
+                            <span class="lbl-category-name"> نام دسته </span>
+                            <span class="lbl-arrow"><i class="fa-solid fa-chevron-left"></i></span>
+                            {{ edit_category_form.name }}
+                        </div>
+                        
+                        <hr style="border: 1px solid #919191 !important; display: flex;">
+                        
+                        <div class="d-flex justify-content-center">
+                            <button type="submit" class="btn-edit-category-modal">
+                                <i class="fa-solid fa-pen-to-square"> ویرایش دسته </i>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function urlDeleteCategory(url){
+            document.getElementById('delete-category').href = url;
+        }
+        function setValEditCategory(id, name){
+            document.getElementById('frm-edit-category').action = '/accounts/aEditCategory/' + id + '/';
+            document.getElementById('edit-category-name').value = name;
+        }
+        $(document).ready(function(){
+            $('#btn-close-alert').click(function(){
+                $('.info-alert').fadeOut();
+            });
+        });
+    </script>
+
+{% endblock content %}

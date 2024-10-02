@@ -1,0 +1,84 @@
+{% load static %}
+<style>
+    .construction{
+        background: linear-gradient(109.6deg, rgba(0, 0, 0, 0.93) 11.2%, rgb(63, 61, 61) 78.9%);
+        padding: 20px;
+        border-radius: 20px;
+    }
+    .title{
+        font-size: 35px;
+    }
+    .icon{
+        font-size: 65px;
+    }
+</style>
+<!-- section best seller product -->
+<section>
+    <div class="container px-4 px-lg-5 mt-5">
+        <!-- title -->
+        <div class="construction">
+            <div class="title-seller-product text-center">
+                
+                <a class="text-decoration-none text-warning"><i class="fa-solid fa-star"></i> پرفروشترین محصولات</a>
+                <div class="line bg-warning"></div>
+                <p style="font-size: 16px; font-weight: normal;" class="text-warning">پرفروشترین محصولات ما را خریداری کنید.</p>
+                
+            </div>
+
+        
+            <div class="row text-center">
+                <div class="col-2"></div>
+                <div class="col-4">
+                    <div class="title text-warning">متاسفیم</div>
+                    <div class="txt_1 text-warning">سایت در دست ساخت می باشد</div>
+                    <div class="txt_2 text-warning" style="font-size:13px;">اما جای نگرانی نیست به زودی بر می گردیم.</div>
+                </div>
+                <div class="col-4">
+                    <div class="icon">
+                        <i class="fa-solid fa-person-digging text-warning"></i>
+                    </div>
+                </div>
+                <div class="col-2"></div>
+            </div>
+        </div>
+        <!-- products -->
+        {% comment %} <div class="seller-products-box row p-1">
+            
+            <div class="col-12 mb-5">
+                <div class="row gx-2 gy-1 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center" style="overflow: hidden; height: 730px;">
+                    {% for products in products %}
+                        <div class="col">
+                            <div class="seller-products">
+                                {% if products.is_sale == True %}
+                                    <div class="position-relative" style="top: 15px; right: 30px;">
+                                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                                        تخفیف
+                                        </span>
+                                    </div>
+                                {% endif %}
+                                <img class="card-img-top" src="{{ products.image.url }}" alt="..." /><hr>
+                                <div class="p-1">
+                                    <div class="text-center" style="font-family: 'bnazanin';">
+                                        <h5 class="fw-bolder">{{ products.name }}</h5>
+                                        {% if products.is_sale == True %}
+                                            <span class="text-decoration-line-through"> {{ products.price }} </span> |
+                                            <span>{{ products.sale_price }}</span>
+                                        {% else %}
+                                            <span>{{ products.price }}</span>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                <div class="p-4 pt-0 mt-1 border-top-0 text-center">
+                                    <a class="btn-add-cart" href="{% url 'productDetails' products.id %}">
+                                        <i class="fa-solid fa-cart-shopping"> خرید محصول </i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+
+        </div> {% endcomment %}
+    </div>
+</section>

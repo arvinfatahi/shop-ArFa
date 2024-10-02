@@ -1,0 +1,148 @@
+/* ====================================== start navbar top */
+.navbar-top .frm-search .btn-search {
+    border: 1px solid #323232;
+    background-color: #323232;
+    color: white;
+    padding: 10px;
+    transition: all 0.5s;
+    width: 60px;
+}
+.navbar-top .frm-search .btn-search:hover{
+    border: none;
+    border-bottom: 4px solid #323232;
+    background-color: transparent;
+    color: #323232;
+}
+
+.navbar-top .frm-search .txt-search{
+    border: none;
+    border-bottom: 4px solid #323232;
+    color: #323232;
+    padding: 10px;
+    font-family: 'bnazanin';
+    width: 500px;
+    background-color: #f5f5f5;
+}
+
+.navbar-top .frm-search #suggestions {
+    display: none;
+    list-style-type: none;
+    padding: 0;
+    margin-top: 50px;
+    margin-right: 60px;
+    border: 1px solid #323232;
+    position: absolute;
+    background-color: white;
+    width: 499px;
+    z-index: 100;
+}
+
+.navbar-top .frm-search #suggestions li {
+    padding: 8px;
+    cursor: pointer;
+    font-family: 'bnazanin';
+}
+
+.navbar-top .frm-search #suggestions li:hover {
+    background-color: #f0f0f0;
+}
+
+.navbar-top .myCart{
+    border: 1px solid #aaa;
+    padding: 10px;
+}
+
+.navbar-top .myCart .badge{
+    color: #323232;
+}
+
+@keyframes shopLogo{
+    from{top: -3px;}
+    to{top: 3px;}
+}
+.navbar-top .myCart .bi-cart-fill{
+    color: #323232;
+    position: relative;
+    animation-name: shopLogo;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+/* ====================================== end navbar top */
+/* ====================================== start navbar middle */
+.navbar-middle .btn-login-register .btn-login{
+    text-decoration: none;
+    color: #323232;
+    border: 1px solid #323232;
+    padding: 8px;
+    border-radius: 4px;
+    margin-left: 5px;
+    transition: all 1s;
+}
+.navbar-middle .btn-login-register .btn-login:hover{
+    color: #aaa;
+    border-color: #aaa;
+}
+
+.navbar-middle .btn-login-register .btn-register{
+    text-decoration: none;
+    color: #323232;
+    border: 1px solid #323232;
+    padding: 8px;
+    border-radius: 4px;
+    transition: all 0.5s;
+}
+.navbar-middle .btn-login-register .btn-register:hover{
+    color: #aaa;
+    border-color: #aaa;
+}
+
+.navbar-middle .btn-exit{
+    color: #dc3545;
+    border: 1px solid #dc3545;
+    border-radius: 4px;
+    padding: 8px;
+    text-decoration: none;
+    transition: all 1s;
+}
+.navbar-middle .btn-exit:hover{
+    color: #aaa;
+    border: 1px solid #aaa;
+}
+
+.navbar-middle .btn-profile{
+    color: #323232;
+    border: 1px solid #323232;
+    border-radius: 4px;
+    padding: 8px;
+    text-decoration: none;
+    margin-right: 4px;
+    transition: all 1s;
+}
+.navbar-middle .btn-profile:hover{
+    color: #aaa;
+    border: 1px solid #aaa;
+}
+
+.navbar-middle .top-menu a{
+    color: #323232 !important;
+}
+
+/* ====================================== end navbar middle */
+/* ====================================== start navbar bottom */
+.navbar-bottom .under-menu{
+    display: block ruby;
+    list-style: none;
+    width: 38%;
+    border-top: 1px solid #323232;
+    padding-top: 7px;
+}
+
+.navbar-bottom .under-menu li a{
+    color: #323232;
+    text-decoration: none;
+    font-family: 'bnazanin';
+    font-weight: bold;
+    transition: all 1s;
+}

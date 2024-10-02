@@ -1,0 +1,92 @@
+{% extends "registration/finance/base.html" %}
+
+{% block title %}
+    پنل کارمندان | صفحه اصلی
+{% endblock title %}
+
+{% block navbar %}
+    {% include "registration/finance/navbar.html" %}
+{% endblock navbar %}
+
+{% block slidebar %}
+    {% include "registration/finance/sidebar.html" with ticket_finance=ticket_finance %}
+{% endblock slidebar %}
+
+{% block header %}
+    <div class="title-mainPage text-center">
+        <span class="mainPage">
+            <i class="fa-solid fa-house"></i>
+            صفحه اصلی
+        </span>
+        <div class="line-admin"></div>
+        <div class="breadcrumb-menu">
+            <span style="color: #a5a5a5;"> به پنل کارمند مالی خوش آمدید  </span>
+        </div>
+    </div>
+{% endblock header %}
+
+{% block content %}
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                
+                <div class="col-lg-3 col-6">
+                    <div class="products-box">
+                        <i class="icon fa-solid fa-money-bill-1-wave"></i>
+                        <div class="title">قیمت محصولات</div>
+                        <div class="products-login">
+                            <a href="{% url 'fProducts' %}">
+                                <span>ورود</span>
+                                <i class="fas fa-arrow-circle-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-6">
+                    <div class="products-box">
+                        <i class="icon fa-solid fa-hand-holding-dollar"></i>
+                        <div class="title">حقوق کارمندان</div>
+                        <div class="products-login">
+                            <a href="{% url 'fEmployeeRight' %}">
+                                <span>ورود</span>
+                                <i class="fas fa-arrow-circle-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-6">
+                    <div class="products-box">
+                        <i class="icon fa-solid fa-money-check-dollar"></i>
+                        <div class="title">تراکنش‌های بانکی</div>
+                        <div class="products-login">
+                            <a href="{% url 'fBankTransactions' %}">
+                                <span>ورود</span>
+                                <i class="fas fa-arrow-circle-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-6">
+                    <div class="products-box">
+                        <i class="icon fa-solid fa-file"></i>
+                        <div class="title">فاکتورهای خرید</div>
+                        <div class="products-login">
+                            <a href="{% url 'fBuyFactors' %}">
+                                <span>ورود</span>
+                                <i class="fas fa-arrow-circle-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+
+        </div>
+    </section>
+
+{% endblock content %}

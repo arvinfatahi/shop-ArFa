@@ -1,0 +1,63 @@
+{% load static %}
+<!-- Section product-->
+
+<section>
+    <div class="container px-4 px-lg-5 mt-5">
+        <!-- title -->
+        <div class="title-products text-center">
+            
+            <a href="{% url 'allProducts' %}" class="text-decoration-none"><i class="fa-solid fa-robot"></i> محصولات</a>
+            <div class="line"></div>
+            <p style="font-size: 16px; font-weight: normal;">تمام محصولات رباتیک خود را در فروشگاه ما خریداری کنید.</p>
+            
+        </div>
+        
+        <div class="products-box row p-1">
+            <div class="col-12">
+                <div class="row gx-2 gy-1 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center"  style="overflow: hidden; height: 733px;">
+                    {% if products %}
+                        {% for products in products %}
+                            <div class="col">
+                                <div class="products">
+                                    {% if products.is_sale == True %}
+                                        <div class="position-relative" style="top: 15px; right: 30px;">
+                                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                                                تخفیف
+                                            </span>
+                                        </div>
+                                    {% endif %}
+                                    <img src="{{ products.image.url }}" alt="..." /><hr>
+                                    <div class="discription p-1">
+                                        <div class="text-center" style="font-family: 'bnazanin';">
+                                            <h5 class="fw-bolder">{{ products.name }}</h5>
+                                            {% if products.is_sale == True %}
+                                                <span class="text-decoration-line-through"> {{ products.price }} </span> |
+                                                <span>{{ products.sale_price }}</span>
+                                            {% else %}
+                                                <span>{{ products.price }}</span>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                    <div class="p-4 pt-0 mt-1 border-top-0 text-center">
+                                        <a class="btn-add-cart" href="{% url 'productDetails' products.id %}">
+                                            <i class="fa-solid fa-cart-shopping"> خرید محصول </i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    {% else %}
+                        <div class="col-12">
+                            <div class="not-products">
+                                <i class="fa-solid fa-circle-info"></i>
+                                محصولی برای نمایش وجود ندارد. لطفا بعدا سر بزنید.
+                            </div>
+                        </div>
+                    {% endif %}
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

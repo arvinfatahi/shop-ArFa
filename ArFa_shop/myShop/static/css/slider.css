@@ -1,0 +1,96 @@
+.benner-slider{
+    width: 100%;
+    height: 350px;
+    margin: 20px auto;
+}
+
+.benner-slider .swiper {
+    width: 100%;
+    height: 100%;
+}
+
+.benner-slider .swiper-slide {
+    color: #fff;
+    background: linear-gradient(90deg, #900, #ff6b6b);
+}
+
+@keyframes animationIMG{
+    from{top: 10px;}
+    to{top: 20px;}
+}
+
+.benner-slider .swiper-slide img {
+    width: 250px;
+    height: 250px;
+    position: relative;
+    margin: 0 auto;
+    animation-name: animationIMG;
+    animation-iteration-count: infinite;
+    animation-duration: 1s;
+    animation-direction: alternate;
+}
+
+.benner-slider .swiper-slide .elements{
+    box-shadow: 0px 0px 10px #600;
+    border-radius: 20px;
+    padding: 20px;
+    margin-top: 65px;
+}
+
+.benner-slider .swiper-slide .elements .title{
+    color: #500;
+    font-family: 'bnazanin';
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.benner-slider .swiper-slide .elements .price{
+    color: #500;
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.benner-slider .swiper-slide .elements .add-to-cart a{
+    color: #500;
+    border: 1px solid #500;
+    text-decoration: none;
+    font-size: 24px;
+    font-weight: bold;
+    font-family: 'bnazanin';
+    border-radius: 4px;
+    padding: 4px;
+    transition: all 0.5s;
+}
+.benner-slider .swiper-slide .elements .add-to-cart a:hover{
+    color: #900;
+    border: 1px solid #900;
+}
+
+.benner-slider .swiper-button-next{
+    padding: 30px;
+    border-radius: 5px;
+    background-color: #fff;
+    color: #900 !important;
+}
+
+.benner-slider .swiper-button-prev{
+    padding: 30px;
+    border-radius: 5px;
+    background-color: #fff;
+    color: #ff6b6b !important;
+}
+
+.benner-slider .swiper-slider .swiper-pagination{
+    background-color: #fff;
+    padding: 5px;
+}
+
+.not-slider{
+    text-align: center;
+    margin-top: 155px;
+    font-family: 'bnazanin';
+    font-size: 40px;
+    color: #500;
+}

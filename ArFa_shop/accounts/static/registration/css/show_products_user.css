@@ -1,0 +1,138 @@
+/* ------------------------------ title users */
+.title-show-products-user{
+    background-color: #343a40;
+    padding: 18px;
+    font-family: 'bnazanin';
+    color: #ddd;
+    box-shadow: 0px 0px 5px #343a40;
+    height: 130px;
+}
+
+.title-show-products-user .show-products-user{
+    font-size: 32px;
+    font-weight: bold;
+}
+
+.title-show-products-user .line-show-products-user{
+    background-color: #a5a5a5;
+    height: 4px;
+    width: 20%;
+    margin: 5px auto;
+    border-radius: 6px;
+}
+
+.title-show-products-user .breadcrumb-menu a{
+    text-decoration: none;
+    color: #ddd;
+    transition: all 0.5s;
+}
+
+.title-show-products-user .breadcrumb-menu a:hover{
+    color: #fff;
+}
+
+/* ------------------------------ search show products user */
+.search-show-products-user{
+    background-color: #fff;
+    box-shadow: 0px 0px 5px #ddd;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+.search-show-products-user .frm-search-show-products-user{
+    float: right;
+}
+
+.search-show-products-user .frm-search-show-products-user button{
+    color: #ddd;
+    background-color: #343a40;
+    padding: 5px;
+    border-top-right-radius: 50px;
+    border-bottom-right-radius: 50px;
+    border: none;
+    font-size: 14px;
+    font-family: 'bnazanin';
+    transition: all 0.5s;
+}
+
+.search-show-products-user .frm-search-show-products-user button:hover{
+    background-color: rgba(52, 58, 64, 0.8);
+}
+
+.search-show-products-user .frm-search-show-products-user input{
+    border: 1px solid #343a40;
+    border-bottom-left-radius: 50px;
+    border-top-left-radius: 50px;
+    padding: 4px;
+    font-size: 14px;
+    font-family: 'bnazanin';
+    width: 150px;
+    transition: all 0.5s;
+}
+.search-show-products-user .frm-search-show-products-user input:focus{
+    width: 200px;
+}
+
+/* ------------------------------ table show-products user */
+.tbl-show-products-user{
+    font-family: 'bnazanin';
+    text-align: center;
+    border: 1px solid #343a40;
+    width: 100%;
+}
+
+.tbl-show-products-user thead tr th{
+    background-color: #343a40;
+    color: #ddd;
+    border: 1px solid #343a40;
+    font-size: 16px;
+    padding: 4px;
+}
+
+.tbl-show-products-user tbody tr td{
+    border: 1px solid #343a40;
+    vertical-align: middle;
+    padding: 4px;
+}
+
+/* ------------------------------ btn */
+.btn-edit-show-products-user{
+    color: #fff;
+    background-color: #218838;
+    border: 1px solid #218838;
+    border-radius: 4px;
+    padding: 4px;
+    text-decoration: none;
+    font-size: 18px;
+    width: 33px;
+    height: 33px;
+    display: inline-block;
+    margin-left: 4px;
+    transition: all 0.5s;
+}
+.btn-edit-user:hover{
+    color: #218838;
+    background-color: #fff;
+}
+
+.btn-delete-show-products-user{
+    color: #fff;
+    background-color: #DC3545;
+    border: 1px solid #DC3545;
+    border-radius: 4px;
+    padding: 4px;
+    width: 33px;
+    height: 33px;
+    margin-left: 4px;
+    vertical-align: top;
+    transition: all 0.5s;
+}
+
+.btn-delete-show-products-user i{
+    font-size: 18px;
+}
+
+.btn-delete-user:hover{
+    color: #DC3545;
+    background-color: #fff;
+}

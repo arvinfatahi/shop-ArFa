@@ -1,0 +1,125 @@
+{% load static %}
+<div class="all-navbar">
+    
+    <!-- Navigation-->
+    <nav class="navbar-top navbar navbar-expand-lg navbar-light" style="direction: rtl;">
+        <div class="container px-4 px-lg-5">
+            <a class="navbar-brand" href="{% url 'index' %}">
+              <img src="{% static 'image/AF.png' %}" style="width: 50px; height: 50px;" alt="">
+            </a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                 <form action="{% url 'search' %}" method="post" class="frm-search navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
+                    {% csrf_token %}
+                    <button type="submit" class="btn-search">
+                       <i class="fa-solid fa-magnifying-glass"></i>
+                    </button>
+                    {{ search_form.search }}
+                    <ul id="suggestions"></ul>
+                 </form>
+                <a href="{% url 'myCart' %}" class="myCart d-flex text-decoration-none">
+                    <i class="bi-cart-fill me-1"></i>&nbsp;
+                    {% if request.session.total_items is not None %}
+                        <span class="cart-item-count badge text-white ms-1" style="background-color: #19b27a; border-radius: 0px;">
+                            {{ request.session.total_items }}
+                        </span>
+                    {% else %}
+                        <span class="badge text-white" style="background-color: #ff414d; border-radius: 0px;">0</span>
+                    {% endif %}
+                </a>
+            </div>
+        </div>
+    </nav>
+    
+    <nav class="navbar-middle navbar navbar-expand-lg navbar-light" style="direction: rtl;">
+        <div class="container px-4 px-lg-5">
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="top-menu navbar-nav">
+                    <li class="nav-item"><a class="nav-link" aria-current="page" href="{% url 'index' %}">
+                        <i class="fa-solid fa-house"> خانه </i>
+                    </a></li>
+                    <li class="nav-item"><a class="nav-link" aria-current="page" href="{% url 'shop' %}">
+                        <i class="fa-solid fa-shop"> فروشگاه </i>
+                    </a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fa-solid fa-layer-group"> دسته بندی </i>
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown" style="font-family: 'bnazanin'; border-radius: 0px; border: 1px solid #ddd;">
+                            {% if all_categorys %}
+                                {% for all_categorys in all_categorys %}
+                                    <li>
+                                        <div>
+                                            <a href="{% url 'allProductsCategory' all_categorys.id %}" class="dropdown-item text-center" style="font-weight: bold; font-size: 18px; padding: 10px;">
+                                                <div style="float: right;">
+                                                    <i class="fa-solid fa-layer-group"></i>
+                                                </div>
+                                                <span>{{ all_categorys.name }}</span>
+                                            </a>
+                                        </div>
+                                    </li>
+                                {% endfor %}
+                            {% else %}
+                                <li>
+                                    <div class="text-center">
+                                        دسته‌ای وجود ندارد.
+                                    </div>
+                                </li>
+                            {% endif %}
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" aria-current="page" href="{% url 'about' %}">
+                        <i class="fa-solid fa-address-card"> درباره ما </i>
+                    </a></li>
+                </ul>
+            </div>
+            <div class="btn-login-register">
+                {% if request.user.is_authenticated %}
+                    <a href="{% url 'logoutUser' %}" class="btn-exit">
+                        <i class="fa-solid fa-person-walking-arrow-right"> خروج </i>
+                    </a>
+                    <a href="{% url 'profileUser' request.user.id %}" class="btn-profile">
+                        <i class="fa-solid fa-address-card"> پروفایل </i>
+                    </a>
+                {% else %}
+                    <a href="{% url 'loginRegisterUser' %}" class="btn-login">
+                        <i class="fa-solid fa-right-to-bracket"> ورود </i>&nbsp;
+                        <span style="color: #323232;"> | </span>&nbsp;
+                        <i class="fa-solid fa-user-plus"> ثبت نام </i>
+                    </a>
+                {% endif %}
+            
+            </div>
+        </div>
+    </nav>
+
+    <nav class="navbar-bottom" style="direction: rtl;">
+        <div class="container px-4 px-lg-5">
+            <div class="" id="navbarSupportedContent">
+                <ul class="under-menu">
+                    <li style="margin-right: 6px;">
+                        <a href="{% url 'allProducts' %}" class="" aria-current="page">
+                            <i class="fa-solid fa-robot"></i>
+                            <span> کل محصولات </span>
+                        </a>
+                    </li>
+                    <li style="margin-right: 10px;">
+                        <a href="{% url 'allSaleProducts' %}" class="" aria-current="page">
+                            <i class="fa-solid fa-percent"></i>
+                            <span> محصولات تخفیف دار </span>
+                        </a>
+                    </li>
+                    <li style="margin-right: 10px;">
+                        <a href="{% url 'allBestSellerProducts' %}" class="" aria-current="page">
+                            <i class="fa-solid fa-star"></i>
+                            <span> پرفروشترین محصولات </span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

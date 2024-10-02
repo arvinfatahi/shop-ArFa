@@ -1,0 +1,279 @@
+{% extends "registration/admin/base.html" %}
+
+{% block title %}
+    پنل ادمین | کاربران
+{% endblock title %}
+
+{% block navbar %}
+    {% include "registration/admin/navbar.html" %}
+{% endblock navbar %}
+
+{% block slidebar %}
+    {% include "registration/admin/sidebar.html" %}
+{% endblock slidebar %}
+
+{% block header %}
+    <div class="title-users text-center">
+        <span class="user">
+            <i class="fa-solid fa-user"></i>
+            کاربران
+        </span>
+        <div class="line-users"></div>
+        <div class="breadcrumb-menu" style="margin-top: 10px;">
+            <span>
+                <a href="{% url 'adminPanel' %}">صفحه اصلی</a>
+            </span>
+            <i class="fa-solid fa-chevron-left"></i>
+            <span style="color: #a5a5a5;"> کاربران </span>
+        </div>
+    </div>
+{% endblock header %}
+
+{% block content %}
+
+    <div class="search-users container text-center">
+        <div class="row">
+            <div class="col-3"></div>
+            <div class="col-6 d-flex justify-content-center">
+                <!-- <form action="" method="post" class="frm-search-user">
+                    {% csrf_token %}
+                    <button type="submit">
+                        <i class="fa-solid fa-magnifying-glass"></i> <span>جستجو</span>
+                    </button>
+                    <input type="text" name="txt-search" placeholder="جستجوی کاربران">
+                </form> -->
+            </div>
+            <div class="col-3"></div>
+        </div>
+    </div>
+
+    <!-- message info -->
+    {% for message in messages %}
+      <div class="info-alert">
+        <button type="button" class="float-end btn-close-alert" id="btn-close-alert">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+        <li><i class="fa-solid fa-circle-info"></i> {{ message }} </li>
+      </div>
+    {% endfor %}
+
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12" style="height: 450px; overflow: auto;">
+                    <table class="tbl-users">
+                        <thead>
+                            <tr>
+                                <th>شناسه</th>
+                                <th>نام کاربری</th>
+                                <th>نام کامل</th>
+                                <th>ایمیل</th>
+                                <th>شماره موبایل</th>
+                                <th>آدرس</th>
+                                <th>فعالیت‌ها</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% if users %}
+                                {% for users in users %}
+                                    <tr>
+                                        <td>{{ users.id }}</td>
+                                        <td>{{ users.username }}</td>
+                                        <td>{{ users.get_full_name }}</td>
+                                        <td>{{ users.email }}</td>
+                                        <td>{{ users.phone }}</td>
+                                        <td>{{ users.address }}</td>
+                                        <td>
+                                            <button type="button" class="btn-edit-user"
+                                                onclick="setValEditUsers('{{ users.id }}','{{ users.first_name }}','{{ users.last_name }}','{{ users.email }}','{{ users.phone }}','{{ users.address }}')"
+                                                data-bs-toggle="modal" data-bs-target="#editUsersModal">
+                                                <i class="fa-solid fa-pen-to-square"></i>
+                                            </button>
+                                            <button type="button" class="btn-delete-user" 
+                                                onclick="urlDeleteUser('/accounts/aDeleteUser/{{ users.id }}')" 
+                                                data-bs-toggle="modal" data-bs-target="#deletModal">
+                                                <i class="fa-solid fa-trash"></i>
+                                            </button>
+                                            <button type="button" class="btn-setting-user"
+                                                onclick="setValUsernamePassword('{{ users.id }}','{{ users.username }}')"
+                                                data-toggle="modal" data-target="#settingUsersModal">
+                                                <i class="fa-solid fa-gear"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            {% else %}
+                                <tr>
+                                    <td colspan="7" style="padding:4px;">
+                                        <span style="font-family: 'bnazanin';"> کاربری برای نمایش وجود ندارد. </span>
+                                    </td>
+                                </tr>
+                            {% endif %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- The Delete Modal -->
+    <div class="modal fade modal-delete-users" id="deletModal" style="margin-top: 200px;">
+        <div class="modal-dialog">
+            <div class="modal-content">
+        
+                <div class="modal-header bg-dark">
+                    <button type="button" class="btn-close bg-white" aria-label="Close" data-bs-dismiss="modal"></button>
+                </div>
+        
+                <div class="modal-body">
+                    <span style="font-family: 'bnazanin';">آیا می خواهید این کاربر را حذف کنید؟</span>
+                </div>
+        
+                <div class="modal-footer">
+                    <button type="button" class="btn-noDelete-users-modal" data-bs-dismiss="modal">
+                        <i class="fa-solid fa-xmark"></i>
+                        خیر
+                    </button>
+                    <a href="" class="btn-delete-users-modal" id="delete-user">
+                        <i class="fa-solid fa-check"></i>
+                        بله
+                    </a>
+                </div>
+        
+            </div>
+        </div>
+    </div>
+
+    <!-- The edit users Modal -->
+    <div class="modal fade modal-edit-users mt-5" id="editUsersModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <div class="modal-header bg-dark">
+                    <button type="button" class="btn-close bg-white" aria-label="Close" data-bs-dismiss="modal"></button>
+                </div>
+
+                <div class="modal-body">
+                    <form action="" class="frm-edit-users" id="frm-edit-users" method="post">
+                        {% csrf_token %}
+
+                        <div class="users-fName">
+                            <span class="lbl-users-fName"> نام کاربر </span>
+                            <span class="lbl-arrow"><i class="fa-solid fa-chevron-left"></i></span>
+                            {{ edit_users_form.first_name }}
+                        </div>
+                        
+                        <div class="users-lName">
+                            <span class="lbl-users-lName"> نام خانوادگی کاربر </span>
+                            <span class="lbl-arrow"><i class="fa-solid fa-chevron-left"></i></span>
+                            {{ edit_users_form.last_name }}
+                        </div>
+
+                        <div class="users-email">
+                            <span class="lbl-users-email"> ایمیل کاربر </span>
+                            <span class="lbl-arrow"><i class="fa-solid fa-chevron-left"></i></span>
+                            {{ edit_users_form.email }}
+                        </div>
+
+                        <div class="users-phone">
+                            <span class="lbl-users-phone"> تلفن کاربر </span>
+                            <span class="lbl-arrow"><i class="fa-solid fa-chevron-left"></i></span>
+                            {{ edit_users_form.phone }}
+                        </div>
+
+                        <div class="users-address">
+                            <span class="lbl-users-address"> آدرس کاربر </span>
+                            <span class="lbl-arrow"><i class="fa-solid fa-chevron-left"></i></span>
+                            {{ edit_users_form.address }}
+                        </div>
+                        <hr style="border: 1px solid #919191 !important; display: flex;">
+                        <div class="d-flex justify-content-center">
+                            <button type="submit" class="btn-edit-users-modal">
+                                <i class="fa-solid fa-pen-to-square"> ویرایش کاربر </i>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+  
+  <!-- setting users Modal -->
+  <div class="modal fade modal-setting-users" id="settingUsersModal" style="margin-top: 150px;" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+          <div class="modal-content">
+
+              <div class="modal-header bg-dark">
+                  <button type="button" class="btn-close bg-white" aria-label="Close" data-dismiss="modal"></button>
+              </div>
+
+              <div class="modal-body">
+                  <form action="" class="frm-edit-username-users" id="frm-edit-username-users" method="post">
+                      {% csrf_token %}
+
+                      <div class="users-username">
+                          <span class="lbl-users-username"> نام کاربری </span>
+                          <span class="lbl-arrow"><i class="fa-solid fa-chevron-left"></i></span>
+                          {{ edit_username_users_form.username }}
+                      </div>
+
+                      <div class="text-center">
+                          <button type="submit" class="btn-edit-username-modal">
+                              <i class="fa-solid fa-pen-to-square"> ویرایش نام کاربری </i>
+                          </button>
+                      </div>
+                  </form>
+                  <hr>
+                  <form action="" class="frm-edit-password-users" id="frm-edit-password-users" method="post">
+                      {% csrf_token %}
+
+                      <div class="users-password">
+                          <span class="lbl-users-password"> رمز عبور </span>
+                          <span class="lbl-arrow"><i class="fa-solid fa-chevron-left"></i></span>
+                          {{ edit_password_users_form.password1 }}
+                      </div>
+
+                      <div class="users-rePassword">
+                          <span class="lbl-users-rePassword"> تکرار رمز عبور </span>
+                          <span class="lbl-arrow"><i class="fa-solid fa-chevron-left"></i></span>
+                          {{ edit_password_users_form.password2 }}
+                      </div>
+
+                      <div class="text-center">
+                          <button type="submit" class="btn-edit-password-modal">
+                            <i class="fa-solid fa-pen-to-square"> ویرایش رمز عبور </i>
+                          </button>
+                      </div>
+                  </form>
+              </div>
+              
+          </div>
+      </div>
+  </div>
+
+  <script>
+    function urlDeleteUser(url){
+        document.getElementById('delete-user').href = url
+    }
+    function setValEditUsers(id, fName, lName, email, phone, address){
+        document.getElementById('frm-edit-users').action = '/accounts/aEditUsers/' + id;
+        document.getElementById('edit-users-fName').value = fName;
+        document.getElementById('edit-users-lName').value = lName;
+        document.getElementById('edit-users-email').value = email;
+        document.getElementById('edit-users-phone').value = phone;
+        document.getElementById('edit-users-address').value = address;
+    }
+    function setValUsernamePassword(id, username){
+        document.getElementById('frm-edit-username-users').action = '/accounts/changeUsernameAdminUser/' + id;
+        document.getElementById('frm-edit-password-users').action = '/accounts/changePassAdminUser/' + id;
+        document.getElementById('edit-users-username').value = username;
+    }
+    $(document).ready(function(){
+        $('#btn-close-alert').click(function(){
+            $('.info-alert').fadeOut();
+        });
+    });
+  </script>
+{% endblock content %}

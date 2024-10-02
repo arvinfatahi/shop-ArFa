@@ -1,0 +1,14 @@
+.discount-code-box{
+    background: linear-gradient(90deg, #6C33A3, #c180ff);
+    font-family: 'bnazanin';
+    font-size: 30px;
+    color: #fff;
+    text-align: center;
+}
+
+.discount-code-box .code-discount{
+    font-weight: bold;
+    border: 1px solid #fff;
+    padding: 10px;
+    border-radius: 5px;
+}

@@ -1,0 +1,295 @@
+.line-shop{
+    background: radial-gradient(circle at 10% 20%, rgb(0, 0, 0) 0%, rgb(64, 64, 64) 90.2%);
+    height: 4px;
+}
+
+/* ---------------------------- breadcrumb */
+.breadcrumb-shop{
+    margin-bottom: 4px;
+    margin-top: 4px;
+    background: radial-gradient(circle at 10% 20%, rgb(0, 0, 0) 0%, rgb(64, 64, 64) 90.2%);
+}
+
+.breadcrumb-shop ol{
+    margin: 10px;
+}
+
+.breadcrumb-shop i{
+    color: #aaa;
+    margin-top: 5px;
+    margin-right: 5px;
+}
+
+/* ---------------------------- header */
+.header-shop{
+    height: 200px;
+    background: radial-gradient(circle at 10% 20%, rgb(0, 0, 0) 0%, rgb(64, 64, 64) 90.2%);
+}
+
+.header-shop .title-shop {
+    font-family:'bnazanin';
+    font-size: 40px;
+    font-weight: bold;
+    margin: 0 auto;
+    transition: all 0.5s;
+}
+
+.header-shop .title-shop span {
+    color: #aaa;
+    transition: all 0.5s;
+}
+
+.header-shop .title-shop .line {
+    height: 2px;
+    width: 200px;
+    margin: 5px auto;
+    background-color: #aaa;
+    transition: all 0.5s;
+}
+
+.header-shop .title-shop p{
+    font-size: 16px;
+    font-family: 'bnazanin';
+    color: #aaa;
+    margin-top: 20px;
+}
+
+/* ---------------------------- shop products box */
+.shop-products-box .shop-products{
+    color: #323232;
+    background: linear-gradient(0deg, #fdfbfb, #ebedee);border: 1px solid #ccc;
+    margin-top: 10px;
+    border-radius: 20px;
+    overflow: hidden;
+    font-family: 'bnazanin';
+    transition: all 1s;
+}
+.shop-products-box .shop-products:hover{
+    transform: scale(0.95);
+    border: none;
+    box-shadow: 0px 0px 10px #aaa;
+}
+
+.shop-products-box .shop-products img {
+    width: 100%;
+    height: 200px;
+}
+
+.shop-products-box .shop-products:hover img{
+    cursor: pointer;
+    transform: scale(1.1) rotate(-5deg);
+    transition: all 1s;
+}
+.shop-products-box .shop-products .btn-add-cart{
+    color: #323232;
+    background-color: #eee;
+    border: 1px solid #ccc;
+    text-decoration: none;
+    padding: 5px;
+    margin: 5px;
+    border-radius: 4px;
+}
+
+.shop-products-box .not-shop-products{
+    background: radial-gradient(circle at 10% 20%, rgb(0, 0, 0) 0%, rgb(64, 64, 64) 90.2%);
+    font-size: 40px;
+    text-align: center;
+    color: #aaa;
+    font-family: 'bnazanin';
+    padding: 50px;
+    border-radius: 20px
+}
+
+/* ---------------------------- filter */
+.filter .filter-body{
+    box-shadow: 0px 0px 10px #aaa;
+    border-radius: 10px;
+    padding-top: 10px;
+    margin-top: 10px;
+}
+
+
+.filter .filter-body .price-logo,
+.filter .filter-body .order-logo,
+.filter .filter-body .other-logo{
+    color: #fff;
+    padding: 4px;
+    font-size: 17px;
+    font-family: 'bnazanin';
+    font-weight: bold;
+    background-color: #323232;
+    width: 150px;
+    border-top-left-radius: 50px;
+    border-bottom-left-radius: 50px;
+}
+
+.filter .filter-body .min-price .txt-min-price,
+.filter .filter-body .max-price .txt-max-price{
+    color: #323232;
+    background-color: #f1f1f1;
+    border: none;
+    border-bottom: 4px solid #323232;
+    padding: 4px;
+    text-align: center;
+    font-family: 'bnazanin';
+    width: 178px;
+}
+
+.filter .filter-body .min-price span,
+.filter .filter-body .max-price span,
+.filter .filter-body .price-discount span,
+.filter .filter-body .price-available span{
+    padding: 4px;
+    border-radius: 4px;
+    font-size: 18px;
+    font-weight: bold;
+    font-family: 'bnazanin';
+    float: right;
+    margin-left: 5px;
+    width: 115px;
+    vertical-align: middle;
+}
+
+/* Define styles for the checkbox container */
+.filter .filter-body .frm-chk-sale,
+.filter .filter-body .frm-chk-state{
+    display: flex;
+    align-items: center;
+}
+
+.filter .filter-body .frm-chk-sale span,
+.filter .filter-body .frm-chk-state span,
+.filter .filter-body .frm-cmb-order span{
+    padding: 4px;
+    border-radius: 4px;
+    font-size: 18px;
+    font-weight: bold;
+    font-family: 'bnazanin';
+    margin-left: 5px;
+    width: 230px;
+}
+
+.filter .filter-body .frm-cmb-order .cmb-select-order{
+    color: #323232;
+    background-color: #f1f1f1;
+    border: none;
+    border-bottom-width: medium;
+    border-bottom-style: none;
+    border-bottom-color: currentcolor;
+    border-bottom: 4px solid #323232;
+    padding: 7px;
+    text-align: center;
+    font-family: 'bnazanin';
+    width: 180px;
+}
+
+  /* Style the checkbox itself */
+.filter .filter-body .frm-chk-sale input[type="checkbox"] {
+    color: #fff;
+    background-color: #f1f1f1;
+    border: 1px solid #ddd;
+    appearance: none;
+    -webkit-appearance: none;
+    width: 36px;
+    height: 36px;
+    border-radius: 4px;
+    position: relative;
+    cursor: pointer;
+}
+  
+  /* Style for checked state */
+.filter .filter-body .frm-chk-sale input[type="checkbox"]:checked::before {
+    content: "✔";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 18px;
+}
+  
+  /* Additional styles for customization */
+.filter .filter-body .frm-chk-sale input[type="checkbox"]:checked {
+    background-color: #f1f1f1;
+    color: #323232;
+}
+
+/* Define styles for the checkbox container */
+.filter .filter-body .frm-chk-state {
+    display: flex;
+    align-items: center;
+}
+  
+  /* Style the checkbox itself */
+.filter .filter-body .frm-chk-state input[type="checkbox"] {
+    color: #fff;
+    background-color: #f1f1f1;
+    border: 1px solid #ddd;
+    appearance: none;
+    -webkit-appearance: none;
+    width: 36px;
+    height: 36px;
+    border-radius: 4px;
+    position: relative;
+    cursor: pointer;
+}
+  
+  /* Style for checked state */
+.filter .filter-body .frm-chk-state input[type="checkbox"]:checked::before {
+    content: "✔";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 18px;
+    color: #fff;
+}
+  
+  /* Additional styles for customization */
+.filter .filter-body .frm-chk-state input[type="checkbox"]:checked {
+    background-color: #f1f1f1;
+    color: #323232;
+}
+
+.filter .filter-body .btn-filter-action{
+    color: #fff;
+    background-color: #198754;
+    border: 1px solid #198754;
+    padding: 4px;
+    border-radius: 4px;
+    font-family: 'bnazanin';
+    font-weight: bold;
+    width: 50%;
+    margin-bottom: 8px;
+    transition: all 0.5s;
+}
+.filter .filter-body .btn-filter-action:hover{
+    color: #198754;
+    background-color: #fff;
+}
+
+.filter .applied-filters{
+    box-shadow: 0px 0px 10px #aaa;
+    border-radius: 10px;
+    padding-top: 10px;
+    padding-bottom: 1px;
+    margin-top: 20px;
+}
+
+.filter .applied-filters .title-applied-filters{
+    color: #fff;
+    padding: 4px;
+    font-size: 17px;
+    font-family: 'bnazanin';
+    font-weight: bold;
+    background-color: #323232;
+    width: 150px;
+    border-top-left-radius: 50px;
+    border-bottom-left-radius: 50px;
+}
+
+.filter .applied-filters .alert-no-filter{
+    margin: 10px !important;
+    font-family: 'bnazanin' !important;
+    padding: 5px !important;
+    text-align: center !important;
+}

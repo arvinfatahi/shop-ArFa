@@ -1,0 +1,221 @@
+{% extends "registration/admin/base.html" %}
+
+{% block title %}
+    پنل ادمین | درباره ما
+{% endblock title %}
+
+{% block navbar %}
+    {% include "registration/admin/navbar.html" %}
+{% endblock navbar %}
+
+{% block slidebar %}
+    {% include "registration/admin/sidebar.html" %}
+{% endblock slidebar %}
+
+{% block header %}
+    <div class="title-about text-center">
+        <span class="about">
+            <i class="fa-solid fa-address-card"></i>
+            درباره ما
+        </span>
+        <div class="line-about"></div>
+        <div class="breadcrumb-menu" style="margin-top: 10px;">
+            <span>
+                <a href="{% url 'adminPanel' %}">صفحه اصلی</a>
+            </span>
+            <i class="fa-solid fa-chevron-left"></i>
+            <span style="color: #a5a5a5;"> درباره ما </span>
+        </div>
+    </div>
+{% endblock header %}
+
+{% block content %}
+
+    <!-- message info -->
+    {% for message in messages %}
+      <div class="info-alert">
+        <button type="button" class="float-end btn-close-alert" id="btn-close-alert">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+        <li><i class="fa-solid fa-circle-info"></i> {{ message }} </li>
+      </div>
+    {% endfor %}
+
+    <section class="content">
+        <div class="container-fluid mb-4 mt-4">
+            <div class="row gx-4 gy-4 pb-4" style="height: 450px; overflow: auto;">
+
+                <div class="col-lg-3 col-6">
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#addAboutModal">
+                        <div class="add-about-box">
+                            <i class="fa-solid fa-circle-plus"></i>
+                        </div>
+                    </a>
+                </div>
+
+                {% if about_show %}
+                    {% for about_show in about_show %}
+                        <div class="col-lg-3 col-6">
+                            <div class="show-about-members">
+                                <img src="{{ about_show.image.url }}" alt="">
+                                <div class="txt-about"> {{ about_show.about }} </div>
+                                <div class="edit-about">
+                                    <button type="button" class="btn-edit-about"
+                                        onclick="setValEditAbout('{{ about_show.id }}','{{ about_show.image }}','{{ about_show.about }}')"
+                                        data-bs-toggle="modal" data-bs-target="#editAboutModal">
+                                        <i class="fa-solid fa-pen-to-square"></i>
+                                        <span> ویرایش </span>
+                                    </button>
+                                </div>
+                                <div class="delete-about">
+                                    <button type="button" class="btn-delete-about"
+                                        onclick="urlDeleteAbout('/accounts/aDeleteAbout/{{ about_show.id }}')"
+                                        data-bs-toggle="modal" data-bs-target="#deletAboutModal">
+                                        <i class="fa-solid fa-trash"></i>
+                                        <span> حذف </span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    <div class="col-12">
+                        <div class="alert info-alert" style="font-size: 30px;">
+                            <i class="fa-solid fa-circle-info"></i>
+                            تیمی وجود ندارد. لطفا با زدن + تیم خود را معرفی کنید.
+                        </div>
+                    </div>
+                {% endif %}
+
+            </div>
+        </div>
+    </section>
+
+    <!-- The Delete about Modal -->
+    <div class="modal fade modal-delete-about" id="deletAboutModal" style="margin-top: 200px;">
+        <div class="modal-dialog">
+            <div class="modal-content">
+        
+                <div class="modal-header bg-dark">
+                    <button type="button" class="btn-close bg-white" aria-label="Close" data-bs-dismiss="modal"></button>
+                </div>
+        
+                <div class="modal-body">
+                    <span style="font-family: 'bnazanin';">آیا می خواهید این فیلد را حذف کنید؟</span>
+                </div>
+        
+                <div class="modal-footer">
+                    <button type="button" class="btn-noDelete-about-modal" data-bs-dismiss="modal">
+                        <i class="fa-solid fa-xmark"></i>
+                        خیر
+                    </button>
+                    <a href="" class="btn-delete-about-modal" id="delete-about">
+                        <i class="fa-solid fa-check"></i>
+                        بله
+                    </a>
+                </div>
+        
+            </div>
+        </div>
+    </div>
+
+    <!-- The add about Modal -->
+    <div class="modal fade modal-add-about" id="addAboutModal" style="margin-top: 200px;">
+        <div class="modal-dialog">
+            <div class="modal-content">
+        
+                <div class="modal-header bg-dark">
+                    <button type="button" class="btn-close bg-white" aria-label="Close" data-bs-dismiss="modal"></button>
+                </div>
+        
+                <div class="modal-body">
+                    <form action="{% url 'aAddAboutMembers' %}" method="post" class="frm-add-about" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        
+                        <div class="image-members">
+                            <span class="lbl-image-members"> تصویر اعضا </span>
+                            <span class="lbl-arrow"><i class="fa-solid fa-chevron-left"></i></span>
+                            {{ add_about_form.image }}
+                        </div>
+
+                        <div class="about-members">
+                            <span class="lbl-about-members"> درباره اعضا </span>
+                            <span class="lbl-arrow"><i class="fa-solid fa-chevron-left"></i></span>
+                            {{ add_about_form.about }}
+                        </div>
+
+                        <hr style="border: 1px solid #919191 !important; display: flex;">
+
+                        <div class="d-flex justify-content-center">
+                            <button type="submit" class="btn-add-about">
+                                <i class="fa-solid fa-pen-to-square"> اضافه کردن </i>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+        
+            </div>
+        </div>
+    </div>
+
+    <!-- The edit add about Modal -->
+    <div class="modal fade modal-edit-about mt-5" id="editAboutModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <div class="modal-header bg-dark">
+                    <button type="button" class="btn-close bg-white" aria-label="Close" data-bs-dismiss="modal"></button>
+                </div>
+
+                <div class="modal-body">
+                    <form action="" class="frm-edit-about" id="frm-edit-about" method="post">
+                        {% csrf_token %}
+
+                        <div class="about-members">
+                            <span class="lbl-about-members"> درباره اعضا </span>
+                            <span class="lbl-arrow"><i class="fa-solid fa-chevron-left"></i></span>
+                            {{ edit_about_form.about }}
+                        </div>
+                        
+                        <div class="select-image">
+                            <span class="lbl-select-image"> انتخاب عکس </span>
+                            <span class="lbl-arrow"><i class="fa-solid fa-chevron-left"></i></span>
+                            {{ edit_about_form.image }}
+                        </div>
+
+                        <div class="show-image">
+                            <span class="lbl-show-image"> نمایش عکس </span>
+                            <span class="lbl-arrow"><i class="fa-solid fa-chevron-left"></i></span>
+                            <img class="img-show-image" id="img-show-image" src="" alt="">
+                        </div>
+
+                        <hr style="border: 1px solid #919191 !important; display: flex;">
+
+                        <div class="d-flex justify-content-center">
+                            <button type="submit" class="btn-edit-about-modal">
+                                <i class="fa-solid fa-pen-to-square"> ویرایش کردن </i>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function urlDeleteAbout(url){
+            document.getElementById('delete-about').href = url
+        }
+        function setValEditAbout(id, image, about){
+            document.getElementById('frm-edit-about').action = '/accounts/aEditAboutMembers/' + id + '/';
+            document.getElementById('edit-about-members').value = about;
+            document.getElementById('img-show-image').src = '/media/' + image;
+        }
+        $(document).ready(function(){
+            $('#btn-close-alert').click(function(){
+                $('.info-alert').fadeOut();
+            });
+        });
+    </script>
+{% endblock content %}

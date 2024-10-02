@@ -1,0 +1,148 @@
+{% extends "registration/admin/base.html" %}
+
+{% block title %}
+    پنل ادمین | نمایش تیکت‌های ادمین
+{% endblock title %}
+
+{% block navbar %}
+    {% include "registration/admin/navbar.html" %}
+{% endblock navbar %}
+
+{% block slidebar %}
+    {% include "registration/admin/sidebar.html" with ticket_admin=ticket_admin %}
+{% endblock slidebar %}
+
+{% block header %}
+    <div class="title-show-ticket text-center">
+        <span class="show-ticket">
+            <i class="fa-solid fa-message"></i>
+            نمایش تیکت ادمین
+        </span>
+        <div class="line-show-ticket"></div>
+        <div class="breadcrumb-menu" style="margin-top: 10px;">
+            <span>
+                <a href="{% url 'adminPanel' %}">صفحه اصلی</a>
+            </span>
+            <span>
+                <a href="{% url 'ticketAdmin' request.user.id %}">تیکت‌های مدیر</a>
+            </span>
+            <i class="fa-solid fa-chevron-left"></i>
+            <span style="color: #a5a5a5;"> نمایش تیکت ادمین </span>
+        </div>
+    </div>
+{% endblock header %}
+  
+{% block content %}
+
+    <div class="search-add-products container text-center">
+        <div class="row">
+            <div class="col-3"></div>
+            <div class="col-6 d-flex justify-content-center">
+                <div class="title-subject" style="color: #323232; font-family: 'bnazanin';">
+                    <i class="fa-solid fa-book-open-reader"></i> 
+                    <span>موضوع: </span>
+                    <span> {{ ticket_show.subject }} </span>
+                </div>&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;
+                <div style="color: #323232; font-family: 'bnazanin';">
+                    ارسال تیکت {{ ticket_show.receive.username }} به {{ ticket_show.send.username }}
+                </div>
+            </div>
+            <div class="col-3"></div>
+        </div>
+    </div>
+
+    <div class="container mb-4 mt-4">
+        <div class="row">
+            <div class="col-2"></div>
+            <div class="col-8">
+                <div class="ticket-box">
+                    
+                    <div class="ticket-body">
+                        <div style="margin: 10px;">
+                            <form action="{% url 'replayTicketAdmin' request.user.id ticket_show.id %}" method="post" class="frm-replay-ticket">
+                                {% csrf_token %}
+
+                                {{ replay_ticket_form.text }}
+                                <div class="text-center">
+                                    <button type="submit" class="btn-replay-ticket">
+                                        <i class="fa-solid fa-reply"></i>
+                                        <span>پاسخ دادن</span>
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="sender-receiver">
+                            <div class="row">
+                                <div class="col-9">
+                                    <div class="sender">
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <div class="sender-username"><i class="fa-solid fa-paper-plane"></i>
+                                                    فرستنده: {{ ticket_show.send.username }}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="sender-message">
+                                            <span>{{ ticket_show.text }}</span>
+                                            <div class="row">
+                                                <div class="col-6">
+                                                    <div class="date">
+                                                        <i class="fa-solid fa-clock"></i>
+                                                        <span>{{ ticket_show.created|time:"H-i-s" }}</span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-6">
+                                                    <div class="time">
+                                                        <i class="fa-solid fa-calendar-days"></i>
+                                                        <span>{{ ticket_show.shamsi_date_ticket }}</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-3"></div>
+                            </div>
+                            
+                            {% for show_replay_ticket in show_replay_ticket %}
+                                <div class="row">
+                                    <div class="col-3"></div>
+                                    <div class="col-9">
+                                        <div class="receiver">
+                                            <div class="row">
+                                                <div class="col-6">
+                                                    <div class="receiver-username">
+                                                        <i class="fa-solid fa-hand-holding"></i> 
+                                                        گیرنده : {{ show_replay_ticket.sender.username }}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="receiver-message">
+                                                <span>{{ show_replay_ticket.replay_text }}</span>
+                                                <div class="row">
+                                                    <div class="col-6">
+                                                        <div class="date">
+                                                            <i class="fa-solid fa-clock"></i>
+                                                            <span>{{ show_replay_ticket.created|time:"H-i-s" }}</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <div class="time">
+                                                            <i class="fa-solid fa-calendar-days"></i>
+                                                            <span>{{ show_replay_ticket.shamsi_date_replay_ticket }}</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-2"></div>
+        </div>
+    </div>
+{% endblock content %}

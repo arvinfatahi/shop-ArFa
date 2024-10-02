@@ -1,0 +1,205 @@
+.line-myCart{
+    background: radial-gradient(circle at 10% 20%, rgb(0, 0, 0) 0%, rgb(64, 64, 64) 90.2%);
+    height: 4px;
+}
+/* ---------------------------- breadcrumb */
+.breadcrumb-myCart{
+    margin-bottom: 4px;
+    margin-top: 4px;
+    background: radial-gradient(circle at 10% 20%, rgb(0, 0, 0) 0%, rgb(64, 64, 64) 90.2%);
+}
+
+.breadcrumb-myCart ol{
+    margin: 10px;
+}
+
+.breadcrumb-myCart i{
+    color: #aaa;
+    margin-top: 5px;
+    margin-right: 5px;
+}
+
+/* -------------------------- header */
+.header-myCart{
+    height: 200px;
+    background: radial-gradient(circle at 10% 20%, rgb(0, 0, 0) 0%, rgb(64, 64, 64) 90.2%);
+}
+
+.header-myCart .title-myCart {
+    font-family:'bnazanin';
+    font-size: 40px;
+    font-weight: bold;
+    margin: 0 auto;
+    transition: all 0.5s;
+}
+
+.header-myCart .title-myCart span {
+    color: #aaa;
+    transition: all 0.5s;
+}
+
+.header-myCart .title-myCart .line {
+    height: 2px;
+    width: 200px;
+    margin: 5px auto;
+    background-color: #aaa;
+    transition: all 0.5s;
+}
+
+.header-myCart .title-myCart p{
+    font-size: 16px;
+    font-family: 'bnazanin';
+    color: #aaa;
+    margin-top: 20px;
+}
+
+/* ---------------------------------- tbl-myCart */
+.tbl-myCart{
+    border: 1px solid #323232;
+    background-color: #fff;
+    font-family: 'bnazanin';
+}
+
+.tbl-myCart thead{
+    background-color: #323232;
+    color: #fff;
+}
+
+.tbl-myCart thead th{
+    padding: 8px;
+}
+
+.tbl-myCart tbody td,
+.tbl-myCart tbody th{
+    border: 1px solid #323232;
+    color: #323232;
+}
+
+.tbl-myCart .btn-delete-myCart{
+    color: #ff414d;
+    background-color: #fff;
+    border: none;
+    padding: 4px;
+    text-decoration: none;
+    transition: all 0.5s;
+}
+
+/* ------------------------------- btn-plus and btn-minus and qty */
+.tbl-myCart .btn-plus-cart{
+    background-color: #323232;
+    border: 1px solid #323232;
+    color: #fff;
+    border-radius: 4px;
+    margin-right: 5px;
+    font-size: 24px;
+}
+
+.tbl-myCart .btn-minus-cart{
+    background-color: #323232;
+    border: 1px solid #323232;
+    color: #fff;
+    border-radius: 4px;
+    margin-left: 5px;
+    font-size: 24px;
+}
+
+.tbl-myCart .qty{
+    background-color: #ddd;
+    border-radius: 4px;
+    color: #323232;
+    padding: 4px;
+    font-size: 24px;
+    font-weight: bold;
+    display: inline-table;
+    width: 50px;
+    margin-top: 2px;
+}
+
+/* =============================== start payment */
+.payment{
+    margin-right: 20px;
+    font-family: 'bnazanin';
+}
+
+.payment .discount-code .txt-discount-code{
+    border: none;
+    border-bottom: 4px solid #198754;
+    background-color: #dfd;
+    padding: 8px;
+    height: 40px;
+    position: relative;
+    top: -2px;
+}
+
+.payment .discount-code .btn-discount-code{
+    border: 1px solid #198754;
+    background-color: #198754;
+    color: #fff;
+    padding: 4px;
+    height: 40px;
+    width: 100px;
+    font-weight: bold;
+}
+
+.payment .line{
+    height: 0.5px;
+    width: 100%;
+    background-color: #ddd;
+    margin: 10px auto;
+}
+
+.payment .number-all-product,
+.payment .price-all-product,
+.payment .discount-all-product{
+    border: 1px solid #aaa;
+    padding: 10px;
+    border-radius: 4px;
+    width: 51%;
+    margin: 0px auto;
+    text-align: center;
+}
+
+.payment .number-all-product span,
+.payment .price-all-product span,
+.payment .discount-all-product{
+    color: #323232;
+    font-weight: bold;
+}
+
+.payment .discount-all-product .discount-code-delete{
+    float: right;
+}
+
+.payment .discount-all-product .discount-code-delete .btn-discount-code-delete{
+    text-decoration: none;
+    color: #aaa;
+}
+
+.alert-login{
+    color: #fff;
+    background-color: #ff414d;
+    padding: 10px;
+    border-radius: 4px;
+    font-family: 'bnazanin';
+}
+
+.payment .btn-payment{
+    color: #fff;
+    background-color: #198754;
+    border: 1px solid #198754;
+    border-radius: 4px;
+    padding: 8px;
+    width: 50%;
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+    transition: all 0.5s;
+}
+.payment .btn-payment:hover{
+    color: #198754;
+    background-color: #fff;
+}
+
+.payment .btn-payment i{
+    font-weight: bold;
+}

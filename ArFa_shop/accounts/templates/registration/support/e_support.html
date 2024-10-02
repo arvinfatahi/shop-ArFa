@@ -1,0 +1,75 @@
+{% extends "registration/support/base.html" %}
+
+{% block title %}
+    پنل کارمندان | صفحه اصلی
+{% endblock title %}
+
+{% block navbar %}
+    {% include "registration/support/navbar.html" %}
+{% endblock navbar %}
+
+{% block slidebar %}
+    {% include "registration/support/sidebar.html" with ticket_PR=ticket_PR %}
+{% endblock slidebar %}
+
+{% block header %}
+    <div class="title-mainPage text-center">
+        <span class="mainPage">
+            <i class="fa-solid fa-house"></i>
+            صفحه اصلی
+        </span>
+        <div class="line-admin"></div>
+        <div class="breadcrumb-menu">
+            <span style="color: #a5a5a5;"> به پنل کارمند پشتیبان خوش آمدید </span>
+        </div>
+    </div>
+{% endblock header %}
+
+{% block content %}
+
+    <style>
+        .construction{
+            background: linear-gradient(109.6deg, rgba(0, 0, 0, 0.93) 11.2%, rgb(63, 61, 61) 78.9%);
+            padding: 20px;
+            border-radius: 20px;
+        }
+        .title{
+            font-size: 35px;
+        }
+        .icon{
+            font-size: 65px;
+        }
+    </style>
+
+    <!-- Main content -->
+    <!-- <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                
+            </div>
+
+        </div>
+    </section> -->
+    <section>
+        <div class="container px-4 px-lg-5 mt-5">
+            <!-- title -->
+            <div class="construction">
+    
+                <div class="row text-center">
+                    <div class="col-2"></div>
+                    <div class="col-4">
+                        <div class="title text-warning">متاسفیم</div>
+                        <div class="txt_1 text-warning">سایت در دست ساخت می باشد</div>
+                        <div class="txt_2 text-warning" style="font-size:13px;">اما جای نگرانی نیست به زودی بر می گردیم.</div>
+                    </div>
+                    <div class="col-4">
+                        <div class="icon">
+                            <i class="fa-solid fa-person-digging text-warning"></i>
+                        </div>
+                    </div>
+                    <div class="col-2"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock content %}

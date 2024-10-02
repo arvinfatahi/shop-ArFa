@@ -1,0 +1,474 @@
+/* ============================================= start title discount code */
+.title-discount-code{
+    background-color: #343a40;
+    padding: 18px;
+    font-family: 'bnazanin';
+    color: #ddd;
+    box-shadow: 0px 0px 5px #343a40;
+    height: 130px;
+}
+
+.title-discount-code .discount-code{
+    font-size: 32px;
+    font-weight: bold;
+}
+
+.title-discount-code .line-discount-code{
+    background-color: #a5a5a5;
+    height: 4px;
+    width: 20%;
+    margin: 5px auto;
+    border-radius: 6px;
+}
+
+.title-discount-code .breadcrumb-menu a{
+    text-decoration: none;
+    color: #ddd;
+    transition: all 0.5s;
+}
+
+.title-discount-code .breadcrumb-menu a:hover{
+    color: #fff;
+}
+
+/* ============================================= end title discount code */
+/* ============================================= start search add discount code */
+.search-add-discount-code{
+    background-color: #fff;
+    box-shadow: 0px 0px 5px #ddd;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+.search-add-discount-code .btn-show-discount-code{
+    float: right;
+    margin-left: 20px;
+    margin-top: 4px;
+}
+
+.search-add-discount-code .btn-show-discount-code a{
+    color: #343a40;
+    padding: 4px;
+    border-radius: 4px;
+    font-size: 14px;
+    font-family: 'bnazanin';
+    transition: all 0.5s;
+}
+.search-add-discount-code .btn-show-discount-code .line{
+    width: 0.5px;
+    height: 2px;
+    background-color: #343a40;
+    border-radius: 4px;
+    transition: all 0.5s;
+}
+.search-add-discount-code .btn-add-discount-code a:hover + .line{
+    width: 100%;
+}
+
+.search-add-discount-code .frm-search-discount-code{
+    float: right;
+}
+
+.search-add-discount-code .frm-search-discount-code button{
+    color: #ddd;
+    background-color: #343a40;
+    padding: 5px;
+    border-top-right-radius: 50px;
+    border-bottom-right-radius: 50px;
+    border: none;
+    font-size: 14px;
+    font-family: 'bnazanin';
+    transition: all 0.5s;
+}
+
+.search-add-discount-code .frm-search-discount-code button:hover{
+    background-color: rgba(52, 58, 64, 0.8);
+}
+
+.search-add-discount-code .frm-search-discount-code input{
+    border: 1px solid #343a40;
+    border-bottom-left-radius: 50px;
+    border-top-left-radius: 50px;
+    padding: 4px;
+    font-size: 14px;
+    font-family: 'bnazanin';
+    width: 150px;
+    transition: all 0.5s;
+}
+.search-add-discount-code .frm-search-discount-code input:focus{
+    width: 200px;
+}
+
+.search-add-discount-code .btn-statistics-discount-code{
+    float: right;
+    margin-right: 20px;
+    margin-top: 4px;
+}
+
+.search-add-discount-code .btn-statistics-discount-code a{
+    color: #343a40;
+    padding: 4px;
+    border-radius: 4px;
+    font-size: 14px;
+    font-family: 'bnazanin';
+    transition: all 0.5s;
+}
+.search-add-discount-code .btn-statistics-discount-code .line{
+    width: 0.5px;
+    height: 2px;
+    background-color: #343a40;
+    border-radius: 4px;
+    transition: all 0.5s;
+}
+.search-add-discount-code .btn-statistics-discount-code a:hover + .line{
+    width: 100%;
+}
+
+/* ============================================= end search add discount code */
+/* ============================================= start info alert */
+.info-alert{
+    background-color: #00c9f3;
+    color: #fff;
+    font-family: 'bnazanin';
+    font-weight: bold;
+    list-style: none;
+    padding: 4px;
+    text-align: center;
+    width: 100%;
+    margin-bottom: 4px;
+}
+
+.info-alert .btn-close-alert{
+    border: 1px solid #007bff;
+    background-color: #007bff;
+    color: #fff;
+    border-radius: 4px;
+    width: 25px;
+    height: 25px;
+}
+
+/* ============================================= end info alert */
+/* ============================================= start table discount code */
+.tbl-discount-code{
+    font-family: 'bnazanin';
+    text-align: center;
+    border: 1px solid #343a40;
+    width: 100%;
+    background-color: #fff;
+}
+
+.tbl-discount-code thead tr th{
+    background-color: #343a40;
+    color: #ddd;
+    border: 1px solid #343a40;
+    font-size: 16px;
+    padding: 4px;
+}
+
+.tbl-discount-code tbody tr td{
+    border: 1px solid #343a40;
+    vertical-align: middle;
+    padding: 4px;
+}
+
+/* ============================================= end table discount code */
+/* ============================================= start btn */
+.btn-edit-discount-code{
+    color: #fff;
+    background-color: #218838;
+    border: 1px solid #218838;
+    padding: 4px;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 18px;
+    width: 33px;
+    height: 33px;
+    display: inline-block;
+    transition: all 0.5s;
+}
+.btn-edit-discount-code:hover{
+    color: #218838;
+    background-color: #fff;
+}
+
+.btn-delete-discount-code{
+    color: #fff;
+    background-color: #DC3545;
+    border: 1px solid #DC3545;
+    padding: 4px;
+    border-radius: 4px;
+    font-size: 18px;
+    width: 33px;
+    height: 33px;
+    transition: all 0.5s;
+}
+.btn-delete-discount-code:hover{
+    color: #DC3545;
+    background-color: #fff;
+}
+
+.btn-add-image{
+    color: #fff;
+    background-color: #343A3F;
+    border: 1px solid #343A3F;
+    padding: 4px;
+    border-radius: 4px;
+    font-size: 18px;
+    width: 33px;
+    height: 33px;
+    transition: all 0.5s;
+}
+.btn-add-image:hover{
+    color: #343A3F;
+    background-color: #fff;
+}
+
+/* ============================================= end btn */
+/* ============================================= start modal delete discount code */
+.modal-delete-discount-code .modal-footer .btn-delete-discount-code-modal{
+    color: #fff;
+    background-color: #DC3545;
+    border: 1px solid #DC3545;
+    border-radius: 4px;
+    text-decoration: none;
+    font-family: 'bnazanin';
+    padding: 4px;
+    width: 50px;
+    text-align: center;
+    transition: all 0.5s;
+}
+.modal-delete-discount-code .modal-footer .btn-delete-discount-code-modal:hover{
+    color: #DC3545;
+    background-color: #fff;
+}
+
+.modal-delete-discount-code .modal-footer .btn-noDelete-discount-code-modal{
+    color: #fff;
+    background-color: #28a745;
+    border: 1px solid #28a745;
+    border-radius: 4px;
+    text-decoration: none;
+    font-family: 'bnazanin';
+    padding: 4px;
+    width: 50px;
+    text-align: center;
+    transition: all 0.5s;
+}
+.modal-delete-discount-code .modal-footer .btn-noDelete-discount-code-modal:hover{
+    color: #28a745;
+    background-color: #fff;
+}
+
+/* ============================================= start modal add discount code */
+.modal-add-discount-code .frm-add-discount-code .discount-code .lbl-discount-code,
+.modal-add-discount-code .frm-add-discount-code .discount-percent .lbl-discount-percent,
+.modal-add-discount-code .frm-add-discount-code .description .lbl-description,
+.modal-add-discount-code .frm-add-discount-code .end-date .lbl-end-date,
+.modal-add-discount-code .frm-add-discount-code .is-avtive .lbl-is-avtive{
+    background-color: #343a40;
+    color: #fff;
+    float: right;
+    font-family: 'bnazanin';
+    font-size: 18px;
+    font-weight: bold;
+    margin-left: 5px;
+    padding: 5px;
+    border-radius: 4px;
+    width: 125px;
+    height: 37px;
+    text-align: center;
+}
+
+.modal-add-discount-code .frm-add-discount-code .discount-code .lbl-arrow,
+.modal-add-discount-code .frm-add-discount-code .discount-percent .lbl-arrow,
+.modal-add-discount-code .frm-add-discount-code .description .lbl-arrow,
+.modal-add-discount-code .frm-add-discount-code .end-date .lbl-arrow,
+.modal-add-discount-code .frm-add-discount-code .is-avtive .lbl-arrow{
+    background-color: #343a40;
+    color: #fff;
+    float: right;
+    font-family: 'bnazanin';
+    font-size: 18px;
+    font-weight: bold;
+    margin-left: 5px;
+    padding: 5px;
+    border-radius: 4px;
+    width: 30px;
+    height: 37px;
+    text-align: center;
+}
+
+.modal-add-discount-code .frm-add-discount-code .discount-code .txt-discount-code,
+.modal-add-discount-code .frm-add-discount-code .discount-percent .txt-discount-percent,
+.modal-add-discount-code .frm-add-discount-code .description .txt-description{
+    background-color: #eee;
+    border: 1px solid #343a40;
+    float: right;
+    width: 300px;
+    height: 36px;
+    padding: 5px;
+    margin-bottom: 5px;
+    border-radius: 4px;
+    font-family: 'bnazanin';
+}
+
+.modal-add-discount-code .frm-add-discount-code .end-date .discount-date{
+    background-color: #eee;
+    border: 1px solid #343a40;
+    float: right;
+    width: 280px;
+    height: 36px;
+    padding: 5px;
+    margin-bottom: 5px;
+    border-radius: 4px;
+    font-family: 'bnazanin';
+}
+
+.modal-add-discount-code .frm-add-discount-code .is-avtive input[type="checkbox"] {
+    background-color: #eee;
+    border: 1px solid #343a40;
+    appearance: none;
+    -webkit-appearance: none;
+    width: 37px;
+    height: 37px;
+    border-radius: 4px;
+    position: relative;
+    cursor: pointer;
+}
+.modal-add-discount-code .frm-add-discount-code .is-avtive input[type="checkbox"]:checked::before {
+    content: "✓";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 18px;
+    color: #fff !important;
+}
+.modal-add-discount-code .frm-add-discount-code .is-avtive input[type="checkbox"]:checked {
+    background-color: #343a40;
+    color: #fff;
+}
+
+.modal-add-discount-code .frm-add-discount-code .btn-add-discount-code-modal{
+    color: #fff;
+    background-color: #28a745;
+    border: 1px solid #28a745;
+    border-radius: 4px;
+    padding: 4px;
+    width: 150px;
+    transition: all 0.5s;
+}
+.modal-add-discount-code .frm-add-discount-code .btn-add-discount-code-modal:hover{
+    color: #28a745;
+    background-color: #fff;
+}
+
+/* ============================================= end modal add discount */
+/* ============================================= start modal edit discount */
+.modal-edit-discount-code .frm-edit-discount-code .discount-code .lbl-discount-code,
+.modal-edit-discount-code .frm-edit-discount-code .discount-percent .lbl-discount-percent,
+.modal-edit-discount-code .frm-edit-discount-code .description .lbl-description,
+.modal-edit-discount-code .frm-edit-discount-code .show-end-date .lbl-show-end-date,
+.modal-edit-discount-code .frm-edit-discount-code .new-end-date .lbl-new-end-date,
+.modal-edit-discount-code .frm-edit-discount-code .is-avtive .lbl-is-avtive{
+    background-color: #343a40;
+    color: #fff;
+    float: right;
+    font-family: 'bnazanin';
+    font-size: 18px;
+    font-weight: bold;
+    margin-left: 5px;
+    padding: 5px;
+    border-radius: 4px;
+    width: 125px;
+    height: 37px;
+    text-align: center;
+}
+
+.modal-edit-discount-code .frm-edit-discount-code .discount-code .lbl-arrow,
+.modal-edit-discount-code .frm-edit-discount-code .discount-percent .lbl-arrow,
+.modal-edit-discount-code .frm-edit-discount-code .description .lbl-arrow,
+.modal-edit-discount-code .frm-edit-discount-code .show-end-date .lbl-arrow,
+.modal-edit-discount-code .frm-edit-discount-code .new-end-date .lbl-arrow,
+.modal-edit-discount-code .frm-edit-discount-code .is-avtive .lbl-arrow{
+    background-color: #343a40;
+    color: #fff;
+    float: right;
+    font-family: 'bnazanin';
+    font-size: 18px;
+    font-weight: bold;
+    margin-left: 5px;
+    padding: 5px;
+    border-radius: 4px;
+    width: 30px;
+    height: 37px;
+    text-align: center;
+}
+
+.modal-edit-discount-code .frm-edit-discount-code .discount-code .txt-discount-code,
+.modal-edit-discount-code .frm-edit-discount-code .discount-percent .txt-discount-percent,
+.modal-edit-discount-code .frm-edit-discount-code .description .txt-description,
+.modal-edit-discount-code .frm-edit-discount-code .show-end-date .show-date{
+    background-color: #eee;
+    border: 1px solid #343a40;
+    float: right;
+    width: 300px;
+    height: 36px;
+    padding: 5px;
+    margin-bottom: 5px;
+    border-radius: 4px;
+    font-family: 'bnazanin';
+}
+
+.modal-edit-discount-code .frm-edit-discount-code .new-end-date .end-date{
+    background-color: #eee;
+    border: 1px solid #343a40;
+    float: right;
+    width: 280px;
+    height: 36px;
+    padding: 5px;
+    margin-bottom: 5px;
+    border-radius: 4px;
+    font-family: 'bnazanin';
+}
+
+.modal-edit-discount-code .frm-edit-discount-code .is-avtive input[type="checkbox"] {
+    background-color: #eee;
+    border: 1px solid #343a40;
+    appearance: none;
+    -webkit-appearance: none;
+    width: 37px;
+    height: 37px;
+    border-radius: 4px;
+    position: relative;
+    cursor: pointer;
+}
+.modal-edit-discount-code .frm-edit-discount-code .is-avtive input[type="checkbox"]:checked::before {
+    content: "✓";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 18px;
+    color: #fff !important;
+}
+.modal-edit-discount-code .frm-edit-discount-code .is-avtive input[type="checkbox"]:checked {
+    background-color: #343a40;
+    color: #fff;
+}
+
+.modal-edit-discount-code .frm-edit-discount-code .btn-edit-discount-code-modal{
+    color: #fff;
+    background-color: #28a745;
+    border: 1px solid #28a745;
+    border-radius: 4px;
+    padding: 4px;
+    width: 150px;
+    transition: all 0.5s;
+}
+.modal-edit-discount-code .frm-edit-discount-code .btn-edit-discount-code-modal:hover{
+    color: #28a745;
+    background-color: #fff;
+}
+
+/* ============================================= end modal edit discount */

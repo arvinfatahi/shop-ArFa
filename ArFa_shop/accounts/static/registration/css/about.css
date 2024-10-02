@@ -1,0 +1,266 @@
+/* ------------------------------ title about */
+.title-about{
+    background-color: #343a40;
+    padding: 18px;
+    font-family: 'bnazanin';
+    color: #ddd;
+    box-shadow: 0px 0px 5px #343a40;
+    height: 130px;
+}
+
+.title-about .about{
+    font-size: 32px;
+    font-weight: bold;
+}
+
+.title-about .line-about{
+    background-color: #a5a5a5;
+    height: 4px;
+    width: 20%;
+    margin: 5px auto;
+    border-radius: 6px;
+}
+
+.title-about .breadcrumb-menu a{
+    text-decoration: none;
+    color: #ddd;
+    transition: all 0.5s;
+}
+
+.title-about .breadcrumb-menu a:hover{
+    color: #fff;
+}
+
+/* =========================== start add about box */
+.add-about-box{
+    border: 2px dashed #aaa;
+    color: #aaa;
+    border-radius: 30px;
+    height: 420px;
+    text-align: center;
+    transition: all 0.5s;
+}
+.add-about-box:hover{
+    border: 2px dashed #323232;
+}
+.add-about-box:hover i{
+    color: #323232;
+}
+
+.add-about-box i{
+    margin-top: 190px;
+    font-size: 50px;
+    transition: all 0.5s;
+}
+
+/* =========================== end add about box */
+/* =========================== start about members */
+.show-about-members{
+    background: #fff;
+    box-shadow: 0px 0px 10px #aaa;
+    border-radius: 30px;
+    height: 420px;
+    overflow: auto;
+}
+
+.show-about-members img{
+    width: 100%;
+    height: 300px;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+}
+
+.show-about-members .txt-about{
+    color: #323232;
+    font-family: 'bnazanin';
+    padding: 10px;
+    height: 70px;
+}
+
+.show-about-members .edit-about,
+.show-about-members .delete-about{
+    float: right;
+    width: 50%;
+    text-align: center;
+    font-family: 'bnazanin';
+}
+
+.show-about-members .edit-about .btn-edit-about{
+    color: #28a745;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 10px;
+    border: none;
+    background: transparent;
+}
+
+.show-about-members .delete-about .btn-delete-about{
+    color: #dc3545;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 10px;
+    border: none;
+    background: transparent;
+}
+
+/* =========================== end about members */
+/* =========================== start modal delete about */
+.modal-delete-about .modal-footer .btn-delete-about-modal{
+    color: #fff;
+    background-color: #DC3545;
+    border: 1px solid #DC3545;
+    border-radius: 4px;
+    text-decoration: none;
+    font-family: 'bnazanin';
+    padding: 4px;
+    width: 50px;
+    text-align: center;
+    transition: all 0.5s;
+}
+.modal-delete-about .modal-footer .btn-delete-about-modal:hover{
+    color: #DC3545;
+    background-color: #fff;
+}
+
+.modal-delete-about .modal-footer .btn-noDelete-about-modal{
+    color: #fff;
+    background-color: #28a745;
+    border: 1px solid #28a745;
+    border-radius: 4px;
+    text-decoration: none;
+    font-family: 'bnazanin';
+    padding: 4px;
+    width: 50px;
+    text-align: center;
+    transition: all 0.5s;
+}
+.modal-delete-about .modal-footer .btn-noDelete-about-modal:hover{
+    color: #28a745;
+    background-color: #fff;
+}
+
+/* =========================== end modal delete about */
+/* =========================== start modal add about */
+.modal-add-about .frm-add-about .image-members .lbl-image-members,
+.modal-add-about .frm-add-about .about-members .lbl-about-members{
+    background-color: #343a40;
+    color: #fff;
+    float: right;
+    font-family: 'bnazanin';
+    font-size: 18px;
+    font-weight: bold;
+    margin-left: 5px;
+    padding: 5px;
+    border-radius: 4px;
+    width: 125px;
+    text-align: center;
+}
+
+.modal-add-about .frm-add-about .image-members .lbl-arrow,
+.modal-add-about .frm-add-about .about-members .lbl-arrow{
+    background-color: #343a40;
+    color: #fff;
+    float: right;
+    font-family: 'bnazanin';
+    font-size: 18px;
+    font-weight: bold;
+    margin-left: 5px;
+    padding: 5px;
+    border-radius: 4px;
+    width: 30px;
+    text-align: center;
+}
+
+.modal-add-about .frm-add-about .image-members .img-about-members,
+.modal-add-about .frm-add-about .about-members .txt-about-members{
+    background-color: #eee;
+    border: 1px solid #343a40;
+    float: right;
+    width: 300px;
+    height: 36px;
+    padding: 5px;
+    margin-bottom: 5px;
+    border-radius: 4px;
+    font-family: 'bnazanin';
+}
+
+.modal-add-about .frm-add-about .btn-add-about{
+    color: #fff;
+    background-color: #28a745;
+    border: 1px solid #28a745;
+    border-radius: 4px;
+    padding: 4px;
+    width: 150px;
+    transition: all 0.5s;
+}
+.modal-add-about .frm-add-about .btn-add-about:hover{
+    color: #28a745;
+    background-color: #fff;
+}
+
+/* =========================== end modal add about */
+/* =========================== start modal edit about */
+.modal-edit-about .frm-edit-about .about-members .lbl-about-members,
+.modal-edit-about .frm-edit-about .select-image .lbl-select-image,
+.modal-edit-about .frm-edit-about .show-image .lbl-show-image{
+    background-color: #343a40;
+    color: #fff;
+    float: right;
+    font-family: 'bnazanin';
+    font-size: 18px;
+    font-weight: bold;
+    margin-left: 5px;
+    padding: 5px;
+    border-radius: 4px;
+    width: 125px;
+    text-align: center;
+}
+
+.modal-edit-about .frm-edit-about .about-members .lbl-arrow,
+.modal-edit-about .frm-edit-about .select-image .lbl-arrow,
+.modal-edit-about .frm-edit-about .show-image .lbl-arrow{
+    background-color: #343a40;
+    color: #fff;
+    float: right;
+    font-family: 'bnazanin';
+    font-size: 18px;
+    font-weight: bold;
+    margin-left: 5px;
+    padding: 5px;
+    border-radius: 4px;
+    width: 30px;
+    text-align: center;
+}
+
+.modal-edit-about .frm-edit-about .about-members .txt-about-members,
+.modal-edit-about .frm-edit-about .select-image .img-about-members{
+    background-color: #eee;
+    border: 1px solid #343a40;
+    float: right;
+    width: 300px;
+    height: 36px;
+    padding: 5px;
+    margin-bottom: 5px;
+    border-radius: 4px;
+    font-family: 'bnazanin';
+}
+
+.modal-edit-about .frm-edit-about .show-image .img-show-image{
+    border: 1px solid #323232;
+    width: 75px;
+    height: 75px;
+}
+
+.modal-edit-about .frm-edit-about .btn-edit-about-modal{
+    color: #fff;
+    background-color: #28a745;
+    border: 1px solid #28a745;
+    border-radius: 4px;
+    padding: 4px;
+    width: 150px;
+    transition: all 0.5s;
+}
+.modal-edit-about .frm-edit-about .btn-edit-about-modal:hover{
+    color: #28a745;
+    background-color: #fff;
+}

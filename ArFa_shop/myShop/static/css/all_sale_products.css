@@ -1,0 +1,107 @@
+.line-all-sale-products{
+    background: radial-gradient(circle at 10.6% 22.1%, rgb(206, 18, 18) 0%, rgb(122, 21, 21) 100.7%);
+    height: 4px;
+}
+
+/* ---------------------------- breadcrumb */
+.breadcrumb-all-sale-products{
+    margin-bottom: 4px;
+    margin-top: 4px;
+    background: radial-gradient(circle at 10.6% 22.1%, rgb(206, 18, 18) 0%, rgb(122, 21, 21) 100.7%);
+}
+
+.breadcrumb-all-sale-products ol{
+    margin: 10px;
+}
+
+.breadcrumb-all-sale-products i{
+    color: #fff;
+    margin-top: 5px;
+    margin-right: 5px;
+}
+
+/* ---------------------------- header */
+.header-all-sale-products{
+    height: 200px;
+    background: radial-gradient(circle at 10.6% 22.1%, rgb(206, 18, 18) 0%, rgb(122, 21, 21) 100.7%);
+}
+
+.header-all-sale-products .title-all-sale-products {
+    font-family:'bnazanin';
+    font-size: 40px;
+    font-weight: bold;
+    margin: 0 auto;
+    transition: all 0.5s;
+}
+
+.header-all-sale-products .title-all-sale-products span {
+    color: #fff;
+    transition: all 0.5s;
+}
+
+.header-all-sale-products .title-all-sale-products .line {
+    height: 2px;
+    width: 200px;
+    margin: 5px auto;
+    background-color: #aaa;
+    transition: all 0.5s;
+}
+
+.header-all-sale-products .title-all-sale-products p{
+    font-size: 16px;
+    font-family: 'bnazanin';
+    color: #fff;
+    margin-top: 20px;
+}
+
+/* ------------------------- sale-products-box */
+.sale-products-box {
+    border-radius: 30px;
+    height: 390px;
+    overflow: hidden;
+}
+
+.all-sale-products-box .product{
+    color: #701919;
+    background: linear-gradient(0deg, #fdfbfb, #ffedee);
+    border: 1px solid #fcc;
+    margin-top: 10px;
+    border-radius: 20px;
+    overflow: hidden;
+    transition: all 1s;
+}
+.all-sale-products-box .product:hover{
+    transform: scale(0.95);
+    border: none;
+    box-shadow: 0px 0px 10px #faa;
+}
+
+.all-sale-products-box .product img{
+    width: 100%;
+    height: 200px;
+}
+
+.all-sale-products-box .product:hover img{
+    cursor: pointer;
+    transform: scale(1.1) rotate(-5deg);
+    transition: all 0.5s;
+}
+
+.all-sale-products-box .product .btn-add-cart{
+    color: #701919;
+    background-color: #fee;
+    border: 1px solid #fcc;
+    padding: 5px;
+    margin: 5px;
+    border-radius: 4px;
+}
+
+.all-sale-products-box .not-sale-products{
+    background: radial-gradient(circle at 10.6% 22.1%, rgb(206, 18, 18) 0%, rgb(122, 21, 21) 100.7%);
+    font-size: 40px;
+    text-align: center;
+    color: #fff;
+    font-family: 'bnazanin';
+    padding: 50px;
+    border-radius: 20px
+}

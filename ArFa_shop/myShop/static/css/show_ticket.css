@@ -1,0 +1,153 @@
+.line-show-ticket{
+    background: radial-gradient(circle at 10% 20%, rgb(0, 0, 0) 0%, rgb(64, 64, 64) 90.2%);
+    height: 4px;
+}
+
+/* ============================== start breadcrumb */
+.breadcrumb-show-ticket{
+    margin-bottom: 4px;
+    margin-top: 4px;
+    background: radial-gradient(circle at 10% 20%, rgb(0, 0, 0) 0%, rgb(64, 64, 64) 90.2%);
+}
+
+.breadcrumb-show-ticket ol{
+    margin: 10px;
+}
+
+.breadcrumb-show-ticket i{
+    color: #aaa;
+    margin-top: 5px;
+    margin-right: 5px;
+}
+
+/* ============================== end breadcrumb */
+/* ============================== start header */
+.header-show-ticket{
+    height: 200px;
+    background: radial-gradient(circle at 10% 20%, rgb(0, 0, 0) 0%, rgb(64, 64, 64) 90.2%);
+}
+
+.header-show-ticket .title-show-ticket {
+    font-family:'bnazanin';
+    font-size: 40px;
+    font-weight: bold;
+    margin: 0 auto;
+    transition: all 0.5s;
+}
+
+.header-show-ticket .title-show-ticket span {
+    color: #aaa;
+    transition: all 0.5s;
+}
+
+.header-show-ticket .title-show-ticket .line {
+    height: 2px;
+    width: 200px;
+    margin: 5px auto;
+    background-color: #aaa;
+    transition: all 0.5s;
+}
+
+.header-show-ticket .title-show-ticket p{
+    font-size: 16px;
+    font-family: 'bnazanin';
+    color: #aaa;
+    margin-top: 20px;
+}
+
+/* ============================== end header */
+/* ============================== start title subject */
+.title-subject{
+    text-align: center;
+    background: radial-gradient(circle at 10% 20%, rgb(0, 0, 0) 0%, rgb(64, 64, 64) 90.2%);
+    padding: 10px;
+    margin-top: 4px;
+    color: #aaa;
+    font-size: 24px;
+    font-family: 'bnazanin';
+    font-weight: bold;
+}
+
+/* ============================== end title-subject */
+.ticket-box{
+    border: 1px solid #aaa;
+    border-radius: 4px;
+    height: 6250px;
+    overflow: auto;
+    overflow-x: hidden;
+}
+
+/* =================================== start replay ticket */
+.ticket-box .ticket-body .frm-replay-ticket .txt-replay-ticket{
+    width: 100%;
+    resize: none;
+    height: 100px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    border: 1px solid #aaa;
+    background-color: #f5f5f5;
+    padding: 10px;
+    font-family: 'bnazanin';
+}
+
+.ticket-box .ticket-body .frm-replay-ticket .btn-replay-ticket{
+    border: 1px solid #198754;
+    background-color: #198754;
+    color: #fff;
+    padding: 8px;
+    font-family: 'bnazanin';
+    width: 25%;
+    font-weight: bold;
+    border-radius: 4px;
+}
+
+/* =================================== end replay ticket */
+/* =================================== start sender receiver */
+.ticket-box .ticket-body .sender-receiver .sender{
+    color: #323232;
+    background: linear-gradient(0deg, #fdfbfb, #ebedee);
+    border: 1px solid #ccc;
+    margin-top: 10px;
+    margin-right: 10px;
+    border-radius: 10px;
+    overflow: hidden;
+    padding: 10px
+}
+
+.ticket-box .ticket-body .sender-receiver .receiver{
+    color: #323232;
+    background: linear-gradient(0deg, #fdfbfb, #ebedee);
+    border: 1px solid #ccc;
+    margin-top: 10px;
+    margin-left: 10px;
+    border-radius: 10px;
+    overflow: hidden;
+    padding: 10px
+}
+
+.ticket-box .ticket-body .sender-receiver .receiver .receiver-username,
+.ticket-box .ticket-body .sender-receiver .sender .sender-username{
+    color: #323232;
+    border: 1px solid #ccc;
+    text-decoration: none;
+    padding: 5px;
+    margin: 5px;
+    border-radius: 4px;
+    font-family: 'bnazanin';
+}
+
+.ticket-box .ticket-body .sender-receiver .receiver .receiver-message,
+.ticket-box .ticket-body .sender-receiver .sender .sender-message{
+    color: #323232;
+    border: 1px solid #ccc;
+    text-decoration: none;
+    padding: 5px;
+    margin: 5px;
+    border-radius: 4px;
+    font-family: 'bnazanin';
+}
+
+.ticket-box .ticket-body .sender-receiver .receiver .receiver-message span,
+.ticket-box .ticket-body .sender-receiver .sender .sender-message span{
+    text-align: justify;
+}

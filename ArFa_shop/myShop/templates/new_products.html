@@ -1,0 +1,63 @@
+{% load static %}
+<!-- Section product-->
+
+<section>
+    <div class="container px-4 px-lg-5 mt-5">
+        <!-- title -->
+        <div class="title-new_products text-center">
+            
+            <a class="text-decoration-none"><i class="fa-solid fa-robot"></i> جدیدترین محصولات</a>
+            <div class="line"></div>
+            <p style="font-size: 16px; font-weight: normal;">جدیدترین محصولات را مشاهده کنید.</p>
+            
+        </div>
+        
+        <div class="new_products-box row p-1">
+            <div class="col-12">
+                <div class="row gx-2 gy-1 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center" style="overflow: hidden; height: 733px;">
+                    {% if new_products %}
+                        {% for new_products in new_products %}
+                            <div class="col">
+                                <div class="new_products">
+                                    {% if new_products.is_sale == True %}
+                                        <div class="position-relative" style="top: 15px; right: 30px;">
+                                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                                                تخفیف
+                                            </span>
+                                        </div>
+                                    {% endif %}
+                                    <img src="{{ new_products.image.url }}" alt="..." /><hr>
+                                    <div class="discription p-1">
+                                        <div class="text-center" style="font-family: 'bnazanin';">
+                                            <h5 class="fw-bolder">{{ new_products.name }}</h5>
+                                            {% if new_products.is_sale == True %}
+                                                <span class="text-decoration-line-through"> {{ new_products.price }} </span> |
+                                                <span>{{ new_products.sale_price }}</span>
+                                            {% else %}
+                                                <span>{{ new_products.price }}</span>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                    <div class="p-4 pt-0 mt-1 border-top-0 text-center">
+                                        <a class="btn-add-cart" href="{% url 'productDetails' new_products.id %}">
+                                            <i class="fa-solid fa-cart-shopping"> خرید محصول </i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    {% else %}
+                        <div class="col-12">
+                            <div class="not-new_products">
+                                <i class="fa-solid fa-circle-info"></i>
+                                محصول جدیدی برای نمایش وجود ندارد. لطفا بعدا سر بزنید.
+                            </div>
+                        </div>
+                    {% endif %}
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

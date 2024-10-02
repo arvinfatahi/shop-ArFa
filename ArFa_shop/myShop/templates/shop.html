@@ -1,0 +1,170 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %}فروشگاه آرفا{% endblock title %}
+
+{% block body %}
+
+    {% include "discount_code.html" with discount_code_model_show=discount_code_model_show %}
+
+    {% include "navbar.html" with all_categorys=all_categorys search_form=search_form color=block %}
+
+    <section>
+        <div class="line-shop"></div>
+        <nav aria-label="breadcrumb" class="breadcrumb-shop">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{% url 'index' %}" style="color: #aaa;">خانه</a></li>
+                <i class="fa-solid fa-chevron-left"></i>
+                <li class="breadcrumb-item fw-lighter active" style="color: #aaa;" aria-current="page">&nbsp; فروشگاه</li>
+            </ol>
+        </nav>
+        <header class="header-shop py-1">
+            <div class="container px-4 px-lg-5 my-5">
+                <div class="title-shop text-center">
+                    <h1 class="display-4 fw-bolder">
+                        <span><i class="fa-solid fa-shop"></i> فروشگاه</span>
+                    </h1>
+                    <div class="line"></div>
+                    <p>تمام محصولات رباتیک خود را در فروشگاه آرفا خریداری کنید.</p>
+                </div>
+            </div>
+        </header>
+
+        <div class="container-fluid px-4 px-lg-5 mt-5 mb-5">
+            <div class="row gx-4 gx-lg-5">
+                <!-- filter -->
+                <div class="col-lg-3 col-md-4 col-sm-12">
+                    <div class="filter">
+                        <div class="filter-body">
+                            <form action="{% url 'filterShop' %}" class="frm-filter-shop" method="post">
+                                {% csrf_token %}
+                                
+                                <div class="price-logo text-center mb-2">
+                                    <i class="fa-solid fa-magnifying-glass-dollar"></i>
+                                    <span> فیلتر براساس قیمت </span>
+                                </div>
+        
+                                <div class="min-price" style="margin-bottom: 5px; margin-right: 10px;">
+                                    <span><i class="fa-solid fa-circle-check"></i> کمترین قیمت </span>
+                                    {{ filter_form.min_price }}
+                                </div>
+                                
+                                <div class="max-price" style="margin-bottom: 20px; margin-right: 10px;">
+                                    <span><i class="fa-solid fa-circle-check"></i> بیشترین قیمت </span>
+                                    {{ filter_form.max_price }}
+                                </div>
+        
+                                <div class="order-logo text-center mb-2">
+                                    <i class="fa-solid fa-sort"></i>
+                                    <span> مرتب سازی </span>
+                                </div>
+        
+                                <div class="frm-cmb-order" style="margin-top: 5px; margin-right: 10px;">
+                                    <span><i class="fa-solid fa-circle-check"></i> نمایش </span>
+                                    {{ filter_form.order }}
+                                </div>
+        
+                                <div class="other-logo text-center mb-2 mt-2">
+                                    <i class="fa-solid fa-ellipsis"></i>
+                                    <span> دیگر فیلترها </span>
+                                </div>
+                                
+                                <div class="frm-chk-sale" style="margin-bottom: 5px; margin-right: 10px;">
+                                    <span><i class="fa-solid fa-circle-check"></i> فقط محصولات دارای تخفیف </span>
+                                    {{ filter_form.sale }}
+                                </div>
+                                
+                                <div class="frm-chk-state" style="margin-right: 10px;">
+                                    <span><i class="fa-solid fa-circle-check"></i> فقط محصولات موجود </span>
+                                    {{ filter_form.state }}
+                                </div>
+        
+                                <div class="text-center mt-2 pt-2" style="border-top: 1px solid #ddd;">
+                                    <button class="btn-filter-action"><i class="fa-solid fa-filter"></i> اعمال فیلتر </button>
+                                </div>
+        
+                            </form>
+                            
+                        </div>
+                        {% comment %} <div class="applied-filters">
+                            <div class="title-applied-filters">
+                                <i class="fa-solid fa-filter"></i>
+                                <span> فیلترهای اعمال شده </span>
+                            </div>
+                            {% if request.session.min_price or request.session.max_price or request.session.order or request.session.sale or request.session.state %}
+                                <ul>
+                                    {% if applied_filters.min_price %}
+                                        <li>کمترین قیمت: {{ applied_filters.min_price }} تومان</li>
+                                    {% endif %}
+                                    {% if applied_filters.max_price %}
+                                        <li>بیشترین قیمت: {{ applied_filters.max_price }} تومان</li>
+                                    {% endif %}
+                                    {% if applied_filters.order %}
+                                        <li>مرتب‌سازی بر اساس: 
+                                            {% if applied_filters.order == '1' %}
+                                                قیمت (صعودی)
+                                            {% elif applied_filters.order == '2' %}
+                                                قیمت (نزولی)
+                                            {% endif %}
+                                        </li>
+                                    {% endif %}
+                                    {% if applied_filters.sale %}
+                                        <li>فقط محصولات دارای تخفیف</li>
+                                    {% endif %}
+                                    {% if applied_filters.state %}
+                                        <li>فقط محصولات موجود</li>
+                                    {% endif %}
+                                </ul>
+                            {% else %}
+                                <div class="alert-no-filter alert alert-danger">
+                                    <i class="fa-solid fa-circle-check"></i>
+                                    <span> هیچ فیلتری اعمال نشده است. </span>
+                                </div>
+                            {% endif %}
+                        </div> {% endcomment %}
+                    </div>
+                </div>
+        
+                <!-- products list -->
+                <div class="col-lg-9 col-md-8 col-sm-12">
+                    <div id="product-list">
+                        {% include 'product_list.html' %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+
+    </section>
+
+    
+    <div id="load-more" style="text-align:center;">
+        <button id="load-more-btn" style="display:none;">Load More</button>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        let offset = 8;  // محل شروع بعدی برای لود کردن محصولات
+        let hasNext = true;  // بررسی وجود محصولات بیشتر
+
+        $(window).scroll(function() {
+            if ($(window).scrollTop() + $(window).height() >= $(document).height() - 100 && hasNext) {
+                loadMoreProducts();
+            }
+        });
+
+        function loadMoreProducts() {
+            $.ajax({
+                url: '?offset=' + offset,
+                type: 'GET',
+                dataType: 'json',
+                success: function(response) {
+                    $('#product-list').append(response.products_html);  // افزودن محصولات جدید به لیست
+                    hasNext = response.has_next;  // بروزرسانی وضعیت وجود محصولات بیشتر
+                    offset += 8;  // افزایش offset برای درخواست بعدی
+                }
+            });
+        }
+    </script>
+{% endblock body %}

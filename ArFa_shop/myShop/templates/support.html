@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %}درباره ما{% endblock title %}
+
+{% block body %}
+
+    {% include "navbar.html" %}
+
+    <div class="container mt-5 mb-5">
+        <div class="row">
+            <div class="col-3"></div>
+            <div class="col-6">
+                <div class="contact text-center">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                          <li class="breadcrumb-item"><a href="{% url 'index' %}" class="text-muted">خانه</a></li>
+                          <li class="breadcrumb-item fw-lighter active" aria-current="page">پشتیبانی</li>
+                        </ol><hr>
+                    </nav>
+                    <div class="about-text">
+                        <form action="" method="post">
+                            {% csrf_token %}
+                            {{ support_form }}
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-3"></div>
+        </div>
+    </div>
+
+{% endblock body %}

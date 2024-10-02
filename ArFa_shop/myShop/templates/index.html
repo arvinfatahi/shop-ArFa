@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %}فروشگاه آرفا{% endblock title %}
+
+{% block body %}
+
+    {% include "discount_code.html" with discount_code_model_show=discount_code_model_show %}
+
+    {% include "navbar.html" with all_categorys=all_categorys search_form=search_form %}
+
+    <div style="background: radial-gradient(circle at 10% 20%, rgb(0, 0, 0) 0%, rgb(64, 64, 64) 90.2%); height: 4px;"></div>
+
+    {% include "slide_show.html" with slider=slider %}
+    
+    {% include "products.html" with products=products %}
+    
+    {% include "new_products.html" %}
+
+    {% include "main_advertising.html" with advertising_show=advertising_show colors=colors %}
+
+    {% include "sale_products.html" with sale_products=sale_products %}
+
+    {% include "best_seller_products.html" %}
+
+    {% include "categorys.html" with all_categorys=all_categorys %}
+
+    {% include "brand_products.html" with brands=brands %}
+
+{% endblock body %}

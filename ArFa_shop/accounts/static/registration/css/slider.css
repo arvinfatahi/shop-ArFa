@@ -1,0 +1,298 @@
+/* ------------------------------ title sliders */
+.title-sliders{
+    background-color: #343a40;
+    padding: 18px;
+    font-family: 'bnazanin';
+    color: #ddd;
+    box-shadow: 0px 0px 5px #343a40;
+    height: 130px;
+}
+
+.title-sliders .slider{
+    font-size: 32px;
+    font-weight: bold;
+}
+
+.title-sliders .line-slider{
+    background-color: #a5a5a5;
+    height: 4px;
+    width: 20%;
+    margin: 5px auto;
+    border-radius: 6px;
+}
+
+.title-sliders .breadcrumb-menu a{
+    text-decoration: none;
+    color: #ddd;
+    transition: all 0.5s;
+}
+
+.title-sliders .breadcrumb-menu a:hover{
+    color: #fff;
+}
+
+/* ------------------------------ search add slider */
+.search-add-slider{
+    background-color: #fff;
+    box-shadow: 0px 0px 5px #ddd;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+.search-add-slider .btn-add-slider{
+    float: right;
+    margin-left: 20px;
+    margin-top: 4px;
+}
+
+.search-add-slider .btn-add-slider a{
+    color: #343a40;
+    padding: 4px;
+    border-radius: 4px;
+    font-size: 14px;
+    font-family: 'bnazanin';
+    transition: all 0.5s;
+}
+.search-add-slider .btn-add-slider .line{
+    width: 1px;
+    height: 2px;
+    background-color: #343a40;
+    border-radius: 4px;
+    transition: all 0.5s;
+}
+.search-add-slider .btn-add-slider a:hover + .line{
+    width: 100%;
+}
+
+/* ------------------------------ table slider */
+.tbl-slider{
+    font-family: 'bnazanin';
+    text-align: center;
+    border: 1px solid #343a40;
+    width: 100%;
+}
+
+.tbl-slider thead tr th{
+    background-color: #343a40;
+    color: #ddd;
+    border: 1px solid #343a40;
+    font-size: 16px;
+    padding: 4px;
+}
+
+.tbl-slider tbody tr td{
+    border: 1px solid #343a40;
+    vertical-align: middle;
+    padding: 4px;
+}
+
+/* ------------------------------ btn */
+.btn-edit-slider{
+    color: #fff;
+    background-color: #218838;
+    border: 1px solid #218838;
+    border-radius: 4px;
+    padding: 4px;
+    text-decoration: none;
+    font-size: 18px;
+    width: 33px;
+    height: 33px;
+    display: inline-block;
+    margin-left: 4px;
+    vertical-align: bottom;
+    transition: all 0.5s;
+}
+.btn-edit-slider:hover{
+    color: #218838;
+    background-color: #fff;
+}
+
+.btn-delete-slider{
+    color: #fff;
+    background-color: #DC3545;
+    border: 1px solid #DC3545;
+    border-radius: 4px;
+    padding: 4px;
+    font-size: 18px;
+    width: 33px;
+    height: 33px;
+    transition: all 0.5s;
+}
+.btn-delete-slider:hover{
+    color: #DC3545;
+    background-color: #fff;
+}
+
+/* ------------------------------ modal delete slider */
+.modal-delete-slider .modal-footer .btn-delete-slider-modal{
+    color: #fff;
+    background-color: #DC3545;
+    border: 1px solid #DC3545;
+    border-radius: 4px;
+    text-decoration: none;
+    font-family: 'bnazanin';
+    padding: 4px;
+    width: 50px;
+    text-align: center;
+    transition: all 0.5s;
+}
+.modal-delete-slider .modal-footer .btn-delete-slider-modal:hover{
+    color: #DC3545;
+    background-color: #fff;
+}
+
+.modal-delete-slider .modal-footer .btn-noDelete-slider-modal{
+    color: #fff;
+    background-color: #28a745;
+    border: 1px solid #28a745;
+    border-radius: 4px;
+    text-decoration: none;
+    font-family: 'bnazanin';
+    padding: 4px;
+    width: 50px;
+    text-align: center;
+    transition: all 0.5s;
+}
+.modal-delete-slider .modal-footer .btn-noDelete-slider-modal:hover{
+    color: #28a745;
+    background-color: #fff;
+}
+
+/* ------------------------------ modal add slider */
+.modal-add-slider .frm-add-slider .slider-title .lbl-slider-title,
+.modal-add-slider .frm-add-slider .slider-select-image .lbl-select-image,
+.modal-add-slider .frm-add-slider .slider-price .lbl-slider-price,
+.modal-add-slider .frm-add-slider .slider-sale .lbl-slider-sale{
+    background-color: #343a40;
+    color: #fff;
+    float: right;
+    font-family: 'bnazanin';
+    font-size: 18px;
+    font-weight: bold;
+    margin-left: 5px;
+    padding: 5px;
+    border-radius: 4px;
+    width: 125px;
+    text-align: center;
+}
+
+.modal-add-slider .frm-add-slider .slider-title .lbl-arrow,
+.modal-add-slider .frm-add-slider .slider-select-image .lbl-arrow,
+.modal-add-slider .frm-add-slider .slider-price .lbl-arrow,
+.modal-add-slider .frm-add-slider .slider-sale .lbl-arrow{
+    background-color: #343a40;
+    color: #fff;
+    float: right;
+    font-family: 'bnazanin';
+    font-size: 18px;
+    font-weight: bold;
+    margin-left: 5px;
+    padding: 5px;
+    border-radius: 4px;
+    width: 30px;
+    text-align: center;
+}
+
+.modal-add-slider .frm-add-slider .slider-title .txt-slider-title,
+.modal-add-slider .frm-add-slider .slider-select-image .img-slider,
+.modal-add-slider .frm-add-slider .slider-price .txt-slider-price,
+.modal-add-slider .frm-add-slider .slider-sale .txt-slider-salePrice{
+    background-color: #eee;
+    border: 1px solid #343a40;
+    float: right;
+    width: 300px;
+    height: 36px;
+    padding: 5px;
+    margin-bottom: 5px;
+    border-radius: 4px;
+    font-family: 'bnazanin';
+}
+
+.modal-add-slider .frm-add-slider .btn-add-slider-modal{
+    color: #fff;
+    background-color: #28a745;
+    border: 1px solid #28a745;
+    border-radius: 4px;
+    padding: 4px;
+    width: 150px;
+    transition: all 0.5s;
+}
+.modal-add-product .frm-add-product .btn-add-slider-modal:hover{
+    color: #28a745;
+    background-color: #fff;
+}
+
+/* ------------------------------ modal edit slider */
+.modal-edit-slider .frm-edit-slider .slider-title .lbl-slider-title,
+.modal-edit-slider .frm-edit-slider .slider-select-image .lbl-select-image,
+.modal-edit-slider .frm-edit-slider .slider-show-image .lbl-show-image,
+.modal-edit-slider .frm-edit-slider .slider-price .lbl-slider-price,
+.modal-edit-slider .frm-edit-slider .slider-sale .lbl-slider-sale{
+    background-color: #343a40;
+    color: #fff;
+    float: right;
+    font-family: 'bnazanin';
+    font-size: 18px;
+    font-weight: bold;
+    margin-left: 5px;
+    padding: 5px;
+    border-radius: 4px;
+    width: 125px;
+    text-align: center;
+}
+
+.modal-edit-slider .frm-edit-slider .slider-title .lbl-arrow,
+.modal-edit-slider .frm-edit-slider .slider-select-image .lbl-arrow,
+.modal-edit-slider .frm-edit-slider .slider-show-image .lbl-arrow,
+.modal-edit-slider .frm-edit-slider .slider-price .lbl-arrow,
+.modal-edit-slider .frm-edit-slider .slider-sale .lbl-arrow{
+    background-color: #343a40;
+    color: #fff;
+    float: right;
+    font-family: 'bnazanin';
+    font-size: 18px;
+    font-weight: bold;
+    margin-left: 5px;
+    padding: 5px;
+    border-radius: 4px;
+    width: 30px;
+    text-align: center;
+}
+
+.modal-edit-slider .frm-edit-slider .slider-title .txt-slider-title,
+.modal-edit-slider .frm-edit-slider .slider-select-image .img-slider,
+.modal-edit-slider .frm-edit-slider .slider-price .txt-slider-price,
+.modal-edit-slider .frm-edit-slider .slider-sale .txt-slider-salePrice{
+    background-color: #eee;
+    border: 1px solid #343a40;
+    float: right;
+    width: 300px;
+    height: 36px;
+    padding: 5px;
+    margin-bottom: 5px;
+    border-radius: 4px;
+    font-family: 'bnazanin';
+}
+
+.modal-edit-slider .frm-edit-slider .slider-show-image img{
+    width: 75px;
+    height: 75px;
+    border-radius: 4px;
+    border: 1px solid #343a40;
+    margin-bottom: 5px;
+    transition: all 0.5s;
+}
+
+.modal-edit-slider .frm-edit-slider .btn-edit-slider-modal{
+    color: #fff;
+    background-color: #28a745;
+    border: 1px solid #28a745;
+    border-radius: 4px;
+    padding: 4px;
+    width: 150px;
+    transition: all 0.5s;
+}
+.modal-edit-slider .frm-edit-slider .btn-edit-slider-modal:hover{
+    color: #28a745;
+    background-color: #fff;
+}

@@ -1,0 +1,122 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %}کل محصولات تخفیف‌دار{% endblock title %}
+
+{% block body %}
+
+    {% include "discount_code.html" with discount_code_model_show=discount_code_model_show %}
+    
+    {% include "navbar.html" with all_categorys=all_categorys search_form=search_form color='red' %}
+
+    <!-- section sale product -->
+    <section>
+        <div class="line-all-sale-products"></div>
+        <nav aria-label="breadcrumb" class="breadcrumb-all-sale-products">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{% url 'index' %}" style="color: #fff;">خانه</a></li>
+                <i class="fa-solid fa-chevron-left"></i>
+                <li class="breadcrumb-item fw-lighter active" style="color: #fff;" aria-current="page">&nbsp; محصولات تخفیف‌دار</li>
+            </ol>
+        </nav>
+        <header class="header-all-sale-products py-1">
+            <div class="container px-4 px-lg-5 my-5">
+                <div class="title-all-sale-products text-center">
+                    <h1 class="display-4 fw-bolder">
+                        <span><i class="fa-solid fa-shop"></i> محصولات تخفیف‌دار</span>
+                    </h1>
+                    <div class="line"></div>
+                    <p>با بیشترین تخفیف از آرفا خرید کنید.</p>
+                </div>
+            </div>
+        </header>
+
+        <div class="container px-4 px-lg-5 mt-5">
+            <!-- products -->
+            <div class="all-sale-products-box row p-1 mb-5">
+                <div class="col-12">
+                    <div class="row gx-2 gy-1 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+                        {% if all_sale_products %}
+                            {% for all_sale_products in all_sale_products %}
+                                <div class="col">
+                                    <div class="product">
+                                        <div class="position-relative" style="top: 15px; right: 30px;">
+                                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                                                تخفیف
+                                            </span>
+                                        </div>
+                                        <img class="card-img-top" src="{{ all_sale_products.image.url }}" alt="..." /><hr>
+                                        <div class="p-1">
+                                            <div class="text-center">
+                                                <h5 class="fw-bolder">{{ all_sale_products.name }}</h5>
+                                                <span class="text-decoration-line-through">{{ all_sale_products.price }}</span> |
+                                                <span>{{ all_sale_products.sale_price }}</span>
+                                            </div>
+                                        </div>
+                                        <!-- Product actions-->
+                                        <div class="p-4 pt-0 border-top-0 bg-transparent">
+                                            <div class="text-center p-2">
+                                                <a class="p-2 mt-auto btn-add-cart" href="#">
+                                                    <i class="fa-solid fa-cart-shopping"> خرید محصول </i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        {% else %}
+                            <div class="col-12">
+                                <div class="not-sale-products">
+                                    <i class="fa-solid fa-circle-info"></i>
+                                    محصولی برای نمایش وجود ندارد. لطفا بعدا سر بزنید.
+                                </div>
+                            </div>
+                        {% endif %}
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- pagination -->
+        {% if all_sale_products.has_other_pages %}
+            <div class="d-flex justify-content-center">
+                <ul class="pagination">
+                    {% if all_sale_products.has_previous %}
+                        <li class="page-item">
+                            <a class="page-link" href="/allProducts?page={{ all_sale_products.previous_page_number }}" tabindex="-1" aria-disabled="true">قبلی</a>
+                        </li>
+                    {% else %}
+                        <li class="page-item disabled">
+                            <a class="page-link" href="#" tabindex="-1" aria-disabled="true">قبلی</a>
+                        </li>
+                    {% endif %}
+                    
+                    {% for i in paginator.page_range %}
+                        {% if all_sale_products.number == i %}
+                            <li class="page-item disabled">
+                                <a class="page-link" href="#">{{ i }}</a>
+                            </li>
+                        {% else %}
+                            <li class="page-item">
+                                <a class="page-link" href="/allProducts?page={{ i }}">{{ i }}</a>
+                            </li>
+                        {% endif %}
+                    {% endfor %}
+                    
+                    
+                    {% if all_sale_products.has_next %}
+                        <li class="page-item">
+                            <a class="page-link" href="/allProducts?page={{ all_sale_products.next_page_number }}">بعدی</a>
+                        </li>
+                    {% else %}
+                        <li class="page-item disabled">
+                            <a class="page-link" href="#">بعدی</a>
+                        </li>
+                    {% endif %}
+                    
+                </ul>
+            </div>
+        {% endif %}
+    </section>
+{% endblock body %}

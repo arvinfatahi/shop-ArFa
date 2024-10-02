@@ -1,0 +1,117 @@
+/* ==================================== start title brands */
+.title-show-ticket{
+    background-color: #343a40;
+    padding: 18px;
+    font-family: 'bnazanin';
+    color: #ddd;
+    box-shadow: 0px 0px 5px #343a40;
+    height: 130px;
+}
+
+.title-show-ticket .show-ticket{
+    font-size: 32px;
+    font-weight: bold;
+}
+
+.title-show-ticket .line-show-ticket{
+    background-color: #a5a5a5;
+    height: 4px;
+    width: 20%;
+    margin: 5px auto;
+    border-radius: 6px;
+}
+
+.title-show-ticket .breadcrumb-menu a{
+    text-decoration: none;
+    color: #ddd;
+    transition: all 0.5s;
+}
+
+.title-show-ticket .breadcrumb-menu a:hover{
+    color: #fff;
+}
+
+/* =================================== start replay ticket */
+.ticket-box{
+    background-color: #fff !important;
+    padding: 5px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    height: 480px;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.ticket-box .ticket-body .frm-replay-ticket .txt-replay-ticket{
+    width: 100%;
+    resize: none;
+    height: 100px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    border: 1px solid #aaa;
+    background-color: #f5f5f5;
+    padding: 10px;
+    font-family: 'bnazanin';
+}
+
+.ticket-box .ticket-body .frm-replay-ticket .btn-replay-ticket{
+    border: 1px solid #198754;
+    background-color: #198754;
+    color: #fff;
+    padding: 8px;
+    font-family: 'bnazanin';
+    width: 25%;
+    font-weight: bold;
+    border-radius: 4px;
+}
+
+/* =================================== end replay ticket */
+/* =================================== start sender receiver */
+.ticket-box .ticket-body .sender-receiver .sender{
+    color: #323232;
+    background: linear-gradient(0deg, #fdfbfb, #ebedee);
+    border: 1px solid #ccc;
+    margin-top: 10px;
+    margin-right: 10px;
+    border-radius: 10px;
+    overflow: hidden;
+    padding: 10px
+}
+
+.ticket-box .ticket-body .sender-receiver .receiver{
+    color: #323232;
+    background: linear-gradient(0deg, #fdfbfb, #ebedee);
+    border: 1px solid #ccc;
+    margin-top: 10px;
+    margin-left: 10px;
+    border-radius: 10px;
+    overflow: hidden;
+    padding: 10px
+}
+
+.ticket-box .ticket-body .sender-receiver .receiver .receiver-username,
+.ticket-box .ticket-body .sender-receiver .sender .sender-username{
+    color: #323232;
+    border: 1px solid #ccc;
+    text-decoration: none;
+    padding: 5px;
+    margin: 5px;
+    border-radius: 4px;
+    font-family: 'bnazanin';
+}
+
+.ticket-box .ticket-body .sender-receiver .receiver .receiver-message,
+.ticket-box .ticket-body .sender-receiver .sender .sender-message{
+    color: #323232;
+    border: 1px solid #ccc;
+    text-decoration: none;
+    padding: 5px;
+    margin: 5px;
+    border-radius: 4px;
+    font-family: 'bnazanin';
+}
+
+.ticket-box .ticket-body .sender-receiver .receiver .receiver-message span,
+.ticket-box .ticket-body .sender-receiver .sender .sender-message span{
+    text-align: justify;
+}

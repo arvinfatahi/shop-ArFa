@@ -1,0 +1,342 @@
+/* ------------------------------ title users */
+.title-users{
+    background-color: #343a40;
+    padding: 18px;
+    font-family: 'bnazanin';
+    color: #ddd;
+    box-shadow: 0px 0px 5px #343a40;
+    height: 130px;
+}
+
+.title-users .user{
+    font-size: 32px;
+    font-weight: bold;
+}
+
+.title-users .line-users{
+    background-color: #a5a5a5;
+    height: 4px;
+    width: 20%;
+    margin: 5px auto;
+    border-radius: 6px;
+}
+
+.title-users .breadcrumb-menu a{
+    text-decoration: none;
+    color: #ddd;
+    transition: all 0.5s;
+}
+
+.title-users .breadcrumb-menu a:hover{
+    color: #fff;
+}
+
+/* ------------------------------ search users */
+.search-users{
+    background-color: #fff;
+    box-shadow: 0px 0px 5px #ddd;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+.search-users .frm-search-user{
+    float: right;
+}
+
+.search-users .frm-search-user button{
+    color: #ddd;
+    background-color: #343a40;
+    padding: 5px;
+    border-top-right-radius: 50px;
+    border-bottom-right-radius: 50px;
+    border: none;
+    font-size: 14px;
+    font-family: 'bnazanin';
+    transition: all 0.5s;
+}
+
+.search-users .frm-search-user button:hover{
+    background-color: rgba(52, 58, 64, 0.8);
+}
+
+.search-users .frm-search-user input{
+    border: 1px solid #343a40;
+    border-bottom-left-radius: 50px;
+    border-top-left-radius: 50px;
+    padding: 4px;
+    font-size: 14px;
+    font-family: 'bnazanin';
+    width: 150px;
+    transition: all 0.5s;
+}
+.search-users .frm-search-user input:focus{
+    width: 200px;
+}
+
+/* ------------------------------ table users */
+.tbl-users{
+    font-family: 'bnazanin';
+    text-align: center;
+    border: 1px solid #343a40;
+    width: 100%;
+}
+
+.tbl-users thead tr th{
+    background-color: #343a40;
+    color: #ddd;
+    border: 1px solid #343a40;
+    font-size: 16px;
+    padding: 4px;
+}
+
+.tbl-users tbody tr td{
+    border: 1px solid #343a40;
+    vertical-align: middle;
+    padding: 4px;
+}
+
+/* ------------------------------ btn */
+.btn-edit-user{
+    color: #fff;
+    background-color: #218838;
+    border: 1px solid #218838;
+    border-radius: 4px;
+    padding: 4px;
+    text-decoration: none;
+    font-size: 18px;
+    width: 33px;
+    height: 33px;
+    display: inline-block;
+    margin-left: 4px;
+    transition: all 0.5s;
+}
+.btn-edit-user:hover{
+    color: #218838;
+    background-color: #fff;
+}
+
+.btn-delete-user{
+    color: #fff;
+    background-color: #DC3545;
+    border: 1px solid #DC3545;
+    border-radius: 4px;
+    padding: 4px;
+    width: 33px;
+    height: 33px;
+    margin-left: 4px;
+    vertical-align: top;
+    transition: all 0.5s;
+}
+
+.btn-delete-user i{
+    font-size: 18px;
+}
+
+.btn-delete-user:hover{
+    color: #DC3545;
+    background-color: #fff;
+}
+
+.btn-setting-user{
+    color: #fff;
+    background-color: #323232;
+    border: 1px solid #323232;
+    border-radius: 4px;
+    padding: 4px;
+    text-decoration: none;
+    font-size: 18px;
+    width: 33px;
+    height: 33px;
+    display: inline-block;
+    margin-left: 4px;
+    transition: all 0.5s;
+}
+.btn-setting-user:hover{
+    color: #323232;
+    background-color: #fff;
+}
+
+.btn-send-message-user{
+    color: #fff;
+    background-color: #007BFF;
+    border: 1px solid #007BFF;
+    border-radius: 4px;
+    padding: 4px;
+    text-decoration: none;
+    font-size: 18px;
+    width: 33px;
+    height: 33px;
+    display: inline-block;
+    margin-left: 4px;
+    transition: all 0.5s;
+}
+.btn-send-message-user:hover{
+    color: #007BFF;
+    background-color: #fff;
+}
+
+/* ------------------------------ modal delete product */
+.modal-delete-users .modal-footer .btn-delete-users-modal{
+    color: #fff;
+    background-color: #DC3545;
+    border: 1px solid #DC3545;
+    border-radius: 4px;
+    text-decoration: none;
+    font-family: 'bnazanin';
+    padding: 4px;
+    width: 50px;
+    text-align: center;
+    transition: all 0.5s;
+}
+.modal-delete-users .modal-footer .btn-delete-users-modal:hover{
+    color: #DC3545;
+    background-color: #fff;
+}
+
+.modal-delete-users .modal-footer .btn-noDelete-users-modal{
+    color: #fff;
+    background-color: #28a745;
+    border: 1px solid #28a745;
+    border-radius: 4px;
+    text-decoration: none;
+    font-family: 'bnazanin';
+    padding: 4px;
+    width: 50px;
+    text-align: center;
+    transition: all 0.5s;
+}
+.modal-delete-users .modal-footer .btn-noDelete-users-modal:hover{
+    color: #28a745;
+    background-color: #fff;
+}
+
+/* ------------------------------ modal edit product */
+.modal-edit-users .frm-edit-users .users-fName .lbl-users-fName,
+.modal-edit-users .frm-edit-users .users-lName .lbl-users-lName,
+.modal-edit-users .frm-edit-users .users-email .lbl-users-email,
+.modal-edit-users .frm-edit-users .users-phone .lbl-users-phone,
+.modal-edit-users .frm-edit-users .users-address .lbl-users-address{
+    background-color: #343a40;
+    color: #fff;
+    float: right;
+    font-family: 'bnazanin';
+    font-size: 18px;
+    font-weight: bold;
+    margin-left: 5px;
+    padding: 5px;
+    border-radius: 4px;
+    width: 125px;
+    text-align: center;
+}
+
+.modal-edit-users .frm-edit-users .users-fName .lbl-arrow,
+.modal-edit-users .frm-edit-users .users-lName .lbl-arrow,
+.modal-edit-users .frm-edit-users .users-email .lbl-arrow,
+.modal-edit-users .frm-edit-users .users-phone .lbl-arrow,
+.modal-edit-users .frm-edit-users .users-address .lbl-arrow{
+    background-color: #343a40;
+    color: #fff;
+    float: right;
+    font-family: 'bnazanin';
+    font-size: 18px;
+    font-weight: bold;
+    margin-left: 5px;
+    padding: 5px;
+    border-radius: 4px;
+    width: 30px;
+    text-align: center;
+}
+
+.modal-edit-users .frm-edit-users .users-fName .txt-users-fName,
+.modal-edit-users .frm-edit-users .users-lName .txt-users-lName,
+.modal-edit-users .frm-edit-users .users-email .txt-users-email,
+.modal-edit-users .frm-edit-users .users-phone .txt-users-phone,
+.modal-edit-users .frm-edit-users .users-address .txt-users-address{
+    background-color: #eee;
+    border: 1px solid #343a40;
+    float: right;
+    width: 300px;
+    height: 36px;
+    padding: 5px;
+    margin-bottom: 5px;
+    border-radius: 4px;
+    font-family: 'bnazanin';
+}
+
+.modal-edit-users .frm-edit-users .btn-edit-users-modal{
+    color: #fff;
+    background-color: #28a745;
+    border: 1px solid #28a745;
+    border-radius: 4px;
+    padding: 4px;
+    width: 150px;
+    transition: all 0.5s;
+}
+.modal-edit-users .frm-edit-users .btn-edit-users-modal:hover{
+    color: #28a745;
+    background-color: #fff;
+}
+
+/* ------------------------------ modal setting users */
+.modal-setting-users .frm-edit-username-users .users-username .lbl-users-username,
+.modal-setting-users .frm-edit-password-users .users-password .lbl-users-password,
+.modal-setting-users .frm-edit-password-users .users-rePassword .lbl-users-rePassword{
+    background-color: #343a40;
+    color: #fff;
+    float: right;
+    font-family: 'bnazanin';
+    font-size: 18px;
+    font-weight: bold;
+    margin-left: 5px;
+    padding: 5px;
+    border-radius: 4px;
+    width: 125px;
+    text-align: center;
+}
+
+.modal-setting-users .frm-edit-username-users .users-username .lbl-arrow,
+.modal-setting-users .frm-edit-password-users .users-password .lbl-arrow,
+.modal-setting-users .frm-edit-password-users .users-rePassword .lbl-arrow{
+    background-color: #343a40;
+    color: #fff;
+    float: right;
+    font-family: 'bnazanin';
+    font-size: 18px;
+    font-weight: bold;
+    margin-left: 5px;
+    padding: 5px;
+    border-radius: 4px;
+    width: 30px;
+    text-align: center;
+}
+
+.modal-setting-users .frm-edit-username-users .users-username .txt-users-username,
+.modal-setting-users .frm-edit-password-users .users-password .txt-users-password,
+.modal-setting-users .frm-edit-password-users .users-rePassword .txt-users-rePassword{
+    background-color: #eee;
+    border: 1px solid #343a40;
+    float: right;
+    width: 300px;
+    height: 36px;
+    padding: 5px;
+    margin-bottom: 5px;
+    border-radius: 4px;
+    font-family: 'bnazanin';
+}
+
+.modal-setting-users .frm-edit-username-users .btn-edit-username-modal,
+.modal-setting-users .frm-edit-password-users .btn-edit-password-modal{
+    color: #fff;
+    background-color: #28a745;
+    border: 1px solid #28a745;
+    border-radius: 4px;
+    padding: 4px;
+    width: 150px;
+    transition: all 0.5s;
+}
+.modal-setting-users .frm-edit-username-users .btn-setting-users-modal:hover,
+.modal-setting-users .frm-edit-password-users .btn-edit-password-modal:hover{
+    color: #28a745;
+    background-color: #fff;
+}
+
